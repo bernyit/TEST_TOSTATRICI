@@ -139,6 +139,9 @@
             a.creaMatrice(i)
             a.calcolaCombinazioni()
             a.stampaCombinazioni()
+            'a.stampaCombinazioni2()
+            a.stampaCombinazioni3()
+            'a.convertiCombinazioniPerPlc()
         Next
     End Sub
 
