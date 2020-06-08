@@ -17,15 +17,24 @@
         B1_B2_B3_FL = 15
     End Enum
 
-    Dim ricetta As Integer = 0
+    Private _ricetta As Integer = 0
 
-    Dim matrix = New Integer(9, 3) {{0, 1, 0, 0}, {0, 0, 1, 0}, {0, 0, 1, 1}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}}
+    Private _matrix = New Integer(9, 3) {
+                                            {0, 0, 0, 0},
+                                            {0, 0, 0, 0},
+                                            {0, 0, 0, 0},
+                                            {0, 0, 0, 0},
+                                            {0, 0, 0, 0},
+                                            {0, 0, 0, 0},
+                                            {0, 0, 0, 0},
+                                            {0, 0, 0, 0},
+                                            {0, 0, 0, 0},
+                                            {0, 0, 0, 0}
+                                        }
 
-    Dim combinazioniPerPlc As New List(Of Integer)
+    Private _combinazioniPerPlc As New List(Of Integer)
 
-    Dim combinazioni3 As New List(Of Integer())
-    Dim combinazioni2 As New List(Of String)
-    Dim combinazioni As New List(Of String)
+    Private _combinazioni As New List(Of Integer())
 
     Public Sub New()
 
@@ -34,117 +43,25 @@
 
     Public Sub creaMatrice(ByVal idRicetta As Integer)
 
-        matrix = DB_PLC.creaMatrice(idRicetta)
-        ricetta = idRicetta
+        _matrix = DB_PLC.creaMatrice(idRicetta)
+        _ricetta = idRicetta
 
     End Sub
 
 
     Public Sub calcolaCombinazioni()
 
-        Dim retVal As String = ""
-        Dim retVal2 As String = ""
-        Dim retVal3 = New Integer(3) {0, 0, 0, 0}
+        Dim retVal = New Integer(3) {0, 0, 0, 0}
 
-        calcolaCombinazione(retVal, matrix, 0)
-
-        calcolaCombinazione2(retVal2, matrix, 0)
-
-        calcolaCombinazione3(retVal3, matrix, 0)
+        calcolaCombinazione(retVal, _matrix, 0)
 
     End Sub
 
-
-    Public Sub stampaCombinazioni()
-        Debug.Write("-------------------------------" & vbCrLf)
-        Debug.Write("Ricetta " & ricetta & vbCrLf)
-        For Each combinazione In combinazioni
-            Debug.Write(combinazione & vbCrLf)
-        Next
-        If combinazioni.Count = 0 Then
-            Debug.Write("NON ESEGUIBILE" & vbCrLf)
-        End If
-        Debug.Write("-------------------------------" & vbCrLf)
-    End Sub
-
-
-
-
-
-
-    Private Sub calcolaCombinazione(ByVal retVal As String, ByVal matrix As Integer(,), ByVal row As Integer)
-        If row < 9 Then
-
-            For column = 0 To 3
-
-                If matrix(row, column) > 0 Then
-                    Dim newRetVal = retVal & decodeScale(column) & "-"
-                    If matrix(row + 1, 0) = 0 And matrix(row + 1, 1) = 0 And matrix(row + 1, 2) = 0 And matrix(row + 1, 3) = 0 Then
-                        'Debug.Write(newRetVal & vbCrLf)
-                        combinazioni.Add(newRetVal)
-                    Else
-                        calcolaCombinazione(newRetVal, matrix, row + 1)
-                    End If
-                End If
-            Next
-        End If
-    End Sub
-
-
-    Private Function decodeScale(ByVal column As Integer) As String
-        Dim retVal As String = ""
-        Select Case column
-            Case 0
-                retVal = "B1"
-            Case 1
-                retVal = "B2"
-            Case 2
-                retVal = "B3"
-            Case 3
-                retVal = "FL"
-            Case Else
-                retVal = "!"
-        End Select
-        Return retVal
-    End Function
 
 
     '#####################################################################################################################################################################
 
-    Private Sub calcolaCombinazione2(ByVal retVal As String, ByVal matrix As Integer(,), ByVal row As Integer)
-        If row < 9 Then
-
-            For column = 0 To 3
-
-                If matrix(row, column) > 0 Then
-                    Dim newRetVal = retVal & column
-                    If matrix(row + 1, 0) = 0 And matrix(row + 1, 1) = 0 And matrix(row + 1, 2) = 0 And matrix(row + 1, 3) = 0 Then
-                        'Debug.Write(newRetVal & vbCrLf)
-                        combinazioni2.Add(newRetVal)
-                    Else
-                        calcolaCombinazione2(newRetVal, matrix, row + 1)
-                    End If
-                End If
-            Next
-        End If
-    End Sub
-
-    Public Sub stampaCombinazioni2()
-        Debug.Write("-------------------------------" & vbCrLf)
-        Debug.Write("Ricetta " & ricetta & vbCrLf)
-        For Each combinazione In combinazioni2
-            Debug.Write(combinazione & vbCrLf)
-        Next
-        If combinazioni2.Count = 0 Then
-            Debug.Write("NON ESEGUIBILE" & vbCrLf)
-        End If
-        Debug.Write("-------------------------------" & vbCrLf)
-    End Sub
-
-
-    '#####################################################################################################################################################################
-
-    Private Sub calcolaCombinazione3(ByVal retVal As Integer(), ByVal matrix As Integer(,), ByVal row As Integer)
+    Private Sub calcolaCombinazione(ByVal retVal As Integer(), ByVal matrix As Integer(,), ByVal row As Integer)
         If row < 9 Then
 
             For column = 0 To 3
@@ -156,33 +73,34 @@
                     newRetVal(column) = 1
                     If matrix(row + 1, 0) = 0 And matrix(row + 1, 1) = 0 And matrix(row + 1, 2) = 0 And matrix(row + 1, 3) = 0 Then
                         'Debug.Write(newRetVal & vbCrLf)
-                        combinazioni3.Add(newRetVal)
+                        _combinazioni.Add(newRetVal)
                     Else
-                        calcolaCombinazione3(newRetVal, matrix, row + 1)
+                        calcolaCombinazione(newRetVal, matrix, row + 1)
                     End If
                 End If
             Next
         End If
     End Sub
 
-    Public Sub stampaCombinazioni3()
+    Public Sub stampaCombinazioni()
         Debug.Write("-------------------------------" & vbCrLf)
-        Debug.Write("Ricetta " & ricetta & vbCrLf)
-        For Each combinazione In combinazioni3
+        Debug.Write("Ricetta " & _ricetta & vbCrLf)
+        For Each combinazione In _combinazioni
             Debug.Write(combinazione(0) & combinazione(1) & combinazione(2) & combinazione(3) & vbCrLf)
         Next
-        If combinazioni3.Count = 0 Then
+        If _combinazioni.Count = 0 Then
             Debug.Write("NON ESEGUIBILE" & vbCrLf)
         End If
+        convertiCombinazioniPerPlc2()
         Debug.Write("-------------------------------" & vbCrLf)
-        convertiCombinazioniPerPlc()
     End Sub
+
     Public Sub convertiCombinazioniPerPlc()
 
-        If combinazioni2.Count = 0 Then
+        If _combinazioni.Count = 0 Then
             Debug.Write("NON FATTIBILE" & vbCrLf)
         Else
-            For Each combinazione In combinazioni3
+            For Each combinazione In _combinazioni
                 Dim firstElement = True
 
                 If (combinazione(0)) Then
@@ -219,5 +137,75 @@
 
 
     End Sub
+
+
+
+
+    Public Function convertiCombinazioniPerPlc2() As List(Of Integer)
+
+        Dim retVal As New List(Of Integer)
+
+        If _combinazioni.Count = 0 Then
+            Debug.Write("NON FATTIBILE" & vbCrLf)
+        Else
+            For Each combinazione In _combinazioni
+
+                Dim combinazioneInteger As Integer
+                Dim plcId As Integer = 0
+                combinazioneInteger = combinazione(0) * 1000
+                combinazioneInteger += combinazione(1) * 100
+                combinazioneInteger += combinazione(2) * 10
+                combinazioneInteger += combinazione(3) * 1
+
+
+                Select Case combinazioneInteger
+                    Case 1000
+                        plcId = 1
+                    Case 100
+                        plcId = 2
+                    Case 10
+                        plcId = 3
+                    Case 1
+                        plcId = 4
+                    Case 1001
+                        plcId = 5
+                    Case 101
+                        plcId = 6
+                    Case 11
+                        plcId = 7
+                    Case 1100
+                        plcId = 8
+                    Case 1010
+                        plcId = 9
+                    Case 110
+                        plcId = 10
+                    Case 1101
+                        plcId = 11
+                    Case 1011
+                        plcId = 12
+                    Case 111
+                        plcId = 13
+                    Case 1110
+                        plcId = 14
+                    Case 1111
+                        plcId = 15
+                End Select
+
+                If plcId > 0 Then
+                    If retVal.Contains(plcId) = False Then
+                        retVal.Add(plcId)
+                        Debug.Write("Plc Id " & plcId & vbCrLf)
+                    End If
+
+                End If
+
+
+            Next
+        End If
+
+
+        Return retVal
+
+    End Function
 
 End Class

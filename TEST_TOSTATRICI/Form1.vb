@@ -32,8 +32,6 @@
             MsgBox("numero ricetta non valido")
         End Try
 
-
-
     End Sub
 
     Public Sub New()
@@ -138,9 +136,9 @@
             Dim a As New TOSTATRICI
             a.creaMatrice(i)
             a.calcolaCombinazioni()
-            a.stampaCombinazioni()
+            'a.stampaCombinazioni()
             'a.stampaCombinazioni2()
-            a.stampaCombinazioni3()
+            a.stampaCombinazioni()
             'a.convertiCombinazioniPerPlc()
         Next
     End Sub
