@@ -117,7 +117,6 @@
                                             {0, 0, 0, 0}
                                         }
 
-    Private _combinazioniPerPlc As New List(Of Integer)
 
     Private _combinazioni As New List(Of Integer())
 
