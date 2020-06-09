@@ -106,7 +106,6 @@
       <DependentUpon>PLC.xsd</DependentUpon>
     </Compile>
     <Compile Include="TOSTATRICI.vb" />
-    <Compile Include="TOSTATRICI_OK.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Form1.resx">

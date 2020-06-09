@@ -117,17 +117,22 @@
 
     Private Sub btnCalcolaFattibilità_Click(sender As Object, e As EventArgs) Handles btnCalcolaFattibilità.Click
 
-        calcolaFattibilita(ricetta)
+
+        Dim idRicetta As Integer
+        idRicetta = Integer.Parse(txtNrRicetta.Text)
+
+        Dim a As New TOSTATRICI
+        a.creaMatrice(idRicetta)
+        a.calcolaCombinazioni()
+
+        a.stampaCombinazioni()
+
 
 
     End Sub
 
     Private Sub btnTest_Click(sender As Object, e As EventArgs) Handles btnTest.Click
 
-        'Dim a As New TOSTATRICI
-        'a.creaMatrice(Integer.Parse(txtNrRicetta.Text))
-        'a.calcolaCombinazioni()
-        'a.stampaCombinazioni()
 
         calcolaTutteLeRicette()
 
@@ -159,8 +164,6 @@
         Dim a As New TOSTATRICI
         a.creaMatrice(idRicetta)
         a.trovaSilosRicetta(idRicetta, combinazione)
-
-
 
     End Sub
 

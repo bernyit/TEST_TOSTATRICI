@@ -22,13 +22,6 @@ Public Class DB_PLC
     End Structure
 
 
-    Structure strLista
-        Dim lista As Hashtable
-    End Structure
-
-
-    Dim listaPercorsi As Hashtable()
-
     Public Shared Function leggiComponentiRicetta(ByVal idRicetta As Integer) As strRicetta
 
 
@@ -72,72 +65,6 @@ Public Class DB_PLC
     End Function
 
 
-
-    Structure strFattibilita
-        Dim bilancia As Integer
-    End Structure
-
-    Public Shared Function fattibilitaComponente(ByVal idComponenti() As Integer, ByVal pesi() As Decimal) As Integer
-
-
-        Using TTA_PLC As PLCTableAdapters.viewComponentiTotaleDosaggioPerTostaturaTableAdapter = New PLCTableAdapters.viewComponentiTotaleDosaggioPerTostaturaTableAdapter
-            Try
-
-                Using actData = TTA_PLC.GetData()
-
-                    Dim query As String = ""
-
-                    For i As Integer = 0 To idComponenti.Count - 1
-
-                        query = query & "([id_codice_Componente] = " & idComponenti(i) & " AND QUANTITA >= " & pesi(i).ToString("0") & ")"
-
-                        If i < idComponenti.Count - 1 Then
-                            query = query & " OR "
-                        End If
-                    Next
-
-
-                    MsgBox(actData.Count)
-
-                    Dim filteredData = actData.Select(query)
-                    MsgBox(filteredData.Count)
-
-
-
-                    'For Each item In filteredData
-                    '    Trace  item.
-                    'Next
-
-                    'If ReferenceEquals(actData, Nothing) = False Then
-
-                    '    Dim progressivo As Integer = 0
-
-                    '    For Each componente In actData
-                    '        ReDim Preserve ricetta.componenti(progressivo)
-                    '        ricetta.componenti(progressivo).indice = progressivo
-                    '        ricetta.componenti(progressivo).idComponente = componente.id_componente
-                    '        ricetta.componenti(progressivo).kgSet = componente.kg_set
-                    '        ricetta.componenti(progressivo).kgTol = componente.kg_tol
-                    '        ricetta.componenti(progressivo).fuoriLinea = componente.selezione_fl
-                    '        progressivo += 1
-                    '    Next
-
-                    'End If
-                End Using
-
-
-                'DB.LOG_Insert(BeIT_LogType.Information, BeIT_LogArea.Socket, BeIT_LogZone.PLC, BeIT_LogOperation.Write, "Created PDO: " + PdoId)
-
-            Catch ex As Exception
-
-                'CElviLOG.writeLogFile(CElviLOG.ELogType.Alarm, CElviLOG.EPartner.General, "Create PDO: " + PdoId + " " + ex.Message)
-
-            End Try
-
-        End Using
-
-        'Return ricetta
-    End Function
 
 
 
@@ -224,10 +151,6 @@ Public Class DB_PLC
     End Function
 
 
-
-
-
-    Private Shared counter As Integer = 0
 
 
     Private Sub calcolaCombinazione(ByVal retVal As String, ByVal matrix As Integer(,), ByVal row As Integer)
