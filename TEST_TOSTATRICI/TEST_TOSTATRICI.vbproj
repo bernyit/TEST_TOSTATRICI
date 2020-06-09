@@ -102,6 +102,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>PLC.xsd</DependentUpon>
     </Compile>
+    <Compile Include="PLC.vb">
+      <DependentUpon>PLC.xsd</DependentUpon>
+    </Compile>
     <Compile Include="TOSTATRICI.vb" />
     <Compile Include="TOSTATRICI_OK.vb" />
   </ItemGroup>

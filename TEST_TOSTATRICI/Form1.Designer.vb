@@ -28,6 +28,10 @@ Partial Class Form1
         Me.txtNrRicetta = New System.Windows.Forms.TextBox()
         Me.btnTest = New System.Windows.Forms.Button()
         Me.TreeView1 = New System.Windows.Forms.TreeView()
+        Me.btnSilosPrelievoBatchRicetta = New System.Windows.Forms.Button()
+        Me.txtCombinazione = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -63,20 +67,21 @@ Partial Class Form1
         '
         'txtNrRicetta
         '
-        Me.txtNrRicetta.Location = New System.Drawing.Point(46, 82)
+        Me.txtNrRicetta.Location = New System.Drawing.Point(119, 82)
         Me.txtNrRicetta.Name = "txtNrRicetta"
-        Me.txtNrRicetta.Size = New System.Drawing.Size(143, 20)
+        Me.txtNrRicetta.Size = New System.Drawing.Size(70, 20)
         Me.txtNrRicetta.TabIndex = 4
         Me.txtNrRicetta.Text = "27"
         '
         'btnTest
         '
-        Me.btnTest.Location = New System.Drawing.Point(545, 221)
+        Me.btnTest.BackColor = System.Drawing.Color.ForestGreen
+        Me.btnTest.Location = New System.Drawing.Point(535, 356)
         Me.btnTest.Name = "btnTest"
-        Me.btnTest.Size = New System.Drawing.Size(208, 124)
+        Me.btnTest.Size = New System.Drawing.Size(253, 82)
         Me.btnTest.TabIndex = 5
-        Me.btnTest.Text = "TEST"
-        Me.btnTest.UseVisualStyleBackColor = True
+        Me.btnTest.Text = "CALCOLA FATTIBILITA' TUTTE LE RICETTE"
+        Me.btnTest.UseVisualStyleBackColor = False
         '
         'TreeView1
         '
@@ -85,11 +90,51 @@ Partial Class Form1
         Me.TreeView1.Size = New System.Drawing.Size(197, 297)
         Me.TreeView1.TabIndex = 6
         '
+        'btnSilosPrelievoBatchRicetta
+        '
+        Me.btnSilosPrelievoBatchRicetta.BackColor = System.Drawing.SystemColors.ActiveBorder
+        Me.btnSilosPrelievoBatchRicetta.Location = New System.Drawing.Point(535, 268)
+        Me.btnSilosPrelievoBatchRicetta.Name = "btnSilosPrelievoBatchRicetta"
+        Me.btnSilosPrelievoBatchRicetta.Size = New System.Drawing.Size(253, 82)
+        Me.btnSilosPrelievoBatchRicetta.TabIndex = 7
+        Me.btnSilosPrelievoBatchRicetta.Text = "CALCOLA SILOS PER BATCH RICETTA"
+        Me.btnSilosPrelievoBatchRicetta.UseVisualStyleBackColor = False
+        '
+        'txtCombinazione
+        '
+        Me.txtCombinazione.Location = New System.Drawing.Point(119, 108)
+        Me.txtCombinazione.Name = "txtCombinazione"
+        Me.txtCombinazione.Size = New System.Drawing.Size(70, 20)
+        Me.txtCombinazione.TabIndex = 8
+        Me.txtCombinazione.Text = "15"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(43, 85)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(41, 13)
+        Me.Label1.TabIndex = 9
+        Me.Label1.Text = "Ricetta"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(40, 111)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(73, 13)
+        Me.Label2.TabIndex = 10
+        Me.Label2.Text = "Combinazione"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.txtCombinazione)
+        Me.Controls.Add(Me.btnSilosPrelievoBatchRicetta)
         Me.Controls.Add(Me.TreeView1)
         Me.Controls.Add(Me.btnTest)
         Me.Controls.Add(Me.txtNrRicetta)
@@ -110,4 +155,8 @@ Partial Class Form1
     Friend WithEvents txtNrRicetta As TextBox
     Friend WithEvents btnTest As Button
     Friend WithEvents TreeView1 As TreeView
+    Friend WithEvents btnSilosPrelievoBatchRicetta As Button
+    Friend WithEvents txtCombinazione As TextBox
+    Friend WithEvents Label1 As Label
+    Friend WithEvents Label2 As Label
 End Class

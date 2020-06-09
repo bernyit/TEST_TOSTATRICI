@@ -20,6 +20,9 @@
     End Enum
 
 
+
+
+
     Private Sub btnLeggiRicetta_Click(sender As Object, e As EventArgs) Handles btnLeggiRicetta.Click
 
         Dim nrRicetta As Integer
@@ -146,4 +149,20 @@
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
+
+    Private Sub btnSilosPrelievoBatchRicetta_Click(sender As Object, e As EventArgs) Handles btnSilosPrelievoBatchRicetta.Click
+
+        Dim idRicetta As Integer
+        Dim combinazione As Integer
+        idRicetta = Integer.Parse(txtNrRicetta.Text)
+        combinazione = Integer.Parse(txtCombinazione.Text)
+        Dim a As New TOSTATRICI
+        a.creaMatrice(idRicetta)
+        a.trovaSilosRicetta(idRicetta, combinazione)
+
+
+
+    End Sub
+
+
 End Class

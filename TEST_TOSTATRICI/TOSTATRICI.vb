@@ -9,6 +9,7 @@
         B2_FL = 6
         B3_FL = 7
         B1_B2 = 8
+        B1_B3 = 9
         B2_B3 = 10
         B1_B2_FL = 11
         B1_B3_FL = 12
@@ -16,6 +17,90 @@
         B1_B2_B3 = 14
         B1_B2_B3_FL = 15
     End Enum
+
+    Public Shared Sub bilanceInCuiCercare(ByVal combinazioneBilance As TOSTATRICI.enuCombinazioniBilance, ByRef b1 As Integer, ByRef b2 As Integer, ByRef b3 As Integer, ByRef fl As Integer)
+
+        Dim auxB1 As Integer = 0
+        Dim auxB2 As Integer = 0
+        Dim auxB3 As Integer = 0
+        Dim auxFL As Integer = 0
+
+        Select Case combinazioneBilance
+            Case enuCombinazioniBilance.B1
+                auxB1 = 1
+            Case enuCombinazioniBilance.B2
+                auxB2 = 1
+            Case enuCombinazioniBilance.B3
+                auxB3 = 1
+            Case enuCombinazioniBilance.FL
+                auxFL = 1
+            Case enuCombinazioniBilance.B1_FL
+                auxB1 = 1
+                auxFL = 1
+            Case enuCombinazioniBilance.B2_FL
+                auxB2 = 1
+                auxFL = 1
+            Case enuCombinazioniBilance.B3_FL
+                auxB3 = 1
+                auxFL = 1
+            Case enuCombinazioniBilance.B1_B2
+                auxB1 = 1
+                auxB2 = 1
+            Case enuCombinazioniBilance.B1_B3
+                auxB1 = 1
+                auxB3 = 1
+            Case enuCombinazioniBilance.B2_B3
+                auxB2 = 1
+                auxB3 = 1
+            Case enuCombinazioniBilance.B1_B2_FL
+                auxB1 = 1
+                auxB2 = 1
+                auxFL = 1
+            Case enuCombinazioniBilance.B1_B3_FL
+                auxB1 = 1
+                auxB3 = 1
+                auxFL = 1
+            Case enuCombinazioniBilance.B2_B3_FL
+                auxB2 = 1
+                auxB3 = 1
+                auxFL = 1
+            Case enuCombinazioniBilance.B1_B2_B3
+                auxB1 = 1
+                auxB2 = 1
+                auxB3 = 1
+            Case enuCombinazioniBilance.B1_B2_B3_FL
+                auxB1 = 1
+                auxB2 = 1
+                auxB3 = 1
+                auxFL = 1
+        End Select
+
+        b1 = auxB1
+        b2 = auxB2
+        b3 = auxB3
+        fl = auxFL
+
+    End Sub
+
+
+    Enum enuBitCombinazioniBilance
+        B1 = 1
+        B2 = 2
+        B3 = 4
+        FL = 8
+        B1_FL = 16
+        B2_FL = 32
+        B3_FL = 64
+        B1_B2 = 128
+        B1_B3 = 256
+        B2_B3 = 512
+        B1_B2_FL = 1024
+        B1_B3_FL = 2048
+        B2_B3_FL = 4096
+        B1_B2_B3 = 8192
+        B1_B2_B3_FL = 16384
+    End Enum
+
 
     Private _ricetta As Integer = 0
 
@@ -92,6 +177,7 @@
             Debug.Write("NON ESEGUIBILE" & vbCrLf)
         End If
         convertiCombinazioniPerPlc2()
+        convertiCombinazioniPerPlc3()
         Debug.Write("-------------------------------" & vbCrLf)
     End Sub
 
@@ -199,13 +285,88 @@
 
                 End If
 
-
             Next
+
         End If
 
 
         Return retVal
 
     End Function
+
+
+
+    Public Function convertiCombinazioniPerPlc3() As UInt16
+
+        Dim retVal As UInt16
+
+        If _combinazioni.Count = 0 Then
+            Debug.Write("NON FATTIBILE" & vbCrLf)
+        Else
+            For Each combinazione In _combinazioni
+
+                Dim combinazioneInteger As Integer
+                Dim mask As UInt16 = 0
+                combinazioneInteger = combinazione(0) * 1000
+                combinazioneInteger += combinazione(1) * 100
+                combinazioneInteger += combinazione(2) * 10
+                combinazioneInteger += combinazione(3) * 1
+
+
+                Select Case combinazioneInteger
+                    Case 1000
+                        mask = enuBitCombinazioniBilance.B1
+                    Case 100
+                        mask = enuBitCombinazioniBilance.B2
+                    Case 10
+                        mask = enuBitCombinazioniBilance.B3
+                    Case 1
+                        mask = enuBitCombinazioniBilance.FL
+                    Case 1001
+                        mask = enuBitCombinazioniBilance.B1_FL
+                    Case 101
+                        mask = enuBitCombinazioniBilance.B2_FL
+                    Case 11
+                        mask = enuBitCombinazioniBilance.B3_FL
+                    Case 1100
+                        mask = enuBitCombinazioniBilance.B1_B2
+                    Case 1010
+                        mask = enuBitCombinazioniBilance.B1_B3
+                    Case 110
+                        mask = enuBitCombinazioniBilance.B2_B3
+                    Case 1101
+                        mask = enuBitCombinazioniBilance.B1_B2_FL
+                    Case 1011
+                        mask = enuBitCombinazioniBilance.B1_B3_FL
+                    Case 111
+                        mask = enuBitCombinazioniBilance.B2_B3_FL
+                    Case 1110
+                        mask = enuBitCombinazioniBilance.B1_B2_B3
+                    Case 1111
+                        mask = enuBitCombinazioniBilance.B1_B2_B3_FL
+                End Select
+
+                retVal = retVal Or mask
+
+            Next
+
+            Debug.Write("Combinazioni in bit " & retVal & vbCrLf)
+
+        End If
+
+        Return retVal
+
+    End Function
+
+
+    Public Sub trovaSilosRicetta(ByVal idRicetta As Integer, ByVal combinazione As enuCombinazioniBilance)
+
+
+
+        DB_PLC.trovaSilosPerTostatrice(idRicetta, combinazione)
+
+
+    End Sub
+
 
 End Class

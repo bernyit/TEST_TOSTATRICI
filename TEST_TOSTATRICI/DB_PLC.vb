@@ -80,9 +80,6 @@ Public Class DB_PLC
     Public Shared Function fattibilitaComponente(ByVal idComponenti() As Integer, ByVal pesi() As Decimal) As Integer
 
 
-        'Dim result As 
-
-
         Using TTA_PLC As PLCTableAdapters.viewComponentiTotaleDosaggioPerTostaturaTableAdapter = New PLCTableAdapters.viewComponentiTotaleDosaggioPerTostaturaTableAdapter
             Try
 
@@ -228,68 +225,9 @@ Public Class DB_PLC
 
 
 
-    Private Sub addNode(ByRef treeNode As TreeNode)
-
-    End Sub
-
-
-    Private Function Find_Path(ByVal matrix(,) As Integer, ByVal rowSize As Integer, ByVal colSize As Integer, ByVal a As Integer, ByVal b As Integer) As Integer
-        If a = (rowSize - 1) AndAlso (b = colSize - 1) Then Return 1
-        If matrix(a + 1, b) = 1 AndAlso Find_Path(matrix, rowSize, colSize, a + 1, b) Then Return 1
-        If matrix(a, b + 1) = 1 AndAlso Find_Path(matrix, rowSize, colSize, a, b + 1) Then Return 1
-        Return 0
-    End Function
 
 
     Private Shared counter As Integer = 0
-
-    Private Shared Sub combin2(ByVal depth As Integer, ByVal matrix(,) As Integer, ByVal output() As Integer)
-
-        Try
-
-            Dim row() As Integer = getArrayFromMatrix(depth, matrix)
-
-            If (depth = 0) Then
-                counter = 0
-                output = New Integer((matrix.Length) - 1) {}
-                Debug.Print(("matrix length: " + matrix.Length))
-            End If
-
-            Dim i As Integer = 0
-            Do While (i < row.Length)
-                output(depth) = row(i)
-                If (depth = (matrix.Length - 1)) Then
-                    'print the combination
-                    Debug.Print(output.ToString())
-                    counter = (counter + 1)
-                Else
-                    'recursively generate the combination
-                    combin2((depth + 1), matrix, output)
-                End If
-
-                i = (i + 1)
-            Loop
-        Catch ex As Exception
-
-        End Try
-
-
-    End Sub
-
-    Private Shared Function getArrayFromMatrix(ByVal depth As Integer, ByVal matrix(,) As Integer) As Integer()
-        Dim result(matrix.Rank - 1) As Integer
-
-
-        For column As Integer = 0 To matrix.Rank - 1
-            result(column) = matrix(depth, column)
-        Next
-
-        Return result
-
-    End Function
-
-
-
 
 
     Private Sub calcolaCombinazione(ByVal retVal As String, ByVal matrix As Integer(,), ByVal row As Integer)
@@ -313,6 +251,93 @@ Public Class DB_PLC
         End If
 
     End Sub
+
+
+    Structure strSilosPerRicetta
+        Dim silos As Integer
+        Dim idComponente As Integer
+        Dim kg As Decimal
+    End Structure
+
+    Structure strOrdineProduzioneRicetta
+        Dim idComponente As Integer
+        Dim kg As Decimal
+        Dim multiSilos As Boolean
+        Dim fuoriLinea As Boolean
+        Dim listasilos As List(Of strSilosPerRicetta)
+    End Structure
+
+
+    Public Shared Function trovaSilosPerTostatrice(ByVal idRicetta As Integer, ByVal combinazioneBilance As TOSTATRICI.enuCombinazioniBilance) As List(Of strOrdineProduzioneRicetta)
+
+
+
+        Dim ricetta = leggiComponentiRicetta(idRicetta)
+        Dim b1, b2, b3, fl As Integer
+
+
+        Dim programma As New List(Of strOrdineProduzioneRicetta)
+
+        'decodifica combinazioneBilance per verificare da quali bilance scaricare
+        TOSTATRICI.bilanceInCuiCercare(combinazioneBilance, b1, b2, b3, fl)
+
+
+        For Each comp In ricetta.componenti
+
+            Dim componenteRicetta As New strOrdineProduzioneRicetta
+
+            componenteRicetta.idComponente = comp.idComponente
+            componenteRicetta.kg = comp.kgSet
+            componenteRicetta.multiSilos = False
+            componenteRicetta.fuoriLinea = comp.fuoriLinea
+            componenteRicetta.listasilos = New List(Of strSilosPerRicetta)
+
+            If comp.fuoriLinea = False Then
+
+                Using TTA As PLCTableAdapters.viewMagazzinoDosaggio_TotaleTableAdapter = New PLCTableAdapters.viewMagazzinoDosaggio_TotaleTableAdapter
+
+                    Using data = TTA.GetDataByComponenteEBilancia(comp.idComponente, b1, b2, b3)
+
+                        Dim pesoResiduo As Decimal = comp.kgSet
+
+                        For Each item In data
+                            If pesoResiduo > 0 Then
+                                If item.abilitatoAlloScarico = True Then
+                                    Dim pesoDaPrelevareNelSilos As Decimal
+
+                                    If item.quantitaRimanente >= pesoResiduo Then
+                                        pesoDaPrelevareNelSilos = pesoResiduo
+                                    Else
+                                        pesoDaPrelevareNelSilos = item.quantitaRimanente
+                                        pesoResiduo = pesoResiduo - item.quantitaRimanente
+                                    End If
+
+                                    Dim newSilos As strSilosPerRicetta
+                                    newSilos.silos = item.IdSilos
+                                    newSilos.idComponente = item.id_codice_componente
+                                    newSilos.kg = pesoResiduo
+
+                                    componenteRicetta.listasilos.Add(newSilos)
+
+                                End If
+                            End If
+
+                        Next
+
+                    End Using
+
+                End Using
+
+
+            End If
+
+            programma.Add(componenteRicetta)
+
+
+        Next
+
+        Return programma
+    End Function
 
 
 

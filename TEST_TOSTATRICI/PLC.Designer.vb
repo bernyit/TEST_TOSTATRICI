@@ -35,6 +35,8 @@ Partial Public Class PLC
     
     Private tableviewRicettaComponenti_join_ComponentiDosaggioPerTostatura As viewRicettaComponenti_join_ComponentiDosaggioPerTostaturaDataTable
     
+    Private tableviewMagazzinoDosaggio As viewMagazzinoDosaggioDataTable
+    
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -78,6 +80,9 @@ Partial Public Class PLC
             End If
             If (Not (ds.Tables("viewRicettaComponenti_join_ComponentiDosaggioPerTostatura")) Is Nothing) Then
                 MyBase.Tables.Add(New viewRicettaComponenti_join_ComponentiDosaggioPerTostaturaDataTable(ds.Tables("viewRicettaComponenti_join_ComponentiDosaggioPerTostatura")))
+            End If
+            If (Not (ds.Tables("viewMagazzinoDosaggio")) Is Nothing) Then
+                MyBase.Tables.Add(New viewMagazzinoDosaggioDataTable(ds.Tables("viewMagazzinoDosaggio")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -143,6 +148,16 @@ Partial Public Class PLC
     Public ReadOnly Property viewRicettaComponenti_join_ComponentiDosaggioPerTostatura() As viewRicettaComponenti_join_ComponentiDosaggioPerTostaturaDataTable
         Get
             Return Me.tableviewRicettaComponenti_join_ComponentiDosaggioPerTostatura
+        End Get
+    End Property
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+     Global.System.ComponentModel.Browsable(false),  _
+     Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
+    Public ReadOnly Property viewMagazzinoDosaggio() As viewMagazzinoDosaggioDataTable
+        Get
+            Return Me.tableviewMagazzinoDosaggio
         End Get
     End Property
     
@@ -228,6 +243,9 @@ Partial Public Class PLC
             If (Not (ds.Tables("viewRicettaComponenti_join_ComponentiDosaggioPerTostatura")) Is Nothing) Then
                 MyBase.Tables.Add(New viewRicettaComponenti_join_ComponentiDosaggioPerTostaturaDataTable(ds.Tables("viewRicettaComponenti_join_ComponentiDosaggioPerTostatura")))
             End If
+            If (Not (ds.Tables("viewMagazzinoDosaggio")) Is Nothing) Then
+                MyBase.Tables.Add(New viewMagazzinoDosaggioDataTable(ds.Tables("viewMagazzinoDosaggio")))
+            End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
             Me.Namespace = ds.Namespace
@@ -290,6 +308,12 @@ Partial Public Class PLC
                 Me.tableviewRicettaComponenti_join_ComponentiDosaggioPerTostatura.InitVars
             End If
         End If
+        Me.tableviewMagazzinoDosaggio = CType(MyBase.Tables("viewMagazzinoDosaggio"),viewMagazzinoDosaggioDataTable)
+        If (initTable = true) Then
+            If (Not (Me.tableviewMagazzinoDosaggio) Is Nothing) Then
+                Me.tableviewMagazzinoDosaggio.InitVars
+            End If
+        End If
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -310,6 +334,8 @@ Partial Public Class PLC
         MyBase.Tables.Add(Me.tableviewRicettaComponenti_join_Dosaggio)
         Me.tableviewRicettaComponenti_join_ComponentiDosaggioPerTostatura = New viewRicettaComponenti_join_ComponentiDosaggioPerTostaturaDataTable()
         MyBase.Tables.Add(Me.tableviewRicettaComponenti_join_ComponentiDosaggioPerTostatura)
+        Me.tableviewMagazzinoDosaggio = New viewMagazzinoDosaggioDataTable()
+        MyBase.Tables.Add(Me.tableviewMagazzinoDosaggio)
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -339,6 +365,12 @@ Partial Public Class PLC
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
     Private Function ShouldSerializeviewRicettaComponenti_join_ComponentiDosaggioPerTostatura() As Boolean
+        Return false
+    End Function
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+    Private Function ShouldSerializeviewMagazzinoDosaggio() As Boolean
         Return false
     End Function
     
@@ -414,6 +446,9 @@ Partial Public Class PLC
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
     Public Delegate Sub viewRicettaComponenti_join_ComponentiDosaggioPerTostaturaRowChangeEventHandler(ByVal sender As Object, ByVal e As viewRicettaComponenti_join_ComponentiDosaggioPerTostaturaRowChangeEvent)
+    
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+    Public Delegate Sub viewMagazzinoDosaggioRowChangeEventHandler(ByVal sender As Object, ByVal e As viewMagazzinoDosaggioRowChangeEvent)
     
     '''<summary>
     '''Represents the strongly named DataTable class.
@@ -2676,6 +2711,725 @@ Partial Public Class PLC
     End Class
     
     '''<summary>
+    '''Represents the strongly named DataTable class.
+    '''</summary>
+    <Global.System.Serializable(),  _
+     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
+    Partial Public Class viewMagazzinoDosaggioDataTable
+        Inherits Global.System.Data.TypedTableBase(Of viewMagazzinoDosaggioRow)
+        
+        Private columnidImpianto As Global.System.Data.DataColumn
+        
+        Private columnIdSilos As Global.System.Data.DataColumn
+        
+        Private columnidPLC As Global.System.Data.DataColumn
+        
+        Private columnDescrizioneCorsia As Global.System.Data.DataColumn
+        
+        Private columnUbicazione As Global.System.Data.DataColumn
+        
+        Private columnTipo As Global.System.Data.DataColumn
+        
+        Private columnauxDescrizione As Global.System.Data.DataColumn
+        
+        Private columnabilitatoAlCarico As Global.System.Data.DataColumn
+        
+        Private columnabilitatoAlloScarico As Global.System.Data.DataColumn
+        
+        Private columnkgTeoriciTubo As Global.System.Data.DataColumn
+        
+        Private columnerrore As Global.System.Data.DataColumn
+        
+        Private columnbilancia As Global.System.Data.DataColumn
+        
+        Private columncodice_lotto As Global.System.Data.DataColumn
+        
+        Private columndata_inizio_carico As Global.System.Data.DataColumn
+        
+        Private columndata_fine_carico As Global.System.Data.DataColumn
+        
+        Private columndata_arrivo_lotto As Global.System.Data.DataColumn
+        
+        Private columnid_codice_componente As Global.System.Data.DataColumn
+        
+        Private columnquantitaCaricata As Global.System.Data.DataColumn
+        
+        Private columnquantitaScaricata As Global.System.Data.DataColumn
+        
+        Private columnquantitaRimanente As Global.System.Data.DataColumn
+        
+        Private columncommenti As Global.System.Data.DataColumn
+        
+        Private columnpesoConfermato As Global.System.Data.DataColumn
+        
+        Private columnorigine_caffe As Global.System.Data.DataColumn
+        
+        Private columnid_lotto As Global.System.Data.DataColumn
+        
+        Private columnid_tracking As Global.System.Data.DataColumn
+        
+        Private columncodice As Global.System.Data.DataColumn
+        
+        Private columndescrizione_categoria As Global.System.Data.DataColumn
+        
+        Private columndescrizione As Global.System.Data.DataColumn
+        
+        Private columndescrizione_per_plc As Global.System.Data.DataColumn
+        
+        Private columnclasse As Global.System.Data.DataColumn
+        
+        Private columnupdateTime As Global.System.Data.DataColumn
+        
+        Private columnordinePersonalizzato As Global.System.Data.DataColumn
+        
+        Private columnrk As Global.System.Data.DataColumn
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.TableName = "viewMagazzinoDosaggio"
+            Me.BeginInit
+            Me.InitClass
+            Me.EndInit
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Friend Sub New(ByVal table As Global.System.Data.DataTable)
+            MyBase.New
+            Me.TableName = table.TableName
+            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
+                Me.CaseSensitive = table.CaseSensitive
+            End If
+            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
+                Me.Locale = table.Locale
+            End If
+            If (table.Namespace <> table.DataSet.Namespace) Then
+                Me.Namespace = table.Namespace
+            End If
+            Me.Prefix = table.Prefix
+            Me.MinimumCapacity = table.MinimumCapacity
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
+            MyBase.New(info, context)
+            Me.InitVars
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property idImpiantoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnidImpianto
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property IdSilosColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnIdSilos
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property idPLCColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnidPLC
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property DescrizioneCorsiaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnDescrizioneCorsia
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property UbicazioneColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnUbicazione
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property TipoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTipo
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property auxDescrizioneColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnauxDescrizione
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property abilitatoAlCaricoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnabilitatoAlCarico
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property abilitatoAlloScaricoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnabilitatoAlloScarico
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property kgTeoriciTuboColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnkgTeoriciTubo
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property erroreColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnerrore
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property bilanciaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnbilancia
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property codice_lottoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columncodice_lotto
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property data_inizio_caricoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columndata_inizio_carico
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property data_fine_caricoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columndata_fine_carico
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property data_arrivo_lottoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columndata_arrivo_lotto
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property id_codice_componenteColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnid_codice_componente
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property quantitaCaricataColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnquantitaCaricata
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property quantitaScaricataColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnquantitaScaricata
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property quantitaRimanenteColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnquantitaRimanente
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property commentiColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columncommenti
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property pesoConfermatoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnpesoConfermato
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property origine_caffeColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnorigine_caffe
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property id_lottoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnid_lotto
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property id_trackingColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnid_tracking
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property codiceColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columncodice
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property descrizione_categoriaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columndescrizione_categoria
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property descrizioneColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columndescrizione
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property descrizione_per_plcColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columndescrizione_per_plc
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property classeColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnclasse
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property updateTimeColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnupdateTime
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property ordinePersonalizzatoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnordinePersonalizzato
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property rkColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnrk
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Browsable(false)>  _
+        Public ReadOnly Property Count() As Integer
+            Get
+                Return Me.Rows.Count
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Default ReadOnly Property Item(ByVal index As Integer) As viewMagazzinoDosaggioRow
+            Get
+                Return CType(Me.Rows(index),viewMagazzinoDosaggioRow)
+            End Get
+        End Property
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Event viewMagazzinoDosaggioRowChanging As viewMagazzinoDosaggioRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Event viewMagazzinoDosaggioRowChanged As viewMagazzinoDosaggioRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Event viewMagazzinoDosaggioRowDeleting As viewMagazzinoDosaggioRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Event viewMagazzinoDosaggioRowDeleted As viewMagazzinoDosaggioRowChangeEventHandler
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Overloads Sub AddviewMagazzinoDosaggioRow(ByVal row As viewMagazzinoDosaggioRow)
+            Me.Rows.Add(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Overloads Function AddviewMagazzinoDosaggioRow( _
+                    ByVal idImpianto As Integer,  _
+                    ByVal IdSilos As Integer,  _
+                    ByVal idPLC As Integer,  _
+                    ByVal DescrizioneCorsia As String,  _
+                    ByVal Ubicazione As String,  _
+                    ByVal Tipo As String,  _
+                    ByVal auxDescrizione As String,  _
+                    ByVal abilitatoAlCarico As Boolean,  _
+                    ByVal abilitatoAlloScarico As Boolean,  _
+                    ByVal kgTeoriciTubo As Decimal,  _
+                    ByVal errore As Boolean,  _
+                    ByVal bilancia As Integer,  _
+                    ByVal codice_lotto As String,  _
+                    ByVal data_inizio_carico As Date,  _
+                    ByVal data_fine_carico As Date,  _
+                    ByVal data_arrivo_lotto As Date,  _
+                    ByVal id_codice_componente As Integer,  _
+                    ByVal quantitaCaricata As Decimal,  _
+                    ByVal quantitaScaricata As Decimal,  _
+                    ByVal quantitaRimanente As Decimal,  _
+                    ByVal commenti As String,  _
+                    ByVal pesoConfermato As Boolean,  _
+                    ByVal origine_caffe As String,  _
+                    ByVal id_lotto As Long,  _
+                    ByVal id_tracking As Long,  _
+                    ByVal codice As String,  _
+                    ByVal descrizione_categoria As String,  _
+                    ByVal descrizione As String,  _
+                    ByVal descrizione_per_plc As String,  _
+                    ByVal classe As Integer,  _
+                    ByVal updateTime As Date,  _
+                    ByVal ordinePersonalizzato As Integer,  _
+                    ByVal rk As Long) As viewMagazzinoDosaggioRow
+            Dim rowviewMagazzinoDosaggioRow As viewMagazzinoDosaggioRow = CType(Me.NewRow,viewMagazzinoDosaggioRow)
+            Dim columnValuesArray() As Object = New Object() {idImpianto, IdSilos, idPLC, DescrizioneCorsia, Ubicazione, Tipo, auxDescrizione, abilitatoAlCarico, abilitatoAlloScarico, kgTeoriciTubo, errore, bilancia, codice_lotto, data_inizio_carico, data_fine_carico, data_arrivo_lotto, id_codice_componente, quantitaCaricata, quantitaScaricata, quantitaRimanente, commenti, pesoConfermato, origine_caffe, id_lotto, id_tracking, codice, descrizione_categoria, descrizione, descrizione_per_plc, classe, updateTime, ordinePersonalizzato, rk}
+            rowviewMagazzinoDosaggioRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowviewMagazzinoDosaggioRow)
+            Return rowviewMagazzinoDosaggioRow
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Overrides Function Clone() As Global.System.Data.DataTable
+            Dim cln As viewMagazzinoDosaggioDataTable = CType(MyBase.Clone,viewMagazzinoDosaggioDataTable)
+            cln.InitVars
+            Return cln
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
+            Return New viewMagazzinoDosaggioDataTable()
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Friend Sub InitVars()
+            Me.columnidImpianto = MyBase.Columns("idImpianto")
+            Me.columnIdSilos = MyBase.Columns("IdSilos")
+            Me.columnidPLC = MyBase.Columns("idPLC")
+            Me.columnDescrizioneCorsia = MyBase.Columns("DescrizioneCorsia")
+            Me.columnUbicazione = MyBase.Columns("Ubicazione")
+            Me.columnTipo = MyBase.Columns("Tipo")
+            Me.columnauxDescrizione = MyBase.Columns("auxDescrizione")
+            Me.columnabilitatoAlCarico = MyBase.Columns("abilitatoAlCarico")
+            Me.columnabilitatoAlloScarico = MyBase.Columns("abilitatoAlloScarico")
+            Me.columnkgTeoriciTubo = MyBase.Columns("kgTeoriciTubo")
+            Me.columnerrore = MyBase.Columns("errore")
+            Me.columnbilancia = MyBase.Columns("bilancia")
+            Me.columncodice_lotto = MyBase.Columns("codice_lotto")
+            Me.columndata_inizio_carico = MyBase.Columns("data_inizio_carico")
+            Me.columndata_fine_carico = MyBase.Columns("data_fine_carico")
+            Me.columndata_arrivo_lotto = MyBase.Columns("data_arrivo_lotto")
+            Me.columnid_codice_componente = MyBase.Columns("id_codice_componente")
+            Me.columnquantitaCaricata = MyBase.Columns("quantitaCaricata")
+            Me.columnquantitaScaricata = MyBase.Columns("quantitaScaricata")
+            Me.columnquantitaRimanente = MyBase.Columns("quantitaRimanente")
+            Me.columncommenti = MyBase.Columns("commenti")
+            Me.columnpesoConfermato = MyBase.Columns("pesoConfermato")
+            Me.columnorigine_caffe = MyBase.Columns("origine_caffe")
+            Me.columnid_lotto = MyBase.Columns("id_lotto")
+            Me.columnid_tracking = MyBase.Columns("id_tracking")
+            Me.columncodice = MyBase.Columns("codice")
+            Me.columndescrizione_categoria = MyBase.Columns("descrizione_categoria")
+            Me.columndescrizione = MyBase.Columns("descrizione")
+            Me.columndescrizione_per_plc = MyBase.Columns("descrizione_per_plc")
+            Me.columnclasse = MyBase.Columns("classe")
+            Me.columnupdateTime = MyBase.Columns("updateTime")
+            Me.columnordinePersonalizzato = MyBase.Columns("ordinePersonalizzato")
+            Me.columnrk = MyBase.Columns("rk")
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Private Sub InitClass()
+            Me.columnidImpianto = New Global.System.Data.DataColumn("idImpianto", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnidImpianto)
+            Me.columnIdSilos = New Global.System.Data.DataColumn("IdSilos", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnIdSilos)
+            Me.columnidPLC = New Global.System.Data.DataColumn("idPLC", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnidPLC)
+            Me.columnDescrizioneCorsia = New Global.System.Data.DataColumn("DescrizioneCorsia", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnDescrizioneCorsia)
+            Me.columnUbicazione = New Global.System.Data.DataColumn("Ubicazione", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnUbicazione)
+            Me.columnTipo = New Global.System.Data.DataColumn("Tipo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTipo)
+            Me.columnauxDescrizione = New Global.System.Data.DataColumn("auxDescrizione", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnauxDescrizione)
+            Me.columnabilitatoAlCarico = New Global.System.Data.DataColumn("abilitatoAlCarico", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnabilitatoAlCarico)
+            Me.columnabilitatoAlloScarico = New Global.System.Data.DataColumn("abilitatoAlloScarico", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnabilitatoAlloScarico)
+            Me.columnkgTeoriciTubo = New Global.System.Data.DataColumn("kgTeoriciTubo", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnkgTeoriciTubo)
+            Me.columnerrore = New Global.System.Data.DataColumn("errore", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnerrore)
+            Me.columnbilancia = New Global.System.Data.DataColumn("bilancia", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnbilancia)
+            Me.columncodice_lotto = New Global.System.Data.DataColumn("codice_lotto", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columncodice_lotto)
+            Me.columndata_inizio_carico = New Global.System.Data.DataColumn("data_inizio_carico", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columndata_inizio_carico)
+            Me.columndata_fine_carico = New Global.System.Data.DataColumn("data_fine_carico", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columndata_fine_carico)
+            Me.columndata_arrivo_lotto = New Global.System.Data.DataColumn("data_arrivo_lotto", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columndata_arrivo_lotto)
+            Me.columnid_codice_componente = New Global.System.Data.DataColumn("id_codice_componente", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnid_codice_componente)
+            Me.columnquantitaCaricata = New Global.System.Data.DataColumn("quantitaCaricata", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnquantitaCaricata)
+            Me.columnquantitaScaricata = New Global.System.Data.DataColumn("quantitaScaricata", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnquantitaScaricata)
+            Me.columnquantitaRimanente = New Global.System.Data.DataColumn("quantitaRimanente", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnquantitaRimanente)
+            Me.columncommenti = New Global.System.Data.DataColumn("commenti", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columncommenti)
+            Me.columnpesoConfermato = New Global.System.Data.DataColumn("pesoConfermato", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnpesoConfermato)
+            Me.columnorigine_caffe = New Global.System.Data.DataColumn("origine_caffe", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnorigine_caffe)
+            Me.columnid_lotto = New Global.System.Data.DataColumn("id_lotto", GetType(Long), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnid_lotto)
+            Me.columnid_tracking = New Global.System.Data.DataColumn("id_tracking", GetType(Long), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnid_tracking)
+            Me.columncodice = New Global.System.Data.DataColumn("codice", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columncodice)
+            Me.columndescrizione_categoria = New Global.System.Data.DataColumn("descrizione_categoria", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columndescrizione_categoria)
+            Me.columndescrizione = New Global.System.Data.DataColumn("descrizione", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columndescrizione)
+            Me.columndescrizione_per_plc = New Global.System.Data.DataColumn("descrizione_per_plc", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columndescrizione_per_plc)
+            Me.columnclasse = New Global.System.Data.DataColumn("classe", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnclasse)
+            Me.columnupdateTime = New Global.System.Data.DataColumn("updateTime", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnupdateTime)
+            Me.columnordinePersonalizzato = New Global.System.Data.DataColumn("ordinePersonalizzato", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnordinePersonalizzato)
+            Me.columnrk = New Global.System.Data.DataColumn("rk", GetType(Long), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnrk)
+            Me.columnidImpianto.AllowDBNull = false
+            Me.columnIdSilos.AllowDBNull = false
+            Me.columnDescrizioneCorsia.MaxLength = 50
+            Me.columnUbicazione.MaxLength = 10
+            Me.columnTipo.MaxLength = 30
+            Me.columnauxDescrizione.ReadOnly = true
+            Me.columnauxDescrizione.MaxLength = 63
+            Me.columnabilitatoAlCarico.AllowDBNull = false
+            Me.columnabilitatoAlloScarico.AllowDBNull = false
+            Me.columnkgTeoriciTubo.AllowDBNull = false
+            Me.columncodice_lotto.MaxLength = 50
+            Me.columnquantitaRimanente.ReadOnly = true
+            Me.columncommenti.MaxLength = 350
+            Me.columnorigine_caffe.MaxLength = 50
+            Me.columncodice.MaxLength = 100
+            Me.columndescrizione_categoria.MaxLength = 100
+            Me.columndescrizione.MaxLength = 100
+            Me.columndescrizione_per_plc.MaxLength = 25
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function NewviewMagazzinoDosaggioRow() As viewMagazzinoDosaggioRow
+            Return CType(Me.NewRow,viewMagazzinoDosaggioRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
+            Return New viewMagazzinoDosaggioRow(builder)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Function GetRowType() As Global.System.Type
+            Return GetType(viewMagazzinoDosaggioRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanged(e)
+            If (Not (Me.viewMagazzinoDosaggioRowChangedEvent) Is Nothing) Then
+                RaiseEvent viewMagazzinoDosaggioRowChanged(Me, New viewMagazzinoDosaggioRowChangeEvent(CType(e.Row,viewMagazzinoDosaggioRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanging(e)
+            If (Not (Me.viewMagazzinoDosaggioRowChangingEvent) Is Nothing) Then
+                RaiseEvent viewMagazzinoDosaggioRowChanging(Me, New viewMagazzinoDosaggioRowChangeEvent(CType(e.Row,viewMagazzinoDosaggioRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleted(e)
+            If (Not (Me.viewMagazzinoDosaggioRowDeletedEvent) Is Nothing) Then
+                RaiseEvent viewMagazzinoDosaggioRowDeleted(Me, New viewMagazzinoDosaggioRowChangeEvent(CType(e.Row,viewMagazzinoDosaggioRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleting(e)
+            If (Not (Me.viewMagazzinoDosaggioRowDeletingEvent) Is Nothing) Then
+                RaiseEvent viewMagazzinoDosaggioRowDeleting(Me, New viewMagazzinoDosaggioRowChangeEvent(CType(e.Row,viewMagazzinoDosaggioRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub RemoveviewMagazzinoDosaggioRow(ByVal row As viewMagazzinoDosaggioRow)
+            Me.Rows.Remove(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
+            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
+            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
+            Dim ds As PLC = New PLC()
+            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
+            any1.MinOccurs = New Decimal(0)
+            any1.MaxOccurs = Decimal.MaxValue
+            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any1)
+            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
+            any2.MinOccurs = New Decimal(1)
+            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any2)
+            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute1.Name = "namespace"
+            attribute1.FixedValue = ds.Namespace
+            type.Attributes.Add(attribute1)
+            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute2.Name = "tableTypeName"
+            attribute2.FixedValue = "viewMagazzinoDosaggioDataTable"
+            type.Attributes.Add(attribute2)
+            type.Particle = sequence
+            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
+            If xs.Contains(dsSchema.TargetNamespace) Then
+                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Try 
+                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
+                    dsSchema.Write(s1)
+                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
+                    Do While schemas.MoveNext
+                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
+                        s2.SetLength(0)
+                        schema.Write(s2)
+                        If (s1.Length = s2.Length) Then
+                            s1.Position = 0
+                            s2.Position = 0
+                            
+                            Do While ((s1.Position <> s1.Length)  _
+                                        AndAlso (s1.ReadByte = s2.ReadByte))
+                                
+                                
+                            Loop
+                            If (s1.Position = s1.Length) Then
+                                Return type
+                            End If
+                        End If
+                        
+                    Loop
+                Finally
+                    If (Not (s1) Is Nothing) Then
+                        s1.Close
+                    End If
+                    If (Not (s2) Is Nothing) Then
+                        s2.Close
+                    End If
+                End Try
+            End If
+            xs.Add(dsSchema)
+            Return type
+        End Function
+    End Class
+    
+    '''<summary>
     '''Represents strongly named DataRow class.
     '''</summary>
     Partial Public Class ricetta_componentiRow
@@ -4537,6 +5291,855 @@ Partial Public Class PLC
     End Class
     
     '''<summary>
+    '''Represents strongly named DataRow class.
+    '''</summary>
+    Partial Public Class viewMagazzinoDosaggioRow
+        Inherits Global.System.Data.DataRow
+        
+        Private tableviewMagazzinoDosaggio As viewMagazzinoDosaggioDataTable
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
+            MyBase.New(rb)
+            Me.tableviewMagazzinoDosaggio = CType(Me.Table,viewMagazzinoDosaggioDataTable)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property idImpianto() As Integer
+            Get
+                Return CType(Me(Me.tableviewMagazzinoDosaggio.idImpiantoColumn),Integer)
+            End Get
+            Set
+                Me(Me.tableviewMagazzinoDosaggio.idImpiantoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property IdSilos() As Integer
+            Get
+                Return CType(Me(Me.tableviewMagazzinoDosaggio.IdSilosColumn),Integer)
+            End Get
+            Set
+                Me(Me.tableviewMagazzinoDosaggio.IdSilosColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property idPLC() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableviewMagazzinoDosaggio.idPLCColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'idPLC' nella tabella 'viewMagazzinoDosaggio' è DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableviewMagazzinoDosaggio.idPLCColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property DescrizioneCorsia() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableviewMagazzinoDosaggio.DescrizioneCorsiaColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'DescrizioneCorsia' nella tabella 'viewMagazzinoDosaggio'"& _ 
+                            " è DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableviewMagazzinoDosaggio.DescrizioneCorsiaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Ubicazione() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableviewMagazzinoDosaggio.UbicazioneColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'Ubicazione' nella tabella 'viewMagazzinoDosaggio' è DBNu"& _ 
+                            "ll.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableviewMagazzinoDosaggio.UbicazioneColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Tipo() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableviewMagazzinoDosaggio.TipoColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'Tipo' nella tabella 'viewMagazzinoDosaggio' è DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableviewMagazzinoDosaggio.TipoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property auxDescrizione() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableviewMagazzinoDosaggio.auxDescrizioneColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'auxDescrizione' nella tabella 'viewMagazzinoDosaggio' è "& _ 
+                            "DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableviewMagazzinoDosaggio.auxDescrizioneColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property abilitatoAlCarico() As Boolean
+            Get
+                Return CType(Me(Me.tableviewMagazzinoDosaggio.abilitatoAlCaricoColumn),Boolean)
+            End Get
+            Set
+                Me(Me.tableviewMagazzinoDosaggio.abilitatoAlCaricoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property abilitatoAlloScarico() As Boolean
+            Get
+                Return CType(Me(Me.tableviewMagazzinoDosaggio.abilitatoAlloScaricoColumn),Boolean)
+            End Get
+            Set
+                Me(Me.tableviewMagazzinoDosaggio.abilitatoAlloScaricoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property kgTeoriciTubo() As Decimal
+            Get
+                Return CType(Me(Me.tableviewMagazzinoDosaggio.kgTeoriciTuboColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tableviewMagazzinoDosaggio.kgTeoriciTuboColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property errore() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tableviewMagazzinoDosaggio.erroreColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'errore' nella tabella 'viewMagazzinoDosaggio' è DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableviewMagazzinoDosaggio.erroreColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property bilancia() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableviewMagazzinoDosaggio.bilanciaColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'bilancia' nella tabella 'viewMagazzinoDosaggio' è DBNull"& _ 
+                            ".", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableviewMagazzinoDosaggio.bilanciaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property codice_lotto() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableviewMagazzinoDosaggio.codice_lottoColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'codice_lotto' nella tabella 'viewMagazzinoDosaggio' è DB"& _ 
+                            "Null.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableviewMagazzinoDosaggio.codice_lottoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property data_inizio_carico() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tableviewMagazzinoDosaggio.data_inizio_caricoColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'data_inizio_carico' nella tabella 'viewMagazzinoDosaggio"& _ 
+                            "' è DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableviewMagazzinoDosaggio.data_inizio_caricoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property data_fine_carico() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tableviewMagazzinoDosaggio.data_fine_caricoColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'data_fine_carico' nella tabella 'viewMagazzinoDosaggio' "& _ 
+                            "è DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableviewMagazzinoDosaggio.data_fine_caricoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property data_arrivo_lotto() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tableviewMagazzinoDosaggio.data_arrivo_lottoColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'data_arrivo_lotto' nella tabella 'viewMagazzinoDosaggio'"& _ 
+                            " è DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableviewMagazzinoDosaggio.data_arrivo_lottoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property id_codice_componente() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableviewMagazzinoDosaggio.id_codice_componenteColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'id_codice_componente' nella tabella 'viewMagazzinoDosagg"& _ 
+                            "io' è DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableviewMagazzinoDosaggio.id_codice_componenteColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property quantitaCaricata() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableviewMagazzinoDosaggio.quantitaCaricataColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'quantitaCaricata' nella tabella 'viewMagazzinoDosaggio' "& _ 
+                            "è DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableviewMagazzinoDosaggio.quantitaCaricataColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property quantitaScaricata() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableviewMagazzinoDosaggio.quantitaScaricataColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'quantitaScaricata' nella tabella 'viewMagazzinoDosaggio'"& _ 
+                            " è DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableviewMagazzinoDosaggio.quantitaScaricataColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property quantitaRimanente() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableviewMagazzinoDosaggio.quantitaRimanenteColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'quantitaRimanente' nella tabella 'viewMagazzinoDosaggio'"& _ 
+                            " è DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableviewMagazzinoDosaggio.quantitaRimanenteColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property commenti() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableviewMagazzinoDosaggio.commentiColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'commenti' nella tabella 'viewMagazzinoDosaggio' è DBNull"& _ 
+                            ".", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableviewMagazzinoDosaggio.commentiColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property pesoConfermato() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tableviewMagazzinoDosaggio.pesoConfermatoColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'pesoConfermato' nella tabella 'viewMagazzinoDosaggio' è "& _ 
+                            "DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableviewMagazzinoDosaggio.pesoConfermatoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property origine_caffe() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableviewMagazzinoDosaggio.origine_caffeColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'origine_caffe' nella tabella 'viewMagazzinoDosaggio' è D"& _ 
+                            "BNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableviewMagazzinoDosaggio.origine_caffeColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property id_lotto() As Long
+            Get
+                Try 
+                    Return CType(Me(Me.tableviewMagazzinoDosaggio.id_lottoColumn),Long)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'id_lotto' nella tabella 'viewMagazzinoDosaggio' è DBNull"& _ 
+                            ".", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableviewMagazzinoDosaggio.id_lottoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property id_tracking() As Long
+            Get
+                Try 
+                    Return CType(Me(Me.tableviewMagazzinoDosaggio.id_trackingColumn),Long)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'id_tracking' nella tabella 'viewMagazzinoDosaggio' è DBN"& _ 
+                            "ull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableviewMagazzinoDosaggio.id_trackingColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property codice() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableviewMagazzinoDosaggio.codiceColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'codice' nella tabella 'viewMagazzinoDosaggio' è DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableviewMagazzinoDosaggio.codiceColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property descrizione_categoria() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableviewMagazzinoDosaggio.descrizione_categoriaColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'descrizione_categoria' nella tabella 'viewMagazzinoDosag"& _ 
+                            "gio' è DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableviewMagazzinoDosaggio.descrizione_categoriaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property descrizione() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableviewMagazzinoDosaggio.descrizioneColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'descrizione' nella tabella 'viewMagazzinoDosaggio' è DBN"& _ 
+                            "ull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableviewMagazzinoDosaggio.descrizioneColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property descrizione_per_plc() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableviewMagazzinoDosaggio.descrizione_per_plcColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'descrizione_per_plc' nella tabella 'viewMagazzinoDosaggi"& _ 
+                            "o' è DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableviewMagazzinoDosaggio.descrizione_per_plcColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property classe() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableviewMagazzinoDosaggio.classeColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'classe' nella tabella 'viewMagazzinoDosaggio' è DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableviewMagazzinoDosaggio.classeColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property updateTime() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tableviewMagazzinoDosaggio.updateTimeColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'updateTime' nella tabella 'viewMagazzinoDosaggio' è DBNu"& _ 
+                            "ll.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableviewMagazzinoDosaggio.updateTimeColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property ordinePersonalizzato() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableviewMagazzinoDosaggio.ordinePersonalizzatoColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'ordinePersonalizzato' nella tabella 'viewMagazzinoDosagg"& _ 
+                            "io' è DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableviewMagazzinoDosaggio.ordinePersonalizzatoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property rk() As Long
+            Get
+                Try 
+                    Return CType(Me(Me.tableviewMagazzinoDosaggio.rkColumn),Long)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'rk' nella tabella 'viewMagazzinoDosaggio' è DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableviewMagazzinoDosaggio.rkColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsidPLCNull() As Boolean
+            Return Me.IsNull(Me.tableviewMagazzinoDosaggio.idPLCColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetidPLCNull()
+            Me(Me.tableviewMagazzinoDosaggio.idPLCColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsDescrizioneCorsiaNull() As Boolean
+            Return Me.IsNull(Me.tableviewMagazzinoDosaggio.DescrizioneCorsiaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetDescrizioneCorsiaNull()
+            Me(Me.tableviewMagazzinoDosaggio.DescrizioneCorsiaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsUbicazioneNull() As Boolean
+            Return Me.IsNull(Me.tableviewMagazzinoDosaggio.UbicazioneColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetUbicazioneNull()
+            Me(Me.tableviewMagazzinoDosaggio.UbicazioneColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsTipoNull() As Boolean
+            Return Me.IsNull(Me.tableviewMagazzinoDosaggio.TipoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetTipoNull()
+            Me(Me.tableviewMagazzinoDosaggio.TipoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsauxDescrizioneNull() As Boolean
+            Return Me.IsNull(Me.tableviewMagazzinoDosaggio.auxDescrizioneColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetauxDescrizioneNull()
+            Me(Me.tableviewMagazzinoDosaggio.auxDescrizioneColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IserroreNull() As Boolean
+            Return Me.IsNull(Me.tableviewMagazzinoDosaggio.erroreColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SeterroreNull()
+            Me(Me.tableviewMagazzinoDosaggio.erroreColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsbilanciaNull() As Boolean
+            Return Me.IsNull(Me.tableviewMagazzinoDosaggio.bilanciaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetbilanciaNull()
+            Me(Me.tableviewMagazzinoDosaggio.bilanciaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Iscodice_lottoNull() As Boolean
+            Return Me.IsNull(Me.tableviewMagazzinoDosaggio.codice_lottoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Setcodice_lottoNull()
+            Me(Me.tableviewMagazzinoDosaggio.codice_lottoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Isdata_inizio_caricoNull() As Boolean
+            Return Me.IsNull(Me.tableviewMagazzinoDosaggio.data_inizio_caricoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Setdata_inizio_caricoNull()
+            Me(Me.tableviewMagazzinoDosaggio.data_inizio_caricoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Isdata_fine_caricoNull() As Boolean
+            Return Me.IsNull(Me.tableviewMagazzinoDosaggio.data_fine_caricoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Setdata_fine_caricoNull()
+            Me(Me.tableviewMagazzinoDosaggio.data_fine_caricoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Isdata_arrivo_lottoNull() As Boolean
+            Return Me.IsNull(Me.tableviewMagazzinoDosaggio.data_arrivo_lottoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Setdata_arrivo_lottoNull()
+            Me(Me.tableviewMagazzinoDosaggio.data_arrivo_lottoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Isid_codice_componenteNull() As Boolean
+            Return Me.IsNull(Me.tableviewMagazzinoDosaggio.id_codice_componenteColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Setid_codice_componenteNull()
+            Me(Me.tableviewMagazzinoDosaggio.id_codice_componenteColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsquantitaCaricataNull() As Boolean
+            Return Me.IsNull(Me.tableviewMagazzinoDosaggio.quantitaCaricataColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetquantitaCaricataNull()
+            Me(Me.tableviewMagazzinoDosaggio.quantitaCaricataColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsquantitaScaricataNull() As Boolean
+            Return Me.IsNull(Me.tableviewMagazzinoDosaggio.quantitaScaricataColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetquantitaScaricataNull()
+            Me(Me.tableviewMagazzinoDosaggio.quantitaScaricataColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsquantitaRimanenteNull() As Boolean
+            Return Me.IsNull(Me.tableviewMagazzinoDosaggio.quantitaRimanenteColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetquantitaRimanenteNull()
+            Me(Me.tableviewMagazzinoDosaggio.quantitaRimanenteColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IscommentiNull() As Boolean
+            Return Me.IsNull(Me.tableviewMagazzinoDosaggio.commentiColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetcommentiNull()
+            Me(Me.tableviewMagazzinoDosaggio.commentiColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IspesoConfermatoNull() As Boolean
+            Return Me.IsNull(Me.tableviewMagazzinoDosaggio.pesoConfermatoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetpesoConfermatoNull()
+            Me(Me.tableviewMagazzinoDosaggio.pesoConfermatoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Isorigine_caffeNull() As Boolean
+            Return Me.IsNull(Me.tableviewMagazzinoDosaggio.origine_caffeColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Setorigine_caffeNull()
+            Me(Me.tableviewMagazzinoDosaggio.origine_caffeColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Isid_lottoNull() As Boolean
+            Return Me.IsNull(Me.tableviewMagazzinoDosaggio.id_lottoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Setid_lottoNull()
+            Me(Me.tableviewMagazzinoDosaggio.id_lottoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Isid_trackingNull() As Boolean
+            Return Me.IsNull(Me.tableviewMagazzinoDosaggio.id_trackingColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Setid_trackingNull()
+            Me(Me.tableviewMagazzinoDosaggio.id_trackingColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IscodiceNull() As Boolean
+            Return Me.IsNull(Me.tableviewMagazzinoDosaggio.codiceColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetcodiceNull()
+            Me(Me.tableviewMagazzinoDosaggio.codiceColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Isdescrizione_categoriaNull() As Boolean
+            Return Me.IsNull(Me.tableviewMagazzinoDosaggio.descrizione_categoriaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Setdescrizione_categoriaNull()
+            Me(Me.tableviewMagazzinoDosaggio.descrizione_categoriaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsdescrizioneNull() As Boolean
+            Return Me.IsNull(Me.tableviewMagazzinoDosaggio.descrizioneColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetdescrizioneNull()
+            Me(Me.tableviewMagazzinoDosaggio.descrizioneColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Isdescrizione_per_plcNull() As Boolean
+            Return Me.IsNull(Me.tableviewMagazzinoDosaggio.descrizione_per_plcColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Setdescrizione_per_plcNull()
+            Me(Me.tableviewMagazzinoDosaggio.descrizione_per_plcColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsclasseNull() As Boolean
+            Return Me.IsNull(Me.tableviewMagazzinoDosaggio.classeColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetclasseNull()
+            Me(Me.tableviewMagazzinoDosaggio.classeColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsupdateTimeNull() As Boolean
+            Return Me.IsNull(Me.tableviewMagazzinoDosaggio.updateTimeColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetupdateTimeNull()
+            Me(Me.tableviewMagazzinoDosaggio.updateTimeColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsordinePersonalizzatoNull() As Boolean
+            Return Me.IsNull(Me.tableviewMagazzinoDosaggio.ordinePersonalizzatoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetordinePersonalizzatoNull()
+            Me(Me.tableviewMagazzinoDosaggio.ordinePersonalizzatoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsrkNull() As Boolean
+            Return Me.IsNull(Me.tableviewMagazzinoDosaggio.rkColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetrkNull()
+            Me(Me.tableviewMagazzinoDosaggio.rkColumn) = Global.System.Convert.DBNull
+        End Sub
+    End Class
+    
+    '''<summary>
     '''Row event argument class
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
@@ -4702,6 +6305,42 @@ Partial Public Class PLC
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public ReadOnly Property Row() As viewRicettaComponenti_join_ComponentiDosaggioPerTostaturaRow
+            Get
+                Return Me.eventRow
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Action() As Global.System.Data.DataRowAction
+            Get
+                Return Me.eventAction
+            End Get
+        End Property
+    End Class
+    
+    '''<summary>
+    '''Row event argument class
+    '''</summary>
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+    Public Class viewMagazzinoDosaggioRowChangeEvent
+        Inherits Global.System.EventArgs
+        
+        Private eventRow As viewMagazzinoDosaggioRow
+        
+        Private eventAction As Global.System.Data.DataRowAction
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub New(ByVal row As viewMagazzinoDosaggioRow, ByVal action As Global.System.Data.DataRowAction)
+            MyBase.New
+            Me.eventRow = row
+            Me.eventAction = action
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Row() As viewMagazzinoDosaggioRow
             Get
                 Return Me.eventRow
             End Get
@@ -5321,7 +6960,7 @@ Namespace PLCTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(1) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(2) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        viewMagazzinoDosaggio_Totale.*"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            viewMagazzinoDosagg"& _ 
@@ -5334,11 +6973,28 @@ Namespace PLCTableAdapters
                 "ricata, quantitaRimanente, codice, descrizione_categoria, descrizione, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"       "& _ 
                 "                  descrizione_per_plc, classe, abilitatoAlCarico, abilitatoAlloS"& _ 
                 "carico, errore, dataCaricamento, bilancia"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            viewMagazzinoDosaggio"& _ 
-                "_Totale"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (id_codice_componente = @id_codice_componente) AND (quanti"& _ 
-                "taRimanente >= @quantita)"
+                "_Totale"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (id_codice_componente = @id_codice_componente) AND (bilanc"& _ 
+                "ia = 1) AND (@bilancia1 > 0) OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (id_codice_componente "& _ 
+                "= @id_codice_componente) AND (bilancia = 2) AND (@bilancia2 > 0) OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"           "& _ 
+                "              (id_codice_componente = @id_codice_componente) AND (bilancia = 3) "& _ 
+                "AND (@bilancia3 > 0)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY quantitaRimanente"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_codice_componente", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "id_codice_componente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@quantita", Global.System.Data.SqlDbType.[Decimal], 17, Global.System.Data.ParameterDirection.Input, 38, 3, "quantitaRimanente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bilancia1", Global.System.Data.SqlDbType.VarChar, 1024, Global.System.Data.ParameterDirection.Input, 0, 0, "", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bilancia2", Global.System.Data.SqlDbType.VarChar, 1024, Global.System.Data.ParameterDirection.Input, 0, 0, "", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bilancia3", Global.System.Data.SqlDbType.VarChar, 1024, Global.System.Data.ParameterDirection.Input, 0, 0, "", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(2).Connection = Me.Connection
+            Me._commandCollection(2).CommandText = "SELECT        idImpianto, IdSilos, idPLC, DescrizioneCorsia, Ubicazione, Tipo, au"& _ 
+                "xDescrizione, kgTeoriciTubo, id_codice_componente, quantitaCaricata, quantitaSca"& _ 
+                "ricata, quantitaRimanente, codice, descrizione_categoria, descrizione, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"       "& _ 
+                "                  descrizione_per_plc, classe, abilitatoAlCarico, abilitatoAlloS"& _ 
+                "carico, errore, dataCaricamento, bilancia"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            viewMagazzinoDosaggio"& _ 
+                "_Totale"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (id_codice_componente = @id_codice_componente) AND (quanti"& _ 
+                "taRimanente >= @quantita) AND (abilitatoAlloScarico = 1)"
+            Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_codice_componente", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "id_codice_componente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@quantita", Global.System.Data.SqlDbType.[Decimal], 17, Global.System.Data.ParameterDirection.Input, 38, 3, "quantitaRimanente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5369,8 +7025,39 @@ Namespace PLCTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetFattibilitaComponente(ByVal id_codice_componente As Global.System.Nullable(Of Integer), ByVal quantita As Global.System.Nullable(Of Decimal)) As PLC.viewMagazzinoDosaggio_TotaleDataTable
+        Public Overloads Overridable Function GetDataByComponenteEBilancia(ByVal id_codice_componente As Global.System.Nullable(Of Integer), ByVal bilancia1 As String, ByVal bilancia2 As String, ByVal bilancia3 As String) As PLC.viewMagazzinoDosaggio_TotaleDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            If (id_codice_componente.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(id_codice_componente.Value,Integer)
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            End If
+            If (bilancia1 Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("bilancia1")
+            Else
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(bilancia1,String)
+            End If
+            If (bilancia2 Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("bilancia2")
+            Else
+                Me.Adapter.SelectCommand.Parameters(2).Value = CType(bilancia2,String)
+            End If
+            If (bilancia3 Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("bilancia3")
+            Else
+                Me.Adapter.SelectCommand.Parameters(3).Value = CType(bilancia3,String)
+            End If
+            Dim dataTable As PLC.viewMagazzinoDosaggio_TotaleDataTable = New PLC.viewMagazzinoDosaggio_TotaleDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetFattibilitaComponente(ByVal id_codice_componente As Global.System.Nullable(Of Integer), ByVal quantita As Global.System.Nullable(Of Decimal)) As PLC.viewMagazzinoDosaggio_TotaleDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(2)
             If (id_codice_componente.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(id_codice_componente.Value,Integer)
             Else
@@ -6018,6 +7705,261 @@ Namespace PLCTableAdapters
             Me.Adapter.SelectCommand = Me.CommandCollection(1)
             Me.Adapter.SelectCommand.Parameters(0).Value = CType(id_ricetta,Integer)
             Dim dataTable As PLC.viewRicettaComponenti_join_ComponentiDosaggioPerTostaturaDataTable = New PLC.viewRicettaComponenti_join_ComponentiDosaggioPerTostaturaDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+    End Class
+    
+    '''<summary>
+    '''Represents the connection and commands used to retrieve and save data.
+    '''</summary>
+    <Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     Global.System.ComponentModel.ToolboxItem(true),  _
+     Global.System.ComponentModel.DataObjectAttribute(true),  _
+     Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
+     Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+    Partial Public Class viewMagazzinoDosaggioTableAdapter
+        Inherits Global.System.ComponentModel.Component
+        
+        Private WithEvents _adapter As Global.System.Data.SqlClient.SqlDataAdapter
+        
+        Private _connection As Global.System.Data.SqlClient.SqlConnection
+        
+        Private _transaction As Global.System.Data.SqlClient.SqlTransaction
+        
+        Private _commandCollection() As Global.System.Data.SqlClient.SqlCommand
+        
+        Private _clearBeforeFill As Boolean
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.ClearBeforeFill = true
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Friend ReadOnly Property Adapter() As Global.System.Data.SqlClient.SqlDataAdapter
+            Get
+                If (Me._adapter Is Nothing) Then
+                    Me.InitAdapter
+                End If
+                Return Me._adapter
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Friend Property Connection() As Global.System.Data.SqlClient.SqlConnection
+            Get
+                If (Me._connection Is Nothing) Then
+                    Me.InitConnection
+                End If
+                Return Me._connection
+            End Get
+            Set
+                Me._connection = value
+                If (Not (Me.Adapter.InsertCommand) Is Nothing) Then
+                    Me.Adapter.InsertCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.DeleteCommand) Is Nothing) Then
+                    Me.Adapter.DeleteCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.UpdateCommand) Is Nothing) Then
+                    Me.Adapter.UpdateCommand.Connection = value
+                End If
+                Dim i As Integer = 0
+                Do While (i < Me.CommandCollection.Length)
+                    If (Not (Me.CommandCollection(i)) Is Nothing) Then
+                        CType(Me.CommandCollection(i),Global.System.Data.SqlClient.SqlCommand).Connection = value
+                    End If
+                    i = (i + 1)
+                Loop
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Friend Property Transaction() As Global.System.Data.SqlClient.SqlTransaction
+            Get
+                Return Me._transaction
+            End Get
+            Set
+                Me._transaction = value
+                Dim i As Integer = 0
+                Do While (i < Me.CommandCollection.Length)
+                    Me.CommandCollection(i).Transaction = Me._transaction
+                    i = (i + 1)
+                Loop
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.DeleteCommand) Is Nothing)) Then
+                    Me.Adapter.DeleteCommand.Transaction = Me._transaction
+                End If
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.InsertCommand) Is Nothing)) Then
+                    Me.Adapter.InsertCommand.Transaction = Me._transaction
+                End If
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.UpdateCommand) Is Nothing)) Then
+                    Me.Adapter.UpdateCommand.Transaction = Me._transaction
+                End If
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected ReadOnly Property CommandCollection() As Global.System.Data.SqlClient.SqlCommand()
+            Get
+                If (Me._commandCollection Is Nothing) Then
+                    Me.InitCommandCollection
+                End If
+                Return Me._commandCollection
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property ClearBeforeFill() As Boolean
+            Get
+                Return Me._clearBeforeFill
+            End Get
+            Set
+                Me._clearBeforeFill = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Private Sub InitAdapter()
+            Me._adapter = New Global.System.Data.SqlClient.SqlDataAdapter()
+            Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
+            tableMapping.SourceTable = "Table"
+            tableMapping.DataSetTable = "viewMagazzinoDosaggio"
+            tableMapping.ColumnMappings.Add("idImpianto", "idImpianto")
+            tableMapping.ColumnMappings.Add("IdSilos", "IdSilos")
+            tableMapping.ColumnMappings.Add("idPLC", "idPLC")
+            tableMapping.ColumnMappings.Add("DescrizioneCorsia", "DescrizioneCorsia")
+            tableMapping.ColumnMappings.Add("Ubicazione", "Ubicazione")
+            tableMapping.ColumnMappings.Add("Tipo", "Tipo")
+            tableMapping.ColumnMappings.Add("auxDescrizione", "auxDescrizione")
+            tableMapping.ColumnMappings.Add("abilitatoAlCarico", "abilitatoAlCarico")
+            tableMapping.ColumnMappings.Add("abilitatoAlloScarico", "abilitatoAlloScarico")
+            tableMapping.ColumnMappings.Add("kgTeoriciTubo", "kgTeoriciTubo")
+            tableMapping.ColumnMappings.Add("errore", "errore")
+            tableMapping.ColumnMappings.Add("bilancia", "bilancia")
+            tableMapping.ColumnMappings.Add("codice_lotto", "codice_lotto")
+            tableMapping.ColumnMappings.Add("data_inizio_carico", "data_inizio_carico")
+            tableMapping.ColumnMappings.Add("data_fine_carico", "data_fine_carico")
+            tableMapping.ColumnMappings.Add("data_arrivo_lotto", "data_arrivo_lotto")
+            tableMapping.ColumnMappings.Add("id_codice_componente", "id_codice_componente")
+            tableMapping.ColumnMappings.Add("quantitaCaricata", "quantitaCaricata")
+            tableMapping.ColumnMappings.Add("quantitaScaricata", "quantitaScaricata")
+            tableMapping.ColumnMappings.Add("quantitaRimanente", "quantitaRimanente")
+            tableMapping.ColumnMappings.Add("commenti", "commenti")
+            tableMapping.ColumnMappings.Add("pesoConfermato", "pesoConfermato")
+            tableMapping.ColumnMappings.Add("origine_caffe", "origine_caffe")
+            tableMapping.ColumnMappings.Add("id_lotto", "id_lotto")
+            tableMapping.ColumnMappings.Add("id_tracking", "id_tracking")
+            tableMapping.ColumnMappings.Add("codice", "codice")
+            tableMapping.ColumnMappings.Add("descrizione_categoria", "descrizione_categoria")
+            tableMapping.ColumnMappings.Add("descrizione", "descrizione")
+            tableMapping.ColumnMappings.Add("descrizione_per_plc", "descrizione_per_plc")
+            tableMapping.ColumnMappings.Add("classe", "classe")
+            tableMapping.ColumnMappings.Add("updateTime", "updateTime")
+            tableMapping.ColumnMappings.Add("ordinePersonalizzato", "ordinePersonalizzato")
+            tableMapping.ColumnMappings.Add("rk", "rk")
+            Me._adapter.TableMappings.Add(tableMapping)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Private Sub InitConnection()
+            Me._connection = New Global.System.Data.SqlClient.SqlConnection()
+            Me._connection.ConnectionString = Global.TEST_TOSTATRICI.My.MySettings.Default.LEVEL2_GMK_ConnectionString
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Private Sub InitCommandCollection()
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(1) {}
+            Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(0).Connection = Me.Connection
+            Me._commandCollection(0).CommandText = "SELECT        viewMagazzinoDosaggio.*"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            viewMagazzinoDosaggio"
+            Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(1).Connection = Me.Connection
+            Me._commandCollection(1).CommandText = "SELECT        idImpianto, IdSilos, idPLC, DescrizioneCorsia, Ubicazione, Tipo, au"& _ 
+                "xDescrizione, abilitatoAlCarico, abilitatoAlloScarico, kgTeoriciTubo, errore, bi"& _ 
+                "lancia, codice_lotto, data_inizio_carico, data_fine_carico, data_arrivo_lotto, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         id_codice_componente, quantitaCaricata, quantitaScaric"& _ 
+                "ata, quantitaRimanente, commenti, pesoConfermato, origine_caffe, id_lotto, id_tr"& _ 
+                "acking, codice, descrizione_categoria, descrizione, descrizione_per_plc, classe,"& _ 
+                " "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         updateTime, ordinePersonalizzato, rk"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM          "& _ 
+                "  viewMagazzinoDosaggio"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (id_codice_componente = @id_codice_compone"& _ 
+                "nte) AND (bilancia = 1) AND (@bilancia1 > 0) AND (rk = 1) OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                  "& _ 
+                "       (id_codice_componente = @id_codice_componente) AND (bilancia = 2) AND (rk"& _ 
+                " = 1) AND (@bilancia2 > 0) OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (id_codice_componente = "& _ 
+                "@id_codice_componente) AND (bilancia = 3) AND (rk = 1) AND (@bilancia3 > 0)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORD"& _ 
+                "ER BY quantitaRimanente"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_codice_componente", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "id_codice_componente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bilancia1", Global.System.Data.SqlDbType.VarChar, 1024, Global.System.Data.ParameterDirection.Input, 0, 0, "", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bilancia2", Global.System.Data.SqlDbType.VarChar, 1024, Global.System.Data.ParameterDirection.Input, 0, 0, "", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bilancia3", Global.System.Data.SqlDbType.VarChar, 1024, Global.System.Data.ParameterDirection.Input, 0, 0, "", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
+        Public Overloads Overridable Function Fill(ByVal dataTable As PLC.viewMagazzinoDosaggioDataTable) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
+        Public Overloads Overridable Function GetData() As PLC.viewMagazzinoDosaggioDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            Dim dataTable As PLC.viewMagazzinoDosaggioDataTable = New PLC.viewMagazzinoDosaggioDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetDataByComponenteEBilancia(ByVal id_codice_componente As Global.System.Nullable(Of Integer), ByVal bilancia1 As String, ByVal bilancia2 As String, ByVal bilancia3 As String) As PLC.viewMagazzinoDosaggioDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            If (id_codice_componente.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(id_codice_componente.Value,Integer)
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            End If
+            If (bilancia1 Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("bilancia1")
+            Else
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(bilancia1,String)
+            End If
+            If (bilancia2 Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("bilancia2")
+            Else
+                Me.Adapter.SelectCommand.Parameters(2).Value = CType(bilancia2,String)
+            End If
+            If (bilancia3 Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("bilancia3")
+            Else
+                Me.Adapter.SelectCommand.Parameters(3).Value = CType(bilancia3,String)
+            End If
+            Dim dataTable As PLC.viewMagazzinoDosaggioDataTable = New PLC.viewMagazzinoDosaggioDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
