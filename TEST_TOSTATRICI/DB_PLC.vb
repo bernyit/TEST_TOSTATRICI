@@ -180,11 +180,13 @@ Public Class DB_PLC
         Dim silos As Integer
         Dim idComponente As Integer
         Dim kg As Decimal
+        Dim bilancia As Integer
     End Structure
 
     Structure strOrdineProduzioneRicetta
         Dim idComponente As Integer
-        Dim kg As Decimal
+        Dim kgSet As Decimal
+        Dim kgTol As Decimal
         Dim multiSilos As Boolean
         Dim fuoriLinea As Boolean
         Dim listasilos As List(Of strSilosPerRicetta)
@@ -210,16 +212,19 @@ Public Class DB_PLC
             Dim componenteRicetta As New strOrdineProduzioneRicetta
 
             componenteRicetta.idComponente = comp.idComponente
-            componenteRicetta.kg = comp.kgSet
+            componenteRicetta.kgSet = comp.kgSet
+            componenteRicetta.kgTol = comp.kgTol
             componenteRicetta.multiSilos = False
             componenteRicetta.fuoriLinea = comp.fuoriLinea
             componenteRicetta.listasilos = New List(Of strSilosPerRicetta)
 
             If comp.fuoriLinea = False Then
 
-                Using TTA As PLCTableAdapters.viewMagazzinoDosaggio_TotaleTableAdapter = New PLCTableAdapters.viewMagazzinoDosaggio_TotaleTableAdapter
+                Using TTA_DOSAGGIO As PLCTableAdapters.viewMagazzinoDosaggio_TotaleTableAdapter = New PLCTableAdapters.viewMagazzinoDosaggio_TotaleTableAdapter
+                    Using data = TTA_DOSAGGIO.GetDataByComponenteEBilancia(comp.idComponente, b1, b2, b3)
 
-                    Using data = TTA.GetDataByComponenteEBilancia(comp.idComponente, b1, b2, b3)
+
+
 
                         Dim pesoResiduo As Decimal = comp.kgSet
 
@@ -239,7 +244,7 @@ Public Class DB_PLC
                                     newSilos.silos = item.IdSilos
                                     newSilos.idComponente = item.id_codice_componente
                                     newSilos.kg = pesoResiduo
-
+                                    newSilos.bilancia = item.bilancia
                                     componenteRicetta.listasilos.Add(newSilos)
 
                                 End If
@@ -262,7 +267,56 @@ Public Class DB_PLC
         Return programma
     End Function
 
+    Public Shared Sub aggiornaComposizioneBilanceOnline(ByVal tostatrice As Integer, ByVal ricetta As Integer, programma As List(Of strOrdineProduzioneRicetta))
 
 
+
+
+
+        Using TTA_TOST_BILANCE As PLCTableAdapters.tostatrici_bilance_onlineTableAdapter = New PLCTableAdapters.tostatrici_bilance_onlineTableAdapter
+            TTA_TOST_BILANCE.DeleteComposizionePerTostatrice(tostatrice)
+
+
+            Dim nrComponente As Integer = 0
+            For Each item In programma
+                nrComponente += 1
+                Dim nrSilos As Integer = 0
+                If item.fuoriLinea = False Then
+                    For Each silos In item.listasilos
+                        nrSilos += 1
+
+                        TTA_TOST_BILANCE.InsertQuery(silos.bilancia, tostatrice, ricetta, nrComponente, item.idComponente, item.kgSet, item.kgTol, nrSilos, silos.silos)
+
+                    Next
+                Else
+                    TTA_TOST_BILANCE.InsertQuery(10, tostatrice, ricetta, nrComponente, item.idComponente, item.kgSet, item.kgTol, nrSilos, 0)
+                End If
+
+
+            Next
+
+
+        End Using
+
+
+    End Sub
+
+
+
+
+    Public Shared Sub EliminaRicetta(ByVal nrRicetta As Integer)
+
+
+    End Sub
+
+    Public Shared Sub inserisciRicetta(ByVal nrRicetta As Integer, ByVal nomeRicetta As String, ByVal descrizione As String, ByVal dettaglio As String)
+
+
+    End Sub
+
+    Public Shared Sub inserisciComponenteRicetta(ByVal nrRicetta As Integer, ByVal indice As String, ByVal id_componente As Integer, ByVal kg_set As Decimal, ByVal kg_tol As Decimal, ByVal selezione_fl As Integer)
+
+
+    End Sub
 
 End Class

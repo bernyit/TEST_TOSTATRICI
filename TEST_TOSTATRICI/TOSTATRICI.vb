@@ -1,5 +1,8 @@
 ﻿Public Class TOSTATRICI
 
+
+    Private _numeroTostatrice As Integer = 0
+
     Enum enuCombinazioniBilance
         B1 = 1
         B2 = 2
@@ -120,8 +123,8 @@
 
     Private _combinazioni As New List(Of Integer())
 
-    Public Sub New()
-
+    Public Sub New(ByVal nrTostatrice As Integer)
+        _numeroTostatrice = nrTostatrice
     End Sub
 
 
@@ -361,8 +364,17 @@
     Public Sub trovaSilosRicetta(ByVal idRicetta As Integer, ByVal combinazione As enuCombinazioniBilance)
 
 
+        Dim programma As List(Of DB_PLC.strOrdineProduzioneRicetta)
 
-        DB_PLC.trovaSilosPerTostatrice(idRicetta, combinazione)
+        Try
+            programma = DB_PLC.trovaSilosPerTostatrice(idRicetta, combinazione)
+            DB_PLC.aggiornaComposizioneBilanceOnline(_numeroTostatrice, idRicetta, programma)
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+
+
+
 
 
     End Sub

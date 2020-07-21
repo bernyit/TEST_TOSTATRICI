@@ -105,6 +105,7 @@
     <Compile Include="PLC.vb">
       <DependentUpon>PLC.xsd</DependentUpon>
     </Compile>
+    <Compile Include="RICETTE.vb" />
     <Compile Include="TOSTATRICI.vb" />
   </ItemGroup>
   <ItemGroup>

@@ -121,7 +121,7 @@
         Dim idRicetta As Integer
         idRicetta = Integer.Parse(txtNrRicetta.Text)
 
-        Dim a As New TOSTATRICI
+        Dim a As New TOSTATRICI(4)
         a.creaMatrice(idRicetta)
         a.calcolaCombinazioni()
 
@@ -140,8 +140,8 @@
 
 
     Private Sub calcolaTutteLeRicette()
-        For i As Integer = 1 To 60
-            Dim a As New TOSTATRICI
+        For i As Integer = 1 To 200
+            Dim a As New TOSTATRICI(3)
             a.creaMatrice(i)
             a.calcolaCombinazioni()
             'a.stampaCombinazioni()
@@ -161,9 +161,20 @@
         Dim combinazione As Integer
         idRicetta = Integer.Parse(txtNrRicetta.Text)
         combinazione = Integer.Parse(txtCombinazione.Text)
-        Dim a As New TOSTATRICI
+        Dim a As New TOSTATRICI(4)
         a.creaMatrice(idRicetta)
         a.trovaSilosRicetta(idRicetta, combinazione)
+
+    End Sub
+
+
+
+
+    Private Sub btnImportRecipes_Click(sender As Object, e As EventArgs) Handles btnImportRecipes.Click
+
+        Dim r As New RICETTE
+        r.importaRicette("E:\_Cloud\OneDrive - ELVI SPA\LAVORO ELVI\GIMOKA IND 4.0\LIVELLO 2\Report PLC\Ricette Dettaglio 20200720")
+
 
     End Sub
 
