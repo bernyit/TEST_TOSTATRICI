@@ -304,19 +304,4 @@ Public Class DB_PLC
 
 
 
-    Public Shared Sub EliminaRicetta(ByVal nrRicetta As Integer)
-
-
-    End Sub
-
-    Public Shared Sub inserisciRicetta(ByVal nrRicetta As Integer, ByVal nomeRicetta As String, ByVal descrizione As String, ByVal dettaglio As String)
-
-
-    End Sub
-
-    Public Shared Sub inserisciComponenteRicetta(ByVal nrRicetta As Integer, ByVal indice As String, ByVal id_componente As Integer, ByVal kg_set As Decimal, ByVal kg_tol As Decimal, ByVal selezione_fl As Integer)
-
-
-    End Sub
-
 End Class

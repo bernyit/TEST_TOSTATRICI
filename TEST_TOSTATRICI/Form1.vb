@@ -173,7 +173,7 @@
     Private Sub btnImportRecipes_Click(sender As Object, e As EventArgs) Handles btnImportRecipes.Click
 
         Dim r As New RICETTE
-        r.importaRicette("E:\_Cloud\OneDrive - ELVI SPA\LAVORO ELVI\GIMOKA IND 4.0\LIVELLO 2\Report PLC\Ricette Dettaglio 20200720")
+        r.importaRicette()
 
 
     End Sub
