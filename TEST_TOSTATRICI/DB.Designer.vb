@@ -29,6 +29,8 @@ Partial Public Class DB
     
     Private tablericetta_componenti As ricetta_componentiDataTable
     
+    Private tableview_RicettaComponenti_disponibilitaBilance As view_RicettaComponenti_disponibilitaBilanceDataTable
+    
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -64,6 +66,9 @@ Partial Public Class DB
             If (Not (ds.Tables("ricetta_componenti")) Is Nothing) Then
                 MyBase.Tables.Add(New ricetta_componentiDataTable(ds.Tables("ricetta_componenti")))
             End If
+            If (Not (ds.Tables("view_RicettaComponenti_disponibilitaBilance")) Is Nothing) Then
+                MyBase.Tables.Add(New view_RicettaComponenti_disponibilitaBilanceDataTable(ds.Tables("view_RicettaComponenti_disponibilitaBilance")))
+            End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
             Me.Namespace = ds.Namespace
@@ -98,6 +103,16 @@ Partial Public Class DB
     Public ReadOnly Property ricetta_componenti() As ricetta_componentiDataTable
         Get
             Return Me.tablericetta_componenti
+        End Get
+    End Property
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+     Global.System.ComponentModel.Browsable(false),  _
+     Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
+    Public ReadOnly Property view_RicettaComponenti_disponibilitaBilance() As view_RicettaComponenti_disponibilitaBilanceDataTable
+        Get
+            Return Me.tableview_RicettaComponenti_disponibilitaBilance
         End Get
     End Property
     
@@ -174,6 +189,9 @@ Partial Public Class DB
             If (Not (ds.Tables("ricetta_componenti")) Is Nothing) Then
                 MyBase.Tables.Add(New ricetta_componentiDataTable(ds.Tables("ricetta_componenti")))
             End If
+            If (Not (ds.Tables("view_RicettaComponenti_disponibilitaBilance")) Is Nothing) Then
+                MyBase.Tables.Add(New view_RicettaComponenti_disponibilitaBilanceDataTable(ds.Tables("view_RicettaComponenti_disponibilitaBilance")))
+            End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
             Me.Namespace = ds.Namespace
@@ -218,6 +236,12 @@ Partial Public Class DB
                 Me.tablericetta_componenti.InitVars
             End If
         End If
+        Me.tableview_RicettaComponenti_disponibilitaBilance = CType(MyBase.Tables("view_RicettaComponenti_disponibilitaBilance"),view_RicettaComponenti_disponibilitaBilanceDataTable)
+        If (initTable = true) Then
+            If (Not (Me.tableview_RicettaComponenti_disponibilitaBilance) Is Nothing) Then
+                Me.tableview_RicettaComponenti_disponibilitaBilance.InitVars
+            End If
+        End If
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -232,6 +256,8 @@ Partial Public Class DB
         MyBase.Tables.Add(Me.tablericette)
         Me.tablericetta_componenti = New ricetta_componentiDataTable()
         MyBase.Tables.Add(Me.tablericetta_componenti)
+        Me.tableview_RicettaComponenti_disponibilitaBilance = New view_RicettaComponenti_disponibilitaBilanceDataTable()
+        MyBase.Tables.Add(Me.tableview_RicettaComponenti_disponibilitaBilance)
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -243,6 +269,12 @@ Partial Public Class DB
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
     Private Function ShouldSerializericetta_componenti() As Boolean
+        Return false
+    End Function
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+    Private Function ShouldSerializeview_RicettaComponenti_disponibilitaBilance() As Boolean
         Return false
     End Function
     
@@ -309,6 +341,9 @@ Partial Public Class DB
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
     Public Delegate Sub ricetta_componentiRowChangeEventHandler(ByVal sender As Object, ByVal e As ricetta_componentiRowChangeEvent)
+    
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+    Public Delegate Sub view_RicettaComponenti_disponibilitaBilanceRowChangeEventHandler(ByVal sender As Object, ByVal e As view_RicettaComponenti_disponibilitaBilanceRowChangeEvent)
     
     '''<summary>
     '''Represents the strongly named DataTable class.
@@ -941,6 +976,403 @@ Partial Public Class DB
     End Class
     
     '''<summary>
+    '''Represents the strongly named DataTable class.
+    '''</summary>
+    <Global.System.Serializable(),  _
+     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
+    Partial Public Class view_RicettaComponenti_disponibilitaBilanceDataTable
+        Inherits Global.System.Data.TypedTableBase(Of view_RicettaComponenti_disponibilitaBilanceRow)
+        
+        Private columnid_ricetta As Global.System.Data.DataColumn
+        
+        Private columnindice As Global.System.Data.DataColumn
+        
+        Private columnid_componente As Global.System.Data.DataColumn
+        
+        Private columnkg_set As Global.System.Data.DataColumn
+        
+        Private columnkg_tol As Global.System.Data.DataColumn
+        
+        Private columnselezione_fl As Global.System.Data.DataColumn
+        
+        Private columndisponibileB1 As Global.System.Data.DataColumn
+        
+        Private columndisponibileB2 As Global.System.Data.DataColumn
+        
+        Private columndisponibileB3 As Global.System.Data.DataColumn
+        
+        Private columndisponibileB4 As Global.System.Data.DataColumn
+        
+        Private columndisponibileB5 As Global.System.Data.DataColumn
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.TableName = "view_RicettaComponenti_disponibilitaBilance"
+            Me.BeginInit
+            Me.InitClass
+            Me.EndInit
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Friend Sub New(ByVal table As Global.System.Data.DataTable)
+            MyBase.New
+            Me.TableName = table.TableName
+            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
+                Me.CaseSensitive = table.CaseSensitive
+            End If
+            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
+                Me.Locale = table.Locale
+            End If
+            If (table.Namespace <> table.DataSet.Namespace) Then
+                Me.Namespace = table.Namespace
+            End If
+            Me.Prefix = table.Prefix
+            Me.MinimumCapacity = table.MinimumCapacity
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
+            MyBase.New(info, context)
+            Me.InitVars
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property id_ricettaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnid_ricetta
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property indiceColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnindice
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property id_componenteColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnid_componente
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property kg_setColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnkg_set
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property kg_tolColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnkg_tol
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property selezione_flColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnselezione_fl
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property disponibileB1Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columndisponibileB1
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property disponibileB2Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columndisponibileB2
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property disponibileB3Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columndisponibileB3
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property disponibileB4Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columndisponibileB4
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property disponibileB5Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columndisponibileB5
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Browsable(false)>  _
+        Public ReadOnly Property Count() As Integer
+            Get
+                Return Me.Rows.Count
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Default ReadOnly Property Item(ByVal index As Integer) As view_RicettaComponenti_disponibilitaBilanceRow
+            Get
+                Return CType(Me.Rows(index),view_RicettaComponenti_disponibilitaBilanceRow)
+            End Get
+        End Property
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Event view_RicettaComponenti_disponibilitaBilanceRowChanging As view_RicettaComponenti_disponibilitaBilanceRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Event view_RicettaComponenti_disponibilitaBilanceRowChanged As view_RicettaComponenti_disponibilitaBilanceRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Event view_RicettaComponenti_disponibilitaBilanceRowDeleting As view_RicettaComponenti_disponibilitaBilanceRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Event view_RicettaComponenti_disponibilitaBilanceRowDeleted As view_RicettaComponenti_disponibilitaBilanceRowChangeEventHandler
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Overloads Sub Addview_RicettaComponenti_disponibilitaBilanceRow(ByVal row As view_RicettaComponenti_disponibilitaBilanceRow)
+            Me.Rows.Add(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Overloads Function Addview_RicettaComponenti_disponibilitaBilanceRow(ByVal id_ricetta As Integer, ByVal indice As Integer, ByVal id_componente As Integer, ByVal kg_set As Decimal, ByVal kg_tol As Decimal, ByVal selezione_fl As Boolean, ByVal disponibileB1 As Decimal, ByVal disponibileB2 As Decimal, ByVal disponibileB3 As Decimal, ByVal disponibileB4 As Decimal, ByVal disponibileB5 As Decimal) As view_RicettaComponenti_disponibilitaBilanceRow
+            Dim rowview_RicettaComponenti_disponibilitaBilanceRow As view_RicettaComponenti_disponibilitaBilanceRow = CType(Me.NewRow,view_RicettaComponenti_disponibilitaBilanceRow)
+            Dim columnValuesArray() As Object = New Object() {id_ricetta, indice, id_componente, kg_set, kg_tol, selezione_fl, disponibileB1, disponibileB2, disponibileB3, disponibileB4, disponibileB5}
+            rowview_RicettaComponenti_disponibilitaBilanceRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowview_RicettaComponenti_disponibilitaBilanceRow)
+            Return rowview_RicettaComponenti_disponibilitaBilanceRow
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function FindByid_ricettaindice(ByVal id_ricetta As Integer, ByVal indice As Integer) As view_RicettaComponenti_disponibilitaBilanceRow
+            Return CType(Me.Rows.Find(New Object() {id_ricetta, indice}),view_RicettaComponenti_disponibilitaBilanceRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Overrides Function Clone() As Global.System.Data.DataTable
+            Dim cln As view_RicettaComponenti_disponibilitaBilanceDataTable = CType(MyBase.Clone,view_RicettaComponenti_disponibilitaBilanceDataTable)
+            cln.InitVars
+            Return cln
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
+            Return New view_RicettaComponenti_disponibilitaBilanceDataTable()
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Friend Sub InitVars()
+            Me.columnid_ricetta = MyBase.Columns("id_ricetta")
+            Me.columnindice = MyBase.Columns("indice")
+            Me.columnid_componente = MyBase.Columns("id_componente")
+            Me.columnkg_set = MyBase.Columns("kg_set")
+            Me.columnkg_tol = MyBase.Columns("kg_tol")
+            Me.columnselezione_fl = MyBase.Columns("selezione_fl")
+            Me.columndisponibileB1 = MyBase.Columns("disponibileB1")
+            Me.columndisponibileB2 = MyBase.Columns("disponibileB2")
+            Me.columndisponibileB3 = MyBase.Columns("disponibileB3")
+            Me.columndisponibileB4 = MyBase.Columns("disponibileB4")
+            Me.columndisponibileB5 = MyBase.Columns("disponibileB5")
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Private Sub InitClass()
+            Me.columnid_ricetta = New Global.System.Data.DataColumn("id_ricetta", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnid_ricetta)
+            Me.columnindice = New Global.System.Data.DataColumn("indice", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnindice)
+            Me.columnid_componente = New Global.System.Data.DataColumn("id_componente", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnid_componente)
+            Me.columnkg_set = New Global.System.Data.DataColumn("kg_set", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnkg_set)
+            Me.columnkg_tol = New Global.System.Data.DataColumn("kg_tol", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnkg_tol)
+            Me.columnselezione_fl = New Global.System.Data.DataColumn("selezione_fl", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnselezione_fl)
+            Me.columndisponibileB1 = New Global.System.Data.DataColumn("disponibileB1", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columndisponibileB1)
+            Me.columndisponibileB2 = New Global.System.Data.DataColumn("disponibileB2", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columndisponibileB2)
+            Me.columndisponibileB3 = New Global.System.Data.DataColumn("disponibileB3", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columndisponibileB3)
+            Me.columndisponibileB4 = New Global.System.Data.DataColumn("disponibileB4", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columndisponibileB4)
+            Me.columndisponibileB5 = New Global.System.Data.DataColumn("disponibileB5", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columndisponibileB5)
+            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnid_ricetta, Me.columnindice}, true))
+            Me.columnid_ricetta.AllowDBNull = false
+            Me.columnindice.AllowDBNull = false
+            Me.columnid_componente.AllowDBNull = false
+            Me.columndisponibileB1.ReadOnly = true
+            Me.columndisponibileB2.ReadOnly = true
+            Me.columndisponibileB3.ReadOnly = true
+            Me.columndisponibileB4.ReadOnly = true
+            Me.columndisponibileB5.ReadOnly = true
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Newview_RicettaComponenti_disponibilitaBilanceRow() As view_RicettaComponenti_disponibilitaBilanceRow
+            Return CType(Me.NewRow,view_RicettaComponenti_disponibilitaBilanceRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
+            Return New view_RicettaComponenti_disponibilitaBilanceRow(builder)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Function GetRowType() As Global.System.Type
+            Return GetType(view_RicettaComponenti_disponibilitaBilanceRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanged(e)
+            If (Not (Me.view_RicettaComponenti_disponibilitaBilanceRowChangedEvent) Is Nothing) Then
+                RaiseEvent view_RicettaComponenti_disponibilitaBilanceRowChanged(Me, New view_RicettaComponenti_disponibilitaBilanceRowChangeEvent(CType(e.Row,view_RicettaComponenti_disponibilitaBilanceRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanging(e)
+            If (Not (Me.view_RicettaComponenti_disponibilitaBilanceRowChangingEvent) Is Nothing) Then
+                RaiseEvent view_RicettaComponenti_disponibilitaBilanceRowChanging(Me, New view_RicettaComponenti_disponibilitaBilanceRowChangeEvent(CType(e.Row,view_RicettaComponenti_disponibilitaBilanceRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleted(e)
+            If (Not (Me.view_RicettaComponenti_disponibilitaBilanceRowDeletedEvent) Is Nothing) Then
+                RaiseEvent view_RicettaComponenti_disponibilitaBilanceRowDeleted(Me, New view_RicettaComponenti_disponibilitaBilanceRowChangeEvent(CType(e.Row,view_RicettaComponenti_disponibilitaBilanceRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleting(e)
+            If (Not (Me.view_RicettaComponenti_disponibilitaBilanceRowDeletingEvent) Is Nothing) Then
+                RaiseEvent view_RicettaComponenti_disponibilitaBilanceRowDeleting(Me, New view_RicettaComponenti_disponibilitaBilanceRowChangeEvent(CType(e.Row,view_RicettaComponenti_disponibilitaBilanceRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Removeview_RicettaComponenti_disponibilitaBilanceRow(ByVal row As view_RicettaComponenti_disponibilitaBilanceRow)
+            Me.Rows.Remove(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
+            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
+            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
+            Dim ds As DB = New DB()
+            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
+            any1.MinOccurs = New Decimal(0)
+            any1.MaxOccurs = Decimal.MaxValue
+            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any1)
+            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
+            any2.MinOccurs = New Decimal(1)
+            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any2)
+            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute1.Name = "namespace"
+            attribute1.FixedValue = ds.Namespace
+            type.Attributes.Add(attribute1)
+            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute2.Name = "tableTypeName"
+            attribute2.FixedValue = "view_RicettaComponenti_disponibilitaBilanceDataTable"
+            type.Attributes.Add(attribute2)
+            type.Particle = sequence
+            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
+            If xs.Contains(dsSchema.TargetNamespace) Then
+                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Try 
+                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
+                    dsSchema.Write(s1)
+                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
+                    Do While schemas.MoveNext
+                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
+                        s2.SetLength(0)
+                        schema.Write(s2)
+                        If (s1.Length = s2.Length) Then
+                            s1.Position = 0
+                            s2.Position = 0
+                            
+                            Do While ((s1.Position <> s1.Length)  _
+                                        AndAlso (s1.ReadByte = s2.ReadByte))
+                                
+                                
+                            Loop
+                            If (s1.Position = s1.Length) Then
+                                Return type
+                            End If
+                        End If
+                        
+                    Loop
+                Finally
+                    If (Not (s1) Is Nothing) Then
+                        s1.Close
+                    End If
+                    If (Not (s2) Is Nothing) Then
+                        s2.Close
+                    End If
+                End Try
+            End If
+            xs.Add(dsSchema)
+            Return type
+        End Function
+    End Class
+    
+    '''<summary>
     '''Represents strongly named DataRow class.
     '''</summary>
     Partial Public Class ricetteRow
@@ -1180,6 +1612,279 @@ Partial Public Class DB
     End Class
     
     '''<summary>
+    '''Represents strongly named DataRow class.
+    '''</summary>
+    Partial Public Class view_RicettaComponenti_disponibilitaBilanceRow
+        Inherits Global.System.Data.DataRow
+        
+        Private tableview_RicettaComponenti_disponibilitaBilance As view_RicettaComponenti_disponibilitaBilanceDataTable
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
+            MyBase.New(rb)
+            Me.tableview_RicettaComponenti_disponibilitaBilance = CType(Me.Table,view_RicettaComponenti_disponibilitaBilanceDataTable)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property id_ricetta() As Integer
+            Get
+                Return CType(Me(Me.tableview_RicettaComponenti_disponibilitaBilance.id_ricettaColumn),Integer)
+            End Get
+            Set
+                Me(Me.tableview_RicettaComponenti_disponibilitaBilance.id_ricettaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property indice() As Integer
+            Get
+                Return CType(Me(Me.tableview_RicettaComponenti_disponibilitaBilance.indiceColumn),Integer)
+            End Get
+            Set
+                Me(Me.tableview_RicettaComponenti_disponibilitaBilance.indiceColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property id_componente() As Integer
+            Get
+                Return CType(Me(Me.tableview_RicettaComponenti_disponibilitaBilance.id_componenteColumn),Integer)
+            End Get
+            Set
+                Me(Me.tableview_RicettaComponenti_disponibilitaBilance.id_componenteColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property kg_set() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableview_RicettaComponenti_disponibilitaBilance.kg_setColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'kg_set' nella tabella 'view_RicettaComponenti_disponibil"& _ 
+                            "itaBilance' è DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableview_RicettaComponenti_disponibilitaBilance.kg_setColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property kg_tol() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableview_RicettaComponenti_disponibilitaBilance.kg_tolColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'kg_tol' nella tabella 'view_RicettaComponenti_disponibil"& _ 
+                            "itaBilance' è DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableview_RicettaComponenti_disponibilitaBilance.kg_tolColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property selezione_fl() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tableview_RicettaComponenti_disponibilitaBilance.selezione_flColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'selezione_fl' nella tabella 'view_RicettaComponenti_disp"& _ 
+                            "onibilitaBilance' è DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableview_RicettaComponenti_disponibilitaBilance.selezione_flColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property disponibileB1() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableview_RicettaComponenti_disponibilitaBilance.disponibileB1Column),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'disponibileB1' nella tabella 'view_RicettaComponenti_dis"& _ 
+                            "ponibilitaBilance' è DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableview_RicettaComponenti_disponibilitaBilance.disponibileB1Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property disponibileB2() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableview_RicettaComponenti_disponibilitaBilance.disponibileB2Column),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'disponibileB2' nella tabella 'view_RicettaComponenti_dis"& _ 
+                            "ponibilitaBilance' è DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableview_RicettaComponenti_disponibilitaBilance.disponibileB2Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property disponibileB3() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableview_RicettaComponenti_disponibilitaBilance.disponibileB3Column),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'disponibileB3' nella tabella 'view_RicettaComponenti_dis"& _ 
+                            "ponibilitaBilance' è DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableview_RicettaComponenti_disponibilitaBilance.disponibileB3Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property disponibileB4() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableview_RicettaComponenti_disponibilitaBilance.disponibileB4Column),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'disponibileB4' nella tabella 'view_RicettaComponenti_dis"& _ 
+                            "ponibilitaBilance' è DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableview_RicettaComponenti_disponibilitaBilance.disponibileB4Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property disponibileB5() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableview_RicettaComponenti_disponibilitaBilance.disponibileB5Column),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'disponibileB5' nella tabella 'view_RicettaComponenti_dis"& _ 
+                            "ponibilitaBilance' è DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableview_RicettaComponenti_disponibilitaBilance.disponibileB5Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Iskg_setNull() As Boolean
+            Return Me.IsNull(Me.tableview_RicettaComponenti_disponibilitaBilance.kg_setColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Setkg_setNull()
+            Me(Me.tableview_RicettaComponenti_disponibilitaBilance.kg_setColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Iskg_tolNull() As Boolean
+            Return Me.IsNull(Me.tableview_RicettaComponenti_disponibilitaBilance.kg_tolColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Setkg_tolNull()
+            Me(Me.tableview_RicettaComponenti_disponibilitaBilance.kg_tolColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Isselezione_flNull() As Boolean
+            Return Me.IsNull(Me.tableview_RicettaComponenti_disponibilitaBilance.selezione_flColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Setselezione_flNull()
+            Me(Me.tableview_RicettaComponenti_disponibilitaBilance.selezione_flColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsdisponibileB1Null() As Boolean
+            Return Me.IsNull(Me.tableview_RicettaComponenti_disponibilitaBilance.disponibileB1Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetdisponibileB1Null()
+            Me(Me.tableview_RicettaComponenti_disponibilitaBilance.disponibileB1Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsdisponibileB2Null() As Boolean
+            Return Me.IsNull(Me.tableview_RicettaComponenti_disponibilitaBilance.disponibileB2Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetdisponibileB2Null()
+            Me(Me.tableview_RicettaComponenti_disponibilitaBilance.disponibileB2Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsdisponibileB3Null() As Boolean
+            Return Me.IsNull(Me.tableview_RicettaComponenti_disponibilitaBilance.disponibileB3Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetdisponibileB3Null()
+            Me(Me.tableview_RicettaComponenti_disponibilitaBilance.disponibileB3Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsdisponibileB4Null() As Boolean
+            Return Me.IsNull(Me.tableview_RicettaComponenti_disponibilitaBilance.disponibileB4Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetdisponibileB4Null()
+            Me(Me.tableview_RicettaComponenti_disponibilitaBilance.disponibileB4Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsdisponibileB5Null() As Boolean
+            Return Me.IsNull(Me.tableview_RicettaComponenti_disponibilitaBilance.disponibileB5Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetdisponibileB5Null()
+            Me(Me.tableview_RicettaComponenti_disponibilitaBilance.disponibileB5Column) = Global.System.Convert.DBNull
+        End Sub
+    End Class
+    
+    '''<summary>
     '''Row event argument class
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
@@ -1237,6 +1942,42 @@ Partial Public Class DB
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public ReadOnly Property Row() As ricetta_componentiRow
+            Get
+                Return Me.eventRow
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Action() As Global.System.Data.DataRowAction
+            Get
+                Return Me.eventAction
+            End Get
+        End Property
+    End Class
+    
+    '''<summary>
+    '''Row event argument class
+    '''</summary>
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+    Public Class view_RicettaComponenti_disponibilitaBilanceRowChangeEvent
+        Inherits Global.System.EventArgs
+        
+        Private eventRow As view_RicettaComponenti_disponibilitaBilanceRow
+        
+        Private eventAction As Global.System.Data.DataRowAction
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub New(ByVal row As view_RicettaComponenti_disponibilitaBilanceRow, ByVal action As Global.System.Data.DataRowAction)
+            MyBase.New
+            Me.eventRow = row
+            Me.eventAction = action
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Row() As view_RicettaComponenti_disponibilitaBilanceRow
             Get
                 Return Me.eventRow
             End Get
@@ -2261,6 +3002,210 @@ Namespace DBTableAdapters
                 End If
             End Try
             Return returnValue
+        End Function
+    End Class
+    
+    '''<summary>
+    '''Represents the connection and commands used to retrieve and save data.
+    '''</summary>
+    <Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     Global.System.ComponentModel.ToolboxItem(true),  _
+     Global.System.ComponentModel.DataObjectAttribute(true),  _
+     Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
+     Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+    Partial Public Class view_RicettaComponenti_disponibilitaBilanceTableAdapter
+        Inherits Global.System.ComponentModel.Component
+        
+        Private WithEvents _adapter As Global.System.Data.SqlClient.SqlDataAdapter
+        
+        Private _connection As Global.System.Data.SqlClient.SqlConnection
+        
+        Private _transaction As Global.System.Data.SqlClient.SqlTransaction
+        
+        Private _commandCollection() As Global.System.Data.SqlClient.SqlCommand
+        
+        Private _clearBeforeFill As Boolean
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.ClearBeforeFill = true
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Friend ReadOnly Property Adapter() As Global.System.Data.SqlClient.SqlDataAdapter
+            Get
+                If (Me._adapter Is Nothing) Then
+                    Me.InitAdapter
+                End If
+                Return Me._adapter
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Friend Property Connection() As Global.System.Data.SqlClient.SqlConnection
+            Get
+                If (Me._connection Is Nothing) Then
+                    Me.InitConnection
+                End If
+                Return Me._connection
+            End Get
+            Set
+                Me._connection = value
+                If (Not (Me.Adapter.InsertCommand) Is Nothing) Then
+                    Me.Adapter.InsertCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.DeleteCommand) Is Nothing) Then
+                    Me.Adapter.DeleteCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.UpdateCommand) Is Nothing) Then
+                    Me.Adapter.UpdateCommand.Connection = value
+                End If
+                Dim i As Integer = 0
+                Do While (i < Me.CommandCollection.Length)
+                    If (Not (Me.CommandCollection(i)) Is Nothing) Then
+                        CType(Me.CommandCollection(i),Global.System.Data.SqlClient.SqlCommand).Connection = value
+                    End If
+                    i = (i + 1)
+                Loop
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Friend Property Transaction() As Global.System.Data.SqlClient.SqlTransaction
+            Get
+                Return Me._transaction
+            End Get
+            Set
+                Me._transaction = value
+                Dim i As Integer = 0
+                Do While (i < Me.CommandCollection.Length)
+                    Me.CommandCollection(i).Transaction = Me._transaction
+                    i = (i + 1)
+                Loop
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.DeleteCommand) Is Nothing)) Then
+                    Me.Adapter.DeleteCommand.Transaction = Me._transaction
+                End If
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.InsertCommand) Is Nothing)) Then
+                    Me.Adapter.InsertCommand.Transaction = Me._transaction
+                End If
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.UpdateCommand) Is Nothing)) Then
+                    Me.Adapter.UpdateCommand.Transaction = Me._transaction
+                End If
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected ReadOnly Property CommandCollection() As Global.System.Data.SqlClient.SqlCommand()
+            Get
+                If (Me._commandCollection Is Nothing) Then
+                    Me.InitCommandCollection
+                End If
+                Return Me._commandCollection
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property ClearBeforeFill() As Boolean
+            Get
+                Return Me._clearBeforeFill
+            End Get
+            Set
+                Me._clearBeforeFill = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Private Sub InitAdapter()
+            Me._adapter = New Global.System.Data.SqlClient.SqlDataAdapter()
+            Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
+            tableMapping.SourceTable = "Table"
+            tableMapping.DataSetTable = "view_RicettaComponenti_disponibilitaBilance"
+            tableMapping.ColumnMappings.Add("id_ricetta", "id_ricetta")
+            tableMapping.ColumnMappings.Add("indice", "indice")
+            tableMapping.ColumnMappings.Add("id_componente", "id_componente")
+            tableMapping.ColumnMappings.Add("kg_set", "kg_set")
+            tableMapping.ColumnMappings.Add("kg_tol", "kg_tol")
+            tableMapping.ColumnMappings.Add("selezione_fl", "selezione_fl")
+            tableMapping.ColumnMappings.Add("disponibileB1", "disponibileB1")
+            tableMapping.ColumnMappings.Add("disponibileB2", "disponibileB2")
+            tableMapping.ColumnMappings.Add("disponibileB3", "disponibileB3")
+            tableMapping.ColumnMappings.Add("disponibileB4", "disponibileB4")
+            tableMapping.ColumnMappings.Add("disponibileB5", "disponibileB5")
+            Me._adapter.TableMappings.Add(tableMapping)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Private Sub InitConnection()
+            Me._connection = New Global.System.Data.SqlClient.SqlConnection()
+            Me._connection.ConnectionString = Global.TEST_TOSTATRICI.My.MySettings.Default.LEVEL2_GMK_ConnectionString
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Private Sub InitCommandCollection()
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(1) {}
+            Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(0).Connection = Me.Connection
+            Me._commandCollection(0).CommandText = "SELECT        view_RicettaComponenti_disponibilitaBilance.*"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            view"& _ 
+                "_RicettaComponenti_disponibilitaBilance"
+            Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(1).Connection = Me.Connection
+            Me._commandCollection(1).CommandText = "SELECT        id_ricetta, indice, id_componente, kg_set, kg_tol, selezione_fl, di"& _ 
+                "sponibileB1, disponibileB2, disponibileB3, disponibileB4, disponibileB5"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   "& _ 
+                "         view_RicettaComponenti_disponibilitaBilance"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (id_ricetta ="& _ 
+                " @id_ricetta)"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_ricetta", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "id_ricetta", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
+        Public Overloads Overridable Function Fill(ByVal dataTable As DB.view_RicettaComponenti_disponibilitaBilanceDataTable) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
+        Public Overloads Overridable Function GetData() As DB.view_RicettaComponenti_disponibilitaBilanceDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            Dim dataTable As DB.view_RicettaComponenti_disponibilitaBilanceDataTable = New DB.view_RicettaComponenti_disponibilitaBilanceDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetDataByIdRicetta(ByVal id_ricetta As Integer) As DB.view_RicettaComponenti_disponibilitaBilanceDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            Me.Adapter.SelectCommand.Parameters(0).Value = CType(id_ricetta,Integer)
+            Dim dataTable As DB.view_RicettaComponenti_disponibilitaBilanceDataTable = New DB.view_RicettaComponenti_disponibilitaBilanceDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
         End Function
     End Class
     

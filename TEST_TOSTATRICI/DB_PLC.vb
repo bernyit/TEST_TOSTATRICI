@@ -5,6 +5,11 @@ Public Class DB_PLC
 
     Shared DBobjLock As New Object
 
+    Structure strBilance
+        Dim opzionale As Boolean
+        Dim obbligatoria As Boolean
+    End Structure
+
     Structure strComponenteRicetta
         Dim indice As Integer
         Dim idComponente As Integer
@@ -14,11 +19,16 @@ Public Class DB_PLC
         Dim fattibileConB1 As Boolean
         Dim fattibileConB2 As Boolean
         Dim fattibileConB3 As Boolean
+        Dim fattibileConB4 As Boolean
+        Dim fattibileConB5 As Boolean
+        Dim fattibileConXBilance As Int16
+        Dim fattibilitaPerPlc As UInt16
     End Structure
 
     Structure strRicetta
         Dim idRicetta
         Dim componenti() As strComponenteRicetta
+        Dim ricettaFattibile As Boolean
     End Structure
 
 
@@ -303,5 +313,146 @@ Public Class DB_PLC
 
 
 
+
+
+
+
+
+    Public Shared Function verificaFattibilita(ByVal idRicetta As Integer) As strRicetta
+
+        Dim bilance(5) As strBilance
+        Dim ricetta As New strRicetta
+        ricetta.idRicetta = idRicetta
+
+        Dim kgBilancia1, kgBilancia2, kgBilancia3, kgBilancia4, kgBilancia5 As Decimal
+
+
+        Using TTA As DBTableAdapters.view_RicettaComponenti_disponibilitaBilanceTableAdapter = New DBTableAdapters.view_RicettaComponenti_disponibilitaBilanceTableAdapter
+            Try
+
+                Using actData = TTA.GetDataByIdRicetta(idRicetta)
+
+                    If ReferenceEquals(actData, Nothing) = False Then
+
+                        Dim progressivo As Integer = 0
+
+                        For Each componente In actData
+                            ReDim Preserve ricetta.componenti(progressivo)
+                            ricetta.componenti(progressivo).indice = progressivo
+                            ricetta.componenti(progressivo).idComponente = componente.id_componente
+                            ricetta.componenti(progressivo).kgSet = componente.kg_set
+                            ricetta.componenti(progressivo).kgTol = componente.kg_tol
+                            ricetta.componenti(progressivo).fuoriLinea = componente.selezione_fl
+                            Try
+                                kgBilancia1 = componente.disponibileB1
+                                If kgBilancia1 > componente.kg_set Then
+                                    ricetta.componenti(progressivo).fattibileConB1 = True
+                                    ricetta.componenti(progressivo).fattibileConXBilance += 1
+                                End If
+
+                            Catch ex As Exception
+
+                            End Try
+                            Try
+                                kgBilancia2 = componente.disponibileB2
+                                If kgBilancia2 > componente.kg_set Then
+                                    ricetta.componenti(progressivo).fattibileConB2 = True
+                                    ricetta.componenti(progressivo).fattibileConXBilance += 1
+                                End If
+                            Catch ex As Exception
+
+                            End Try
+                            Try
+                                kgBilancia3 = componente.disponibileB3
+                                If kgBilancia3 > componente.kg_set Then
+                                    ricetta.componenti(progressivo).fattibileConB3 = True
+                                    ricetta.componenti(progressivo).fattibileConXBilance += 1
+                                End If
+                            Catch ex As Exception
+
+                            End Try
+                            Try
+                                kgBilancia4 = componente.disponibileB4
+                                If kgBilancia4 > componente.kg_set Then
+                                    ricetta.componenti(progressivo).fattibileConB4 = True
+                                    ricetta.componenti(progressivo).fattibileConXBilance += 1
+                                End If
+
+                            Catch ex As Exception
+
+                            End Try
+                            Try
+                                kgBilancia5 = componente.disponibileB5
+                                If kgBilancia5 > componente.kg_set Then
+                                    ricetta.componenti(progressivo).fattibileConB5 = True
+                                    ricetta.componenti(progressivo).fattibileConXBilance += 1
+                                End If
+                            Catch ex As Exception
+
+                            End Try
+
+                            progressivo += 1
+                        Next
+
+                    End If
+                End Using
+
+
+                'DB.LOG_Insert(BeIT_LogType.Information, BeIT_LogArea.Socket, BeIT_LogZone.PLC, BeIT_LogOperation.Write, "Created PDO: " + PdoId)
+
+            Catch ex As Exception
+
+                'CElviLOG.writeLogFile(CElviLOG.ELogType.Alarm, CElviLOG.EPartner.General, "Create PDO: " + PdoId + " " + ex.Message)
+
+            End Try
+
+        End Using
+
+        Dim auxwordPlc As UInt16
+        ricetta.ricettaFattibile = True
+        For Each componente In ricetta.componenti
+            If componente.fattibileConB1 = False And componente.fattibileConB2 = False And componente.fattibileConB3 = False And
+                    componente.fattibileConB4 = False And componente.fattibileConB5 = False And componente.fuoriLinea = False Then
+                ricetta.ricettaFattibile = False
+            End If
+
+
+
+            assegnaFattibilitaBilanciaPerPlc(0, componente.fattibileConB1, componente.fattibileConXBilance, auxwordPlc)
+            assegnaFattibilitaBilanciaPerPlc(1, componente.fattibileConB2, componente.fattibileConXBilance, auxwordPlc)
+            assegnaFattibilitaBilanciaPerPlc(2, componente.fattibileConB3, componente.fattibileConXBilance, auxwordPlc)
+            assegnaFattibilitaBilanciaPerPlc(3, componente.fattibileConB4, componente.fattibileConXBilance, auxwordPlc)
+            assegnaFattibilitaBilanciaPerPlc(4, componente.fattibileConB5, componente.fattibileConXBilance, auxwordPlc)
+            assegnaFattibilitaBilanciaPerPlc(5, componente.fuoriLinea, componente.fattibileConXBilance, auxwordPlc)
+        Next
+
+
+        Return ricetta
+    End Function
+
+
+    Private Shared Sub assegnaFattibilitaPerPlc(ByVal bitNr As UInt16, ByRef word As UInt16)
+
+        Dim auxWord As UInt16 = 1 << bitNr
+
+        word = word Xor auxWord
+    End Sub
+
+    Private Shared Sub assegnaFattibilitaBilanciaPerPlc(ByVal bilancia As UInt16, ByVal fattibile As Boolean, ByVal fattbileConXbilance As Int16, ByRef word As UInt16)
+
+        Dim auxWordObbligatorio As UInt16 = 1 << bilancia
+
+        Dim auxWordOpzionale As UInt16 = 1 << bilancia
+
+        If opzionale = True Then
+            word = word Xor auxWordOpzionale
+        End If
+
+        If obbligatorio = True Then
+            word = word Xor auxWordObbligatorio
+            word = word And Not auxWordOpzionale
+        End If
+
+    End Sub
 
 End Class
