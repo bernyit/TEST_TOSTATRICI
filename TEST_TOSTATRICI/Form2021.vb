@@ -15,9 +15,48 @@
 
     Private Sub calcolaFattibilita(ByVal idRicetta As Int16)
 
-        DB_PLC.verificaFattibilita(idRicetta)
+
+        For i As Integer = 1 To 200
+            Dim recipe = DB_PLC.verificaFattibilita(i)
 
 
+            lblCombinazionePlc.Text = Convert.ToString(recipe.compinazionePerPlc, 2).PadLeft(16, "0"c)
+
+            ListView1.Items.Add(New ListViewItem(New String() {i, lblCombinazionePlc.Text, recipe.compinazionePerPlc}))
+
+        Next
+
+
+        'Dim ricetta = DB_PLC.verificaFattibilita(idRicetta)
+
+        'lblCombinazionePlc.Text = Convert.ToString(ricetta.compinazionePerPlc, 2).PadLeft(16, "0"c)
+
+        'Dim z As Boolean
+        'z = 1
     End Sub
 
+
+
+    Private Sub test()
+        For currentRow As Integer = 1 To 200
+
+
+
+            ListView1.Items.Add(New ListViewItem(New String() {"Item in column 1", "Item in column 2", "Item in column 3"}))
+
+            ' Create the listviewitem with the value from the first column
+            Dim item = New ListViewItem("a")
+
+
+            item.SubItems.Add("b")
+
+
+            ' Finally, the whole ListViewItem is added to the ListView
+            ListView1.Items.Add(item)
+        Next
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        test()
+    End Sub
 End Class

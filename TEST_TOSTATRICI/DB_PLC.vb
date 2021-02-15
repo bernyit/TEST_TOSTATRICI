@@ -29,6 +29,7 @@ Public Class DB_PLC
         Dim idRicetta
         Dim componenti() As strComponenteRicetta
         Dim ricettaFattibile As Boolean
+        Dim compinazionePerPlc As UInt16
     End Structure
 
 
@@ -36,6 +37,7 @@ Public Class DB_PLC
 
 
         Dim ricetta As New strRicetta
+
         ricetta.idRicetta = idRicetta
 
         Using TTA_PLC As PLCTableAdapters.ricetta_componentiTableAdapter = New PLCTableAdapters.ricetta_componentiTableAdapter
@@ -48,6 +50,7 @@ Public Class DB_PLC
                         Dim progressivo As Integer = 0
 
                         For Each componente In actData
+
                             ReDim Preserve ricetta.componenti(progressivo)
                             ricetta.componenti(progressivo).indice = progressivo
                             ricetta.componenti(progressivo).idComponente = componente.id_componente
@@ -233,9 +236,6 @@ Public Class DB_PLC
                 Using TTA_DOSAGGIO As PLCTableAdapters.viewMagazzinoDosaggio_TotaleTableAdapter = New PLCTableAdapters.viewMagazzinoDosaggio_TotaleTableAdapter
                     Using data = TTA_DOSAGGIO.GetDataByComponenteEBilancia(comp.idComponente, b1, b2, b3)
 
-
-
-
                         Dim pesoResiduo As Decimal = comp.kgSet
 
                         For Each item In data
@@ -322,6 +322,7 @@ Public Class DB_PLC
 
         Dim bilance(5) As strBilance
         Dim ricetta As New strRicetta
+        Dim ricettaEsistente As Boolean
         ricetta.idRicetta = idRicetta
 
         Dim kgBilancia1, kgBilancia2, kgBilancia3, kgBilancia4, kgBilancia5 As Decimal
@@ -333,67 +334,69 @@ Public Class DB_PLC
                 Using actData = TTA.GetDataByIdRicetta(idRicetta)
 
                     If ReferenceEquals(actData, Nothing) = False Then
+                        If actData.Count > 0 Then
+                            ricettaEsistente = True
+                            Dim progressivo As Integer = 0
 
-                        Dim progressivo As Integer = 0
+                            For Each componente In actData
+                                ReDim Preserve ricetta.componenti(progressivo)
+                                ricetta.componenti(progressivo).indice = progressivo
+                                ricetta.componenti(progressivo).idComponente = componente.id_componente
+                                ricetta.componenti(progressivo).kgSet = componente.kg_set
+                                ricetta.componenti(progressivo).kgTol = componente.kg_tol
+                                ricetta.componenti(progressivo).fuoriLinea = componente.selezione_fl
+                                Try
+                                    kgBilancia1 = componente.disponibileB1
+                                    If kgBilancia1 > componente.kg_set Then
+                                        ricetta.componenti(progressivo).fattibileConB1 = True
+                                        ricetta.componenti(progressivo).fattibileConXBilance += 1
+                                    End If
 
-                        For Each componente In actData
-                            ReDim Preserve ricetta.componenti(progressivo)
-                            ricetta.componenti(progressivo).indice = progressivo
-                            ricetta.componenti(progressivo).idComponente = componente.id_componente
-                            ricetta.componenti(progressivo).kgSet = componente.kg_set
-                            ricetta.componenti(progressivo).kgTol = componente.kg_tol
-                            ricetta.componenti(progressivo).fuoriLinea = componente.selezione_fl
-                            Try
-                                kgBilancia1 = componente.disponibileB1
-                                If kgBilancia1 > componente.kg_set Then
-                                    ricetta.componenti(progressivo).fattibileConB1 = True
-                                    ricetta.componenti(progressivo).fattibileConXBilance += 1
-                                End If
+                                Catch ex As Exception
 
-                            Catch ex As Exception
+                                End Try
+                                Try
+                                    kgBilancia2 = componente.disponibileB2
+                                    If kgBilancia2 > componente.kg_set Then
+                                        ricetta.componenti(progressivo).fattibileConB2 = True
+                                        ricetta.componenti(progressivo).fattibileConXBilance += 1
+                                    End If
+                                Catch ex As Exception
 
-                            End Try
-                            Try
-                                kgBilancia2 = componente.disponibileB2
-                                If kgBilancia2 > componente.kg_set Then
-                                    ricetta.componenti(progressivo).fattibileConB2 = True
-                                    ricetta.componenti(progressivo).fattibileConXBilance += 1
-                                End If
-                            Catch ex As Exception
+                                End Try
+                                Try
+                                    kgBilancia3 = componente.disponibileB3
+                                    If kgBilancia3 > componente.kg_set Then
+                                        ricetta.componenti(progressivo).fattibileConB3 = True
+                                        ricetta.componenti(progressivo).fattibileConXBilance += 1
+                                    End If
+                                Catch ex As Exception
 
-                            End Try
-                            Try
-                                kgBilancia3 = componente.disponibileB3
-                                If kgBilancia3 > componente.kg_set Then
-                                    ricetta.componenti(progressivo).fattibileConB3 = True
-                                    ricetta.componenti(progressivo).fattibileConXBilance += 1
-                                End If
-                            Catch ex As Exception
+                                End Try
+                                Try
+                                    kgBilancia4 = componente.disponibileB4
+                                    If kgBilancia4 > componente.kg_set Then
+                                        ricetta.componenti(progressivo).fattibileConB4 = True
+                                        ricetta.componenti(progressivo).fattibileConXBilance += 1
+                                    End If
 
-                            End Try
-                            Try
-                                kgBilancia4 = componente.disponibileB4
-                                If kgBilancia4 > componente.kg_set Then
-                                    ricetta.componenti(progressivo).fattibileConB4 = True
-                                    ricetta.componenti(progressivo).fattibileConXBilance += 1
-                                End If
+                                Catch ex As Exception
 
-                            Catch ex As Exception
+                                End Try
+                                Try
+                                    kgBilancia5 = componente.disponibileB5
+                                    If kgBilancia5 > componente.kg_set Then
+                                        ricetta.componenti(progressivo).fattibileConB5 = True
+                                        ricetta.componenti(progressivo).fattibileConXBilance += 1
+                                    End If
+                                Catch ex As Exception
 
-                            End Try
-                            Try
-                                kgBilancia5 = componente.disponibileB5
-                                If kgBilancia5 > componente.kg_set Then
-                                    ricetta.componenti(progressivo).fattibileConB5 = True
-                                    ricetta.componenti(progressivo).fattibileConXBilance += 1
-                                End If
-                            Catch ex As Exception
+                                End Try
 
-                            End Try
+                                progressivo += 1
+                            Next
 
-                            progressivo += 1
-                        Next
-
+                        End If
                     End If
                 End Using
 
@@ -408,25 +411,29 @@ Public Class DB_PLC
 
         End Using
 
-        Dim auxwordPlc As UInt16
-        ricetta.ricettaFattibile = True
-        For Each componente In ricetta.componenti
-            If componente.fattibileConB1 = False And componente.fattibileConB2 = False And componente.fattibileConB3 = False And
-                    componente.fattibileConB4 = False And componente.fattibileConB5 = False And componente.fuoriLinea = False Then
-                ricetta.ricettaFattibile = False
+
+        If ricettaEsistente Then
+            ricetta.ricettaFattibile = True
+
+            For Each componente In ricetta.componenti
+                If componente.fattibileConB1 = False And componente.fattibileConB2 = False And componente.fattibileConB3 = False And
+                        componente.fattibileConB4 = False And componente.fattibileConB5 = False And componente.fuoriLinea = False Then
+                    ricetta.ricettaFattibile = False
+                End If
+            Next
+
+            If ricetta.ricettaFattibile Then
+                ricetta.compinazionePerPlc = 0
+                For Each componente In ricetta.componenti
+                    assegnaFattibilitaBilanciaPerPlc(0, componente.fattibileConB1, componente.fattibileConXBilance, ricetta.compinazionePerPlc)
+                    assegnaFattibilitaBilanciaPerPlc(1, componente.fattibileConB2, componente.fattibileConXBilance, ricetta.compinazionePerPlc)
+                    assegnaFattibilitaBilanciaPerPlc(2, componente.fattibileConB3, componente.fattibileConXBilance, ricetta.compinazionePerPlc)
+                    assegnaFattibilitaBilanciaPerPlc(3, componente.fattibileConB4, componente.fattibileConXBilance, ricetta.compinazionePerPlc)
+                    assegnaFattibilitaBilanciaPerPlc(4, componente.fattibileConB5, componente.fattibileConXBilance, ricetta.compinazionePerPlc)
+                    assegnaFattibilitaBilanciaPerPlc(5, componente.fuoriLinea, componente.fattibileConXBilance, ricetta.compinazionePerPlc)
+                Next
             End If
-
-
-
-            assegnaFattibilitaBilanciaPerPlc(0, componente.fattibileConB1, componente.fattibileConXBilance, auxwordPlc)
-            assegnaFattibilitaBilanciaPerPlc(1, componente.fattibileConB2, componente.fattibileConXBilance, auxwordPlc)
-            assegnaFattibilitaBilanciaPerPlc(2, componente.fattibileConB3, componente.fattibileConXBilance, auxwordPlc)
-            assegnaFattibilitaBilanciaPerPlc(3, componente.fattibileConB4, componente.fattibileConXBilance, auxwordPlc)
-            assegnaFattibilitaBilanciaPerPlc(4, componente.fattibileConB5, componente.fattibileConXBilance, auxwordPlc)
-            assegnaFattibilitaBilanciaPerPlc(5, componente.fuoriLinea, componente.fattibileConXBilance, auxwordPlc)
-        Next
-
-
+        End If
         Return ricetta
     End Function
 
@@ -438,20 +445,44 @@ Public Class DB_PLC
         word = word Xor auxWord
     End Sub
 
-    Private Shared Sub assegnaFattibilitaBilanciaPerPlc(ByVal bilancia As UInt16, ByVal fattibile As Boolean, ByVal fattbileConXbilance As Int16, ByRef word As UInt16)
+    Private Shared Sub assegnaFattibilitaBilanciaPerPlc(ByVal bilancia As UInt16, ByVal componenteFattibileConBilancia As Boolean, ByVal componenteFattibileConXbilance As Int16, ByRef word As UInt16, Optional forzaObbligatorio As Boolean = False)
+
+        'combinazione per plc:
+        'bit    bilancia
+        '0      B1 OBBLIGATORIA
+        '1      B2 OBBLIGATORIA
+        '2      B3 OBBLIGATORIA
+        '3      B4 OBBLIGATORIA
+        '4      B5 OBBLIGATORIA
+        '5      FUORI LINEA OBBLIGATORIA
+        '6
+        '7
+        '8      B1 OPZIONALE
+        '9      B2 OPZIONALE
+        '10     B3 OPZIONALE
+        '11     B4 OPZIONALE
+        '12     B5 OPZIONALE
+        '13     FUORI LINEA OPZIONALE (CASO CHE NON SI PRESENTA MAI)
+        '14
+        '15
 
         Dim auxWordObbligatorio As UInt16 = 1 << bilancia
 
-        Dim auxWordOpzionale As UInt16 = 1 << bilancia
+        Dim auxWordOpzionale As UInt16 = 1 << (bilancia + 8)
 
-        If opzionale = True Then
-            word = word Xor auxWordOpzionale
+
+        If componenteFattibileConBilancia Then 'se posso usare la bilancia
+            If componenteFattibileConXbilance > 1 Then 'ma ne posso usare anche un'altra
+                Dim temp As UInt16 = word And auxWordObbligatorio 'verifica se è già settato il bit di bilancia obbligatoria
+                If temp = 0 Then ' e la bilancia non è già obbligatoria per un altro componente
+                    word = word Or auxWordOpzionale    'setta il bit della bilancia opzionale
+                End If
+            Else ' se devo obbligatoriamente usare questa bilancia
+                word = word Or auxWordObbligatorio     'setta bit della bilancia obbligatoria
+                word = word And (Not auxWordOpzionale)    'resetta il bit della bilancia opzionale
+            End If
         End If
 
-        If obbligatorio = True Then
-            word = word Xor auxWordObbligatorio
-            word = word And Not auxWordOpzionale
-        End If
 
     End Sub
 
