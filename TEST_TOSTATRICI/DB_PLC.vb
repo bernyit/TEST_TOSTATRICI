@@ -248,24 +248,14 @@ Public Class DB_PLC
 
 
     Public Shared Function verificaFattibilita(ByVal idRicetta As Integer, ByVal combinazioneSelezionata As UInt16) As Boolean
-        'bit    bilancia
-        '0      B1 
-        '1      B2 
-        '2      B3 
-        '3      B4 
-        '4      B5 
-        '5      FUORI LINEA 
+
         Dim ricettaFattibile As Boolean
-        Dim selezioneB1, selezioneB2, selezioneB3, selezioneB4, selezioneB5, selezioneFL As Boolean
+
         Dim contatoreComponenti As Int16
         Dim contatoreComponentiFattibili As Int16
 
-        selezioneB1 = combinazioneSelezionata And 1
-        selezioneB2 = combinazioneSelezionata And 2
-        selezioneB3 = combinazioneSelezionata And 4
-        selezioneB4 = combinazioneSelezionata And 8
-        selezioneB5 = combinazioneSelezionata And 16
-        selezioneFL = combinazioneSelezionata And 32
+        Dim bilanceSelezionate As BILANCE.strSelezioneBilance
+        bilanceSelezionate = BILANCE.spacchettaSelezione(combinazioneSelezionata)
 
         Try
             Using TTA As DBTableAdapters.view_RicettaComponenti_disponibilitaBilanceTableAdapter = New DBTableAdapters.view_RicettaComponenti_disponibilitaBilanceTableAdapter
@@ -276,7 +266,7 @@ Public Class DB_PLC
                             For Each componente In actData
                                 Dim contatoreFattibilitaComponente As Int16 = 0
                                 contatoreComponenti += 1
-                                If selezioneB1 Then
+                                If bilanceSelezionate.selezioneB1 Then
                                     Try
                                         If componente.disponibileB1 > componente.kg_set Then
                                             contatoreFattibilitaComponente += 1
@@ -285,7 +275,7 @@ Public Class DB_PLC
 
                                     End Try
                                 End If
-                                If selezioneB2 Then
+                                If bilanceSelezionate.selezioneB2 Then
                                     Try
                                         If componente.disponibileB2 > componente.kg_set Then
                                             contatoreFattibilitaComponente += 1
@@ -295,7 +285,7 @@ Public Class DB_PLC
                                     End Try
 
                                 End If
-                                If selezioneB3 Then
+                                If bilanceSelezionate.selezioneB3 Then
                                     Try
                                         If componente.disponibileB3 > componente.kg_set Then
                                             contatoreFattibilitaComponente += 1
@@ -305,7 +295,7 @@ Public Class DB_PLC
                                     End Try
 
                                 End If
-                                If selezioneB4 Then
+                                If bilanceSelezionate.selezioneB4 Then
                                     Try
                                         If componente.disponibileB4 > componente.kg_set Then
                                             contatoreFattibilitaComponente += 1
@@ -315,7 +305,7 @@ Public Class DB_PLC
                                     End Try
 
                                 End If
-                                If selezioneB5 Then
+                                If bilanceSelezionate.selezioneB5 Then
                                     Try
                                         If componente.disponibileB5 > componente.kg_set Then
                                             contatoreFattibilitaComponente += 1
@@ -325,7 +315,7 @@ Public Class DB_PLC
                                     End Try
 
                                 End If
-                                If selezioneFL Then
+                                If bilanceSelezionate.selezioneFL Then
                                     'FL Sempre disponibile
                                     contatoreFattibilitaComponente = 1
                                 End If
@@ -573,7 +563,7 @@ Public Class DB_PLC
     Public Shared Function trovaSilosPerComponente(ByVal bilance As BILANCE.strSelezioneBilance, ByVal componente As strComponenteRicetta) As List(Of strSilosPerRicetta)
 
         Dim contatoreSilos As Int16 = 0 'contatore dei silos necessari per il componente richiesto
-        Dim pesoResiduo As Decimal = componente.kgSet ' inizializza peso da prelevare, nel caso un silos non sia sufficiente
+        Dim pesoResiduoDaPrelevare As Decimal = componente.kgSet ' inizializza peso da prelevare, nel caso un silos non sia sufficiente
         Dim siloEscluso As Int16 = 0    ' usato per memorizzare il primo silos scaricato nel caso ne servisse un altro
         Dim listaSilos As New List(Of strSilosPerRicetta)
         Using TTA_DOSAGGIO As DBTableAdapters.viewMagazzinoDosaggio_TotaleTableAdapter = New DBTableAdapters.viewMagazzinoDosaggio_TotaleTableAdapter
@@ -585,17 +575,19 @@ Public Class DB_PLC
                                                                                                      bilance.selezioneB5)
 
                 ' ??????????? nel caso di più silos, che peso mettiamo ?????????
-
+                Dim bilanciaUsata As Int16 = 0
                 For Each item In data
-                    If pesoResiduo > 0 Then
-                        If item.abilitatoAlloScarico = True Then
+                    If pesoResiduoDaPrelevare > 0 Then
+                        If bilanciaUsata = 0 Then bilanciaUsata = item.bilancia
+                        If item.abilitatoAlloScarico = True And item.bilancia = bilanciaUsata Then
                             Dim pesoDaPrelevareNelSilos As Decimal
                             contatoreSilos = contatoreSilos + 1     'incrementa il contatore dei silos trovati
-                            If item.quantitaRimanente >= pesoResiduo Then   'quantità presente nel silos superiore alla quantità necessaria. OK
-                                pesoDaPrelevareNelSilos = pesoResiduo
+                            If item.quantitaRimanente >= pesoResiduoDaPrelevare Then   'quantità presente nel silos superiore alla quantità necessaria. OK
+                                pesoDaPrelevareNelSilos = pesoResiduoDaPrelevare
+                                pesoResiduoDaPrelevare = 0
                             Else                                                'quantità non sufficiente. sarà necessario un altro silos
                                 pesoDaPrelevareNelSilos = item.quantitaRimanente    'preleva solo quello che c'è
-                                pesoResiduo = pesoResiduo - item.quantitaRimanente  'memorizza la quantità mancante
+                                pesoResiduoDaPrelevare = pesoResiduoDaPrelevare - item.quantitaRimanente  'memorizza la quantità mancante
                             End If
 
                             Dim newSilos As strSilosPerRicetta
