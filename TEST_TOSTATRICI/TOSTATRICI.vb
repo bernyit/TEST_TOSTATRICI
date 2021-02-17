@@ -19,6 +19,55 @@
         B2_B3_FL = 13
         B1_B2_B3 = 14
         B1_B2_B3_FL = 15
+        B4 = 16
+        B1_B4 = 17
+        B2_B4 = 18
+        B3_B4 = 19
+        FL_B4 = 20
+        B1_FL_B4 = 21
+        B2_FL_B4 = 22
+        B3_FL_B4 = 23
+        B1_B2_B4 = 24
+        B1_B3_B4 = 25
+        B2_B3_B4 = 26
+        B1_B2_FL_B4 = 27
+        B1_B3_FL_B4 = 28
+        B2_B3_FL_B4 = 29
+        B1_B2_B3_B4 = 30
+        B1_B2_B3_FL_B4 = 31
+        B5 = 32
+        B1_B5 = 33
+        B2_B5 = 34
+        B3_B5 = 35
+        FL_B5 = 36
+        B1_FL_B5 = 37
+        B2_FL_B5 = 38
+        B3_FL_B5 = 39
+        B1_B2_B5 = 40
+        B1_B3_B5 = 41
+        B2_B3_B5 = 42
+        B1_B2_FL_B5 = 43
+        B1_B3_FL_B5 = 44
+        B2_B3_FL_B5 = 45
+        B1_B2_B3_B5 = 46
+        B1_B2_B3_FL_B5 = 47
+        B4_B5 = 48
+        B1_B4_B5 = 49
+        B2_B4_B5 = 50
+        B3_B4_B5 = 51
+        FL_B4_B5 = 52
+        B1_FL_B4_B5 = 53
+        B2_FL_B4_B5 = 54
+        B3_FL_B4_B5 = 55
+        B1_B2_B4_B5 = 56
+        B1_B3_B4_B5 = 57
+        B2_B3_B4_B5 = 58
+        B1_B2_FL_B4_B5 = 59
+        B1_B3_FL_B4_B5 = 60
+        B2_B3_FL_B4_B5 = 61
+        B1_B2_B3_B4_B5 = 62
+        B1_B2_B3_FL_B4_B5 = 63
+
     End Enum
 
     Public Shared Sub bilanceInCuiCercare(ByVal combinazioneBilance As TOSTATRICI.enuCombinazioniBilance, ByRef b1 As Integer, ByRef b2 As Integer, ByRef b3 As Integer, ByRef fl As Integer)
@@ -366,12 +415,12 @@
 
         Dim programma As List(Of DB_PLC.strOrdineProduzioneRicetta)
 
-        Try
-            programma = DB_PLC.trovaSilosPerTostatrice(idRicetta, combinazione)
-            DB_PLC.aggiornaComposizioneBilanceOnline(_numeroTostatrice, idRicetta, programma)
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
+        'Try
+        '    programma = DB_PLC.trovaSilosPerTostatrice(idRicetta, combinazione)
+        '    DB_PLC.aggiornaComposizioneBilanceOnline(_numeroTostatrice, idRicetta, programma)
+        'Catch ex As Exception
+        '    MsgBox(ex.Message)
+        'End Try
 
 
 

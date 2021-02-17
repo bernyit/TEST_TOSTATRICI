@@ -29,10 +29,13 @@ Partial Class Form2021
         Me.txtNrRicetta = New System.Windows.Forms.TextBox()
         Me.lblCombinazionePlc = New System.Windows.Forms.Label()
         Me.ListView1 = New System.Windows.Forms.ListView()
-        Me.Button2 = New System.Windows.Forms.Button()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.lblCombinazioneFattibile = New System.Windows.Forms.Label()
+        Me.Button4 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Button1
@@ -82,6 +85,10 @@ Partial Class Form2021
         Me.ListView1.UseCompatibleStateImageBehavior = False
         Me.ListView1.View = System.Windows.Forms.View.Details
         '
+        'ColumnHeader2
+        '
+        Me.ColumnHeader2.Width = 150
+        '
         'Button2
         '
         Me.Button2.Location = New System.Drawing.Point(443, 17)
@@ -91,15 +98,41 @@ Partial Class Form2021
         Me.Button2.Text = "Button2"
         Me.Button2.UseVisualStyleBackColor = True
         '
-        'ColumnHeader2
+        'Button3
         '
-        Me.ColumnHeader2.Width = 150
+        Me.Button3.Location = New System.Drawing.Point(44, 137)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(205, 79)
+        Me.Button3.TabIndex = 15
+        Me.Button3.Text = "VERIFICA FATTIBILITA' COMBINAZIONE "
+        Me.Button3.UseVisualStyleBackColor = True
+        '
+        'lblCombinazioneFattibile
+        '
+        Me.lblCombinazioneFattibile.AutoSize = True
+        Me.lblCombinazioneFattibile.Location = New System.Drawing.Point(273, 170)
+        Me.lblCombinazioneFattibile.Name = "lblCombinazioneFattibile"
+        Me.lblCombinazioneFattibile.Size = New System.Drawing.Size(41, 13)
+        Me.lblCombinazioneFattibile.TabIndex = 16
+        Me.lblCombinazioneFattibile.Text = "Ricetta"
+        '
+        'Button4
+        '
+        Me.Button4.Location = New System.Drawing.Point(44, 233)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(205, 79)
+        Me.Button4.TabIndex = 17
+        Me.Button4.Text = "TROVA SILOS PER RICETTA E COMBINAZIONE"
+        Me.Button4.UseVisualStyleBackColor = True
         '
         'Form2021
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.Button4)
+        Me.Controls.Add(Me.lblCombinazioneFattibile)
+        Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.ListView1)
         Me.Controls.Add(Me.lblCombinazionePlc)
@@ -122,4 +155,7 @@ Partial Class Form2021
     Friend WithEvents ColumnHeader1 As ColumnHeader
     Friend WithEvents ColumnHeader2 As ColumnHeader
     Friend WithEvents ColumnHeader3 As ColumnHeader
+    Friend WithEvents Button3 As Button
+    Friend WithEvents lblCombinazioneFattibile As Label
+    Friend WithEvents Button4 As Button
 End Class

@@ -59,4 +59,16 @@
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         test()
     End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        If DB_PLC.verificaFattibilita(32, 5) = True Then ' ricetta 32 e combinazione 5 = 101 = BILANCIA 1 E 3
+            lblCombinazioneFattibile.Text = "OK"
+        Else
+            lblCombinazioneFattibile.Text = "NOT OK"
+        End If
+    End Sub
+
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        DB_PLC.calcolaSilosNew(124, 4, 32, 5)
+    End Sub
 End Class

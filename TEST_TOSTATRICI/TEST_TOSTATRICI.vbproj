@@ -74,9 +74,13 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BILANCE.vb" />
     <Compile Include="DB.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>DB.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DB.vb">
       <DependentUpon>DB.xsd</DependentUpon>
     </Compile>
     <Compile Include="DB_PLC.vb" />

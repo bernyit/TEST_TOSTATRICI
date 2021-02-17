@@ -190,13 +190,16 @@ Public Class DB_PLC
 
 
     Structure strSilosPerRicetta
-        Dim silos As Integer
-        Dim idComponente As Integer
+        Dim silos As Int16
+        Dim progressivoSilos As Int16
+        Dim idComponente As Int16
         Dim kg As Decimal
-        Dim bilancia As Integer
+        Dim bilancia As Int16
+        Dim componenteRicetta As strComponenteRicetta
     End Structure
 
     Structure strOrdineProduzioneRicetta
+        Dim idRicetta As Integer
         Dim idComponente As Integer
         Dim kgSet As Decimal
         Dim kgTol As Decimal
@@ -206,76 +209,7 @@ Public Class DB_PLC
     End Structure
 
 
-    Public Shared Function trovaSilosPerTostatrice(ByVal idRicetta As Integer, ByVal combinazioneBilance As TOSTATRICI.enuCombinazioniBilance) As List(Of strOrdineProduzioneRicetta)
 
-
-
-        Dim ricetta = leggiComponentiRicetta(idRicetta)
-        Dim b1, b2, b3, fl As Integer
-
-
-        Dim programma As New List(Of strOrdineProduzioneRicetta)
-
-        'decodifica combinazioneBilance per verificare da quali bilance scaricare
-        TOSTATRICI.bilanceInCuiCercare(combinazioneBilance, b1, b2, b3, fl)
-
-
-        For Each comp In ricetta.componenti
-
-            Dim componenteRicetta As New strOrdineProduzioneRicetta
-
-            componenteRicetta.idComponente = comp.idComponente
-            componenteRicetta.kgSet = comp.kgSet
-            componenteRicetta.kgTol = comp.kgTol
-            componenteRicetta.multiSilos = False
-            componenteRicetta.fuoriLinea = comp.fuoriLinea
-            componenteRicetta.listasilos = New List(Of strSilosPerRicetta)
-
-            If comp.fuoriLinea = False Then
-
-                Using TTA_DOSAGGIO As PLCTableAdapters.viewMagazzinoDosaggio_TotaleTableAdapter = New PLCTableAdapters.viewMagazzinoDosaggio_TotaleTableAdapter
-                    Using data = TTA_DOSAGGIO.GetDataByComponenteEBilancia(comp.idComponente, b1, b2, b3)
-
-                        Dim pesoResiduo As Decimal = comp.kgSet
-
-                        For Each item In data
-                            If pesoResiduo > 0 Then
-                                If item.abilitatoAlloScarico = True Then
-                                    Dim pesoDaPrelevareNelSilos As Decimal
-
-                                    If item.quantitaRimanente >= pesoResiduo Then
-                                        pesoDaPrelevareNelSilos = pesoResiduo
-                                    Else
-                                        pesoDaPrelevareNelSilos = item.quantitaRimanente
-                                        pesoResiduo = pesoResiduo - item.quantitaRimanente
-                                    End If
-
-                                    Dim newSilos As strSilosPerRicetta
-                                    newSilos.silos = item.IdSilos
-                                    newSilos.idComponente = item.id_codice_componente
-                                    newSilos.kg = pesoResiduo
-                                    newSilos.bilancia = item.bilancia
-                                    componenteRicetta.listasilos.Add(newSilos)
-
-                                End If
-                            End If
-
-                        Next
-
-                    End Using
-
-                End Using
-
-
-            End If
-
-            programma.Add(componenteRicetta)
-
-
-        Next
-
-        Return programma
-    End Function
 
     Public Shared Sub aggiornaComposizioneBilanceOnline(ByVal tostatrice As Integer, ByVal ricetta As Integer, programma As List(Of strOrdineProduzioneRicetta))
 
@@ -313,7 +247,109 @@ Public Class DB_PLC
 
 
 
+    Public Shared Function verificaFattibilita(ByVal idRicetta As Integer, ByVal combinazioneSelezionata As UInt16) As Boolean
+        'bit    bilancia
+        '0      B1 
+        '1      B2 
+        '2      B3 
+        '3      B4 
+        '4      B5 
+        '5      FUORI LINEA 
+        Dim ricettaFattibile As Boolean
+        Dim selezioneB1, selezioneB2, selezioneB3, selezioneB4, selezioneB5, selezioneFL As Boolean
+        Dim contatoreComponenti As Int16
+        Dim contatoreComponentiFattibili As Int16
 
+        selezioneB1 = combinazioneSelezionata And 1
+        selezioneB2 = combinazioneSelezionata And 2
+        selezioneB3 = combinazioneSelezionata And 4
+        selezioneB4 = combinazioneSelezionata And 8
+        selezioneB5 = combinazioneSelezionata And 16
+        selezioneFL = combinazioneSelezionata And 32
+
+        Try
+            Using TTA As DBTableAdapters.view_RicettaComponenti_disponibilitaBilanceTableAdapter = New DBTableAdapters.view_RicettaComponenti_disponibilitaBilanceTableAdapter
+
+                Using actData = TTA.GetDataByIdRicetta(idRicetta)
+                    If ReferenceEquals(actData, Nothing) = False Then
+                        If actData.Count > 0 Then
+                            For Each componente In actData
+                                Dim contatoreFattibilitaComponente As Int16 = 0
+                                contatoreComponenti += 1
+                                If selezioneB1 Then
+                                    Try
+                                        If componente.disponibileB1 > componente.kg_set Then
+                                            contatoreFattibilitaComponente += 1
+                                        End If
+                                    Catch ex As Exception
+
+                                    End Try
+                                End If
+                                If selezioneB2 Then
+                                    Try
+                                        If componente.disponibileB2 > componente.kg_set Then
+                                            contatoreFattibilitaComponente += 1
+                                        End If
+                                    Catch ex As Exception
+
+                                    End Try
+
+                                End If
+                                If selezioneB3 Then
+                                    Try
+                                        If componente.disponibileB3 > componente.kg_set Then
+                                            contatoreFattibilitaComponente += 1
+                                        End If
+                                    Catch ex As Exception
+
+                                    End Try
+
+                                End If
+                                If selezioneB4 Then
+                                    Try
+                                        If componente.disponibileB4 > componente.kg_set Then
+                                            contatoreFattibilitaComponente += 1
+                                        End If
+                                    Catch ex As Exception
+
+                                    End Try
+
+                                End If
+                                If selezioneB5 Then
+                                    Try
+                                        If componente.disponibileB5 > componente.kg_set Then
+                                            contatoreFattibilitaComponente += 1
+                                        End If
+                                    Catch ex As Exception
+
+                                    End Try
+
+                                End If
+                                If selezioneFL Then
+                                    'FL Sempre disponibile
+                                    contatoreFattibilitaComponente = 1
+                                End If
+                                If contatoreFattibilitaComponente > 0 Then
+                                    contatoreComponentiFattibili += 1
+                                End If
+                            Next
+                        End If
+                    End If
+
+                End Using
+            End Using
+
+            If contatoreComponenti = contatoreComponentiFattibili Then
+                ricettaFattibile = True
+            End If
+
+        Catch ex As Exception
+            ricettaFattibile = False
+        End Try
+
+        Return ricettaFattibile
+
+    End Function
 
 
 
@@ -486,4 +522,220 @@ Public Class DB_PLC
 
     End Sub
 
+
+    '###################################   CALCOLA SILOS
+    Structure strSetupTostatrice
+        Dim idRichiesta As UInt32
+        Dim tostatrice As Int16
+        Dim idRicetta As Int16
+        Dim combinazioneBilance As UInt16
+        Dim ricetta As strRicetta
+        Dim fattibile As Boolean
+    End Structure
+
+    Public Shared Sub calcolaSilosNew(ByVal idRichiesta As UInt64, ByVal tostatrice As UInt16, ByVal idRicetta As Integer, ByVal combinazioneBilance As UInt16)
+
+
+        Dim nuovoSetup As strSetupTostatrice
+        nuovoSetup.idRichiesta = idRichiesta
+        nuovoSetup.tostatrice = tostatrice
+        nuovoSetup.idRicetta = idRicetta
+        nuovoSetup.combinazioneBilance = combinazioneBilance
+        nuovoSetup.ricetta = leggiComponentiRicetta(idRicetta)
+
+        Dim bilanceSelezionate As BILANCE.strSelezioneBilance
+        bilanceSelezionate = BILANCE.spacchettaSelezione(combinazioneBilance)
+
+        Try
+            Dim listaSilosPerRicetta As New List(Of strSilosPerRicetta)
+            For Each comp In nuovoSetup.ricetta.componenti ' scansiona tutti i componenti alla ricerca del silos
+                Dim listaSilosPerComponente = trovaSilosPerComponente(bilanceSelezionate, comp)
+                listaSilosPerRicetta.AddRange(listaSilosPerComponente)
+            Next
+
+            deleteSetupTostatrice(nuovoSetup.tostatrice)
+
+            Dim contatore As UInt16 = 0
+            For Each silos In listaSilosPerRicetta
+                contatore += 1
+                inserisciSetupTostatrice(nuovoSetup, silos, contatore)
+            Next
+            nuovoSetup.fattibile = True
+        Catch ex As Exception
+            nuovoSetup.fattibile = False
+            'se c'è un eccezione, vuol dire che non abbiamo trovato il componente cercato e che quindi la ricetta non è fattibile
+        End Try
+
+        inserisciNuovaRichiesta(nuovoSetup)
+    End Sub
+
+
+    Public Shared Function trovaSilosPerComponente(ByVal bilance As BILANCE.strSelezioneBilance, ByVal componente As strComponenteRicetta) As List(Of strSilosPerRicetta)
+
+        Dim contatoreSilos As Int16 = 0 'contatore dei silos necessari per il componente richiesto
+        Dim pesoResiduo As Decimal = componente.kgSet ' inizializza peso da prelevare, nel caso un silos non sia sufficiente
+        Dim siloEscluso As Int16 = 0    ' usato per memorizzare il primo silos scaricato nel caso ne servisse un altro
+        Dim listaSilos As New List(Of strSilosPerRicetta)
+        Using TTA_DOSAGGIO As DBTableAdapters.viewMagazzinoDosaggio_TotaleTableAdapter = New DBTableAdapters.viewMagazzinoDosaggio_TotaleTableAdapter
+            Using data = TTA_DOSAGGIO.sp_VIEW_MAGAZZINO_DOSAGGIO_TOTALE_GetDataByComponenteE5Bilance(componente.idComponente,
+                                                                                                     bilance.selezioneB1,
+                                                                                                     bilance.selezioneB2,
+                                                                                                     bilance.selezioneB3,
+                                                                                                     bilance.selezioneB4,
+                                                                                                     bilance.selezioneB5)
+
+                ' ??????????? nel caso di più silos, che peso mettiamo ?????????
+
+                For Each item In data
+                    If pesoResiduo > 0 Then
+                        If item.abilitatoAlloScarico = True Then
+                            Dim pesoDaPrelevareNelSilos As Decimal
+                            contatoreSilos = contatoreSilos + 1     'incrementa il contatore dei silos trovati
+                            If item.quantitaRimanente >= pesoResiduo Then   'quantità presente nel silos superiore alla quantità necessaria. OK
+                                pesoDaPrelevareNelSilos = pesoResiduo
+                            Else                                                'quantità non sufficiente. sarà necessario un altro silos
+                                pesoDaPrelevareNelSilos = item.quantitaRimanente    'preleva solo quello che c'è
+                                pesoResiduo = pesoResiduo - item.quantitaRimanente  'memorizza la quantità mancante
+                            End If
+
+                            Dim newSilos As strSilosPerRicetta
+                            newSilos.silos = item.IdSilos
+                            newSilos.idComponente = item.id_codice_componente
+                            newSilos.kg = pesoDaPrelevareNelSilos
+                            newSilos.bilancia = item.bilancia
+                            newSilos.progressivoSilos = contatoreSilos
+                            newSilos.componenteRicetta = componente
+                            listaSilos.Add(newSilos)
+
+                        End If
+                    End If
+
+                Next
+
+
+            End Using
+        End Using
+
+        If contatoreSilos = 0 Then Throw New Exception
+        Return listaSilos
+    End Function
+
+    'Public Shared Function trovaSilosPerTostatrice(ByVal idRichiesta As UInt64, ByVal tostatrice As UInt16, ByVal idRicetta As Integer, ByVal combinazioneBilance As UInt16) As List(Of strOrdineProduzioneRicetta)
+
+    '    Dim ricetta = leggiComponentiRicetta(idRicetta)
+
+    '    'bit    bilancia
+    '    '0      B1 
+    '    '1      B2 
+    '    '2      B3 
+    '    '3      B4 
+    '    '4      B5 
+    '    '5      FUORI LINEA 
+    '    Dim selezioneB1, selezioneB2, selezioneB3, selezioneB4, selezioneB5, selezioneFL As UInt16
+
+    '    selezioneB1 = combinazioneBilance And 1
+    '    selezioneB2 = combinazioneBilance And 2
+    '    selezioneB3 = combinazioneBilance And 4
+    '    selezioneB4 = combinazioneBilance And 8
+    '    selezioneB5 = combinazioneBilance And 16
+    '    selezioneFL = combinazioneBilance And 32
+
+    '    Dim programma As New List(Of strOrdineProduzioneRicetta)
+
+    '    deleteSetupTostatrice(tostatrice)
+    '    For Each comp In ricetta.componenti
+
+    '        Dim componenteRicetta As New strOrdineProduzioneRicetta
+
+    '        componenteRicetta.idComponente = comp.idComponente
+    '        componenteRicetta.kgSet = comp.kgSet
+    '        componenteRicetta.kgTol = comp.kgTol
+    '        componenteRicetta.fuoriLinea = comp.fuoriLinea
+    '        componenteRicetta.listasilos = New List(Of strSilosPerRicetta)
+
+    '        If comp.fuoriLinea = False Then
+
+    '            Using TTA_DOSAGGIO As DBTableAdapters.viewMagazzinoDosaggio_TotaleTableAdapter = New DBTableAdapters.viewMagazzinoDosaggio_TotaleTableAdapter
+    '                Using data = TTA_DOSAGGIO.sp_VIEW_MAGAZZINO_DOSAGGIO_TOTALE_GetDataByComponenteE5Bilance(comp.idComponente, selezioneB1, selezioneB2, selezioneB3, selezioneB4, selezioneB5)
+
+    '                    Dim pesoResiduo As Decimal = comp.kgSet
+
+    '                    For Each item In data
+    '                        If pesoResiduo > 0 Then
+    '                            If item.abilitatoAlloScarico = True Then
+    '                                Dim pesoDaPrelevareNelSilos As Decimal
+
+    '                                If item.quantitaRimanente >= pesoResiduo Then
+    '                                    pesoDaPrelevareNelSilos = pesoResiduo
+    '                                Else
+    '                                    pesoDaPrelevareNelSilos = item.quantitaRimanente
+    '                                    pesoResiduo = pesoResiduo - item.quantitaRimanente
+    '                                End If
+
+    '                                Dim newSilos As strSilosPerRicetta
+    '                                newSilos.silos = item.IdSilos
+    '                                newSilos.idComponente = item.id_codice_componente
+    '                                newSilos.kg = pesoResiduo
+    '                                newSilos.bilancia = item.bilancia
+
+    '                                componenteRicetta.listasilos.Add(newSilos)
+
+    '                                inserisciSetupTostatrice(idRichiesta, tostatrice, newSilos, idRicetta, comp)
+
+    '                            End If
+    '                        End If
+
+    '                    Next
+
+    '                End Using
+
+    '            End Using
+
+
+    '        End If
+
+    '        programma.Add(componenteRicetta)
+
+
+    '    Next
+
+    '    Return programma
+    'End Function
+
+    Private Shared Sub deleteSetupTostatrice(ByVal tostatrice As Int16)
+        Using TTA As DBTableAdapters.tostatrici_Setup_ProgrammaTableAdapter = New DBTableAdapters.tostatrici_Setup_ProgrammaTableAdapter
+            TTA.DeleteTostatrice(tostatrice)
+        End Using
+    End Sub
+
+    'Private Shared Sub inserisciSetupTostatrice(ByVal idRichiesta As UInt64, ByVal tostatrice As Int16, ByVal silos As strSilosPerRicetta, ByVal idRicetta As Integer, ByVal componenteRicetta As strComponenteRicetta)
+    '    Using TTA As DBTableAdapters.tostatrici_setupTableAdapter = New DBTableAdapters.tostatrici_setupTableAdapter
+    '        TTA.InsertSilos(tostatrice, idRicetta, componenteRicetta.indice, idRichiesta, componenteRicetta.idComponente, componenteRicetta.kgSet, componenteRicetta.kgTol, componenteRicetta.fuoriLinea, silos.silos, silos.bilancia, False)
+    '    End Using
+    'End Sub
+
+    Private Shared Sub inserisciSetupTostatrice(ByVal setupTostatrice As strSetupTostatrice, ByVal silos As strSilosPerRicetta, ByVal contatore As UInt16)
+        Using TTA As DBTableAdapters.tostatrici_Setup_ProgrammaTableAdapter = New DBTableAdapters.tostatrici_Setup_ProgrammaTableAdapter
+            TTA.InsertSilos(setupTostatrice.tostatrice,         'NR TOSTATRICE
+                            setupTostatrice.idRicetta,          'ID RICETTA
+                            contatore,                          'PROGRESSIVO COMPONENTE
+                            setupTostatrice.idRichiesta,        'ID RICHIESTA
+                            silos.idComponente,                 'ID COMPONENTE
+                            silos.componenteRicetta.kgSet,      'KG DA RICETTA
+                            silos.componenteRicetta.kgTol,      'TOLLERANZA DA RICETTA
+                            silos.componenteRicetta.fuoriLinea, 'SELEZIONE FUORI LINEA
+                            silos.progressivoSilos,             'PROGRESSIVO SILOS PER COMPONENTE
+                            silos.silos,                        'NR SILOS
+                            silos.kg,                           'PESO PREVISTO DA PRELEVARE NEL SILOS
+                            silos.bilancia,                     'SILOS APPARTENENTE A BILANCIA NR
+                            False)
+        End Using
+    End Sub
+
+
+    Private Shared Sub inserisciNuovaRichiesta(ByVal nuovaRichiesta As strSetupTostatrice)
+        Using TTA As DBTableAdapters.tostatrici_Setup_RichiesteTableAdapter = New DBTableAdapters.tostatrici_Setup_RichiesteTableAdapter
+            TTA.InsertRichiesta(nuovaRichiesta.idRichiesta, nuovaRichiesta.tostatrice, nuovaRichiesta.ricetta.idRicetta, nuovaRichiesta.combinazioneBilance, Now, nuovaRichiesta.fattibile)
+        End Using
+    End Sub
 End Class
