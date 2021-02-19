@@ -567,6 +567,9 @@ Public Class DB_PLC
         Dim siloEscluso As Int16 = 0    ' usato per memorizzare il primo silos scaricato nel caso ne servisse un altro
         Dim listaSilos As New List(Of strSilosPerRicetta)
         Using TTA_DOSAGGIO As DBTableAdapters.viewMagazzinoDosaggio_TotaleTableAdapter = New DBTableAdapters.viewMagazzinoDosaggio_TotaleTableAdapter
+            'restituisce l'elenco dei silos con il componente indicato, ordinati per:
+            'prima i silos da cui è stato scaricato di più
+            'poi i silos caricati prima
             Using data = TTA_DOSAGGIO.sp_VIEW_MAGAZZINO_DOSAGGIO_TOTALE_GetDataByComponenteE5Bilance(componente.idComponente,
                                                                                                      bilance.selezioneB1,
                                                                                                      bilance.selezioneB2,
@@ -574,34 +577,35 @@ Public Class DB_PLC
                                                                                                      bilance.selezioneB4,
                                                                                                      bilance.selezioneB5)
 
-                ' ??????????? nel caso di più silos, che peso mettiamo ?????????
+                ' ??????????? nel caso di più silos, che peso mettiamo ????????? Sempre tutto quello che ci serve, perchè non siamo certi del peso reale nel silos.
                 Dim bilanciaUsata As Int16 = 0
                 For Each item In data
-                    If pesoResiduoDaPrelevare > 0 Then
-                        If bilanciaUsata = 0 Then bilanciaUsata = item.bilancia
-                        If item.abilitatoAlloScarico = True And item.bilancia = bilanciaUsata Then
-                            Dim pesoDaPrelevareNelSilos As Decimal
-                            contatoreSilos = contatoreSilos + 1     'incrementa il contatore dei silos trovati
-                            If item.quantitaRimanente >= pesoResiduoDaPrelevare Then   'quantità presente nel silos superiore alla quantità necessaria. OK
-                                pesoDaPrelevareNelSilos = pesoResiduoDaPrelevare
-                                pesoResiduoDaPrelevare = 0
-                            Else                                                'quantità non sufficiente. sarà necessario un altro silos
-                                pesoDaPrelevareNelSilos = item.quantitaRimanente    'preleva solo quello che c'è
-                                pesoResiduoDaPrelevare = pesoResiduoDaPrelevare - item.quantitaRimanente  'memorizza la quantità mancante
+                    If pesoResiduoDaPrelevare > 0 Then              'se ho ancora prodotto da prelevare
+                        If item.abilitatoAlloScarico = True Then      ' e questo silos è abilitato allo scarico
+                            If bilanciaUsata = 0 Then bilanciaUsata = item.bilancia
+                            If item.bilancia = bilanciaUsata Then   'e il silos è collegato alla stessa bilancia già scelta con il primo silos
+                                Dim pesoDaPrelevareNelSilos As Decimal
+                                contatoreSilos = contatoreSilos + 1     'incrementa il contatore dei silos trovati
+                                If item.quantitaRimanente >= pesoResiduoDaPrelevare Then   'quantità presente nel silos superiore alla quantità necessaria. OK
+                                    pesoDaPrelevareNelSilos = pesoResiduoDaPrelevare        'prendo tutto quello che mi serve
+                                    pesoResiduoDaPrelevare = 0
+                                Else                                                'quantità non sufficiente. sarà necessario un altro silos
+                                    pesoDaPrelevareNelSilos = item.quantitaRimanente    'preleva solo quello che c'è
+                                    pesoResiduoDaPrelevare = pesoResiduoDaPrelevare - item.quantitaRimanente  'memorizza la quantità mancante
+                                End If
+
+                                Dim newSilos As strSilosPerRicetta
+                                newSilos.silos = item.IdSilos
+                                newSilos.idComponente = item.id_codice_componente
+                                newSilos.kg = pesoDaPrelevareNelSilos
+                                newSilos.bilancia = item.bilancia
+                                newSilos.progressivoSilos = contatoreSilos
+                                newSilos.componenteRicetta = componente
+                                listaSilos.Add(newSilos)
+
                             End If
-
-                            Dim newSilos As strSilosPerRicetta
-                            newSilos.silos = item.IdSilos
-                            newSilos.idComponente = item.id_codice_componente
-                            newSilos.kg = pesoDaPrelevareNelSilos
-                            newSilos.bilancia = item.bilancia
-                            newSilos.progressivoSilos = contatoreSilos
-                            newSilos.componenteRicetta = componente
-                            listaSilos.Add(newSilos)
-
                         End If
                     End If
-
                 Next
 
 
