@@ -15,6 +15,16 @@
 
     Private Sub calcolaFattibilita(ByVal idRicetta As Int16)
 
+        Dim min, max As Int16
+
+        If idRicetta = 0 Then
+            min = 1
+            max = 200
+        Else
+            min = idRicetta
+            max = idRicetta
+        End If
+
 
         For i As Integer = 1 To 200
             Dim recipe = DB_PLC.verificaFattibilita(i)
