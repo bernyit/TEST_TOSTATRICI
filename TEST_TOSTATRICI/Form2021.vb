@@ -69,6 +69,12 @@
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        DB_PLC.calcolaSilosNew(124, 4, 32, 5)
+        Dim id As UInt32
+        id = (DateTime.Now - New DateTime(1970, 1, 1)).TotalSeconds
+        'DB_PLC.calcolaSilosNew(id, 3, 89, 7)
+        DB_PLC.calcolaBilanceNew(id, 3, 89, 7)
+
+
+
     End Sub
 End Class

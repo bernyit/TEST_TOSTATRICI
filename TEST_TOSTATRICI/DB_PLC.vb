@@ -188,6 +188,13 @@ Public Class DB_PLC
 
     End Sub
 
+    Structure strBilancePerRicetta
+        Dim idComponente As Int16
+        Dim kg As Decimal
+        Dim bilancia As Int16
+        Dim componenteRicetta As strComponenteRicetta
+    End Structure
+
 
     Structure strSilosPerRicetta
         Dim silos As Int16
@@ -523,6 +530,44 @@ Public Class DB_PLC
         Dim fattibile As Boolean
     End Structure
 
+
+    Public Shared Sub calcolaBilanceNew(ByVal idRichiesta As UInt64, ByVal tostatrice As UInt16, ByVal idRicetta As Integer, ByVal combinazioneBilance As UInt16)
+
+
+        Dim nuovoSetup As strSetupTostatrice
+        nuovoSetup.idRichiesta = idRichiesta
+        nuovoSetup.tostatrice = tostatrice
+        nuovoSetup.idRicetta = idRicetta
+        nuovoSetup.combinazioneBilance = combinazioneBilance
+        nuovoSetup.ricetta = leggiComponentiRicetta(idRicetta)
+
+        Dim bilanceSelezionate As BILANCE.strSelezioneBilance
+        bilanceSelezionate = BILANCE.spacchettaSelezione(combinazioneBilance)
+
+        Try
+            Dim listaBilancePerRicetta As New List(Of strBilancePerRicetta)
+            For Each comp In nuovoSetup.ricetta.componenti ' scansiona tutti i componenti alla ricerca del silos
+                Dim listabilancePerComponente = definisciBilanciaPerComponente(bilanceSelezionate, nuovoSetup.idRicetta, comp)
+                listaBilancePerRicetta.AddRange(listabilancePerComponente)
+            Next
+
+            deleteSetupTostatrice(nuovoSetup.tostatrice)
+
+            Dim contatore As UInt16 = 0
+            For Each bilancia In listaBilancePerRicetta
+                contatore += 1
+                inserisciSetupTostatrice(nuovoSetup, bilancia, contatore)
+            Next
+            nuovoSetup.fattibile = True
+        Catch ex As Exception
+            nuovoSetup.fattibile = False
+            'se c'è un eccezione, vuol dire che non abbiamo trovato il componente cercato e che quindi la ricetta non è fattibile
+        End Try
+
+        inserisciNuovaRichiesta(nuovoSetup)
+    End Sub
+
+
     Public Shared Sub calcolaSilosNew(ByVal idRichiesta As UInt64, ByVal tostatrice As UInt16, ByVal idRicetta As Integer, ByVal combinazioneBilance As UInt16)
 
 
@@ -539,7 +584,7 @@ Public Class DB_PLC
         Try
             Dim listaSilosPerRicetta As New List(Of strSilosPerRicetta)
             For Each comp In nuovoSetup.ricetta.componenti ' scansiona tutti i componenti alla ricerca del silos
-                Dim listaSilosPerComponente = trovaSilosPerComponente(bilanceSelezionate, comp)
+                Dim listaSilosPerComponente = trovaSilosPerComponente(bilanceSelezionate, nuovoSetup.idRicetta, comp)
                 listaSilosPerRicetta.AddRange(listaSilosPerComponente)
             Next
 
@@ -560,55 +605,152 @@ Public Class DB_PLC
     End Sub
 
 
-    Public Shared Function trovaSilosPerComponente(ByVal bilance As BILANCE.strSelezioneBilance, ByVal componente As strComponenteRicetta) As List(Of strSilosPerRicetta)
+    Public Shared Function definisciBilanciaPerComponente(ByVal bilance As BILANCE.strSelezioneBilance, ByVal nrRicetta As Int16, ByVal componente As strComponenteRicetta) As List(Of strBilancePerRicetta)
 
-        Dim contatoreSilos As Int16 = 0 'contatore dei silos necessari per il componente richiesto
-        Dim pesoResiduoDaPrelevare As Decimal = componente.kgSet ' inizializza peso da prelevare, nel caso un silos non sia sufficiente
-        Dim siloEscluso As Int16 = 0    ' usato per memorizzare il primo silos scaricato nel caso ne servisse un altro
-        Dim listaSilos As New List(Of strSilosPerRicetta)
+        Dim bilanciaScelta As Int16 = 0
+        Dim listaBilance As New List(Of strBilancePerRicetta) ' lista delle bilance da usare
         Using TTA_DOSAGGIO As DBTableAdapters.viewMagazzinoDosaggio_TotaleTableAdapter = New DBTableAdapters.viewMagazzinoDosaggio_TotaleTableAdapter
-            'restituisce l'elenco dei silos con il componente indicato, ordinati per:
-            'prima i silos da cui è stato scaricato di più
-            'poi i silos caricati prima
-            Using data = TTA_DOSAGGIO.sp_VIEW_MAGAZZINO_DOSAGGIO_TOTALE_GetDataByComponenteE5Bilance(componente.idComponente,
+            Using TTA_DISPONIBILITA As DBTableAdapters.view_RicettaComponenti_disponibilitaBilanceTableAdapter = New DBTableAdapters.view_RicettaComponenti_disponibilitaBilanceTableAdapter
+
+
+                Using disponibilita = TTA_DISPONIBILITA.GetDataByIdRicettaComponente(nrRicetta, componente.idComponente) 'conta solo i silos abilitati allo scarico
+                    If ReferenceEquals(disponibilita, Nothing) = False Then
+                        If disponibilita.Count > 0 Then
+                            'restituisce l'elenco dei silos con il componente indicato, ordinati per:
+                            'prima i silos da cui è stato scaricato di più
+                            'poi i silos caricati prima
+                            Using data = TTA_DOSAGGIO.sp_VIEW_MAGAZZINO_DOSAGGIO_TOTALE_GetDataByComponenteE5Bilance(componente.idComponente,
                                                                                                      bilance.selezioneB1,
                                                                                                      bilance.selezioneB2,
                                                                                                      bilance.selezioneB3,
                                                                                                      bilance.selezioneB4,
                                                                                                      bilance.selezioneB5)
 
-                ' ??????????? nel caso di più silos, che peso mettiamo ????????? Sempre tutto quello che ci serve, perchè non siamo certi del peso reale nel silos.
-                Dim bilanciaUsata As Int16 = 0
-                For Each item In data
-                    If pesoResiduoDaPrelevare > 0 Then              'se ho ancora prodotto da prelevare
-                        If item.abilitatoAlloScarico = True Then      ' e questo silos è abilitato allo scarico
-                            If bilanciaUsata = 0 Then bilanciaUsata = item.bilancia
-                            If item.bilancia = bilanciaUsata Then   'e il silos è collegato alla stessa bilancia già scelta con il primo silos
-                                Dim pesoDaPrelevareNelSilos As Decimal
-                                contatoreSilos = contatoreSilos + 1     'incrementa il contatore dei silos trovati
-                                If item.quantitaRimanente >= pesoResiduoDaPrelevare Then   'quantità presente nel silos superiore alla quantità necessaria. OK
-                                    pesoDaPrelevareNelSilos = pesoResiduoDaPrelevare        'prendo tutto quello che mi serve
-                                    pesoResiduoDaPrelevare = 0
-                                Else                                                'quantità non sufficiente. sarà necessario un altro silos
-                                    pesoDaPrelevareNelSilos = item.quantitaRimanente    'preleva solo quello che c'è
-                                    pesoResiduoDaPrelevare = pesoResiduoDaPrelevare - item.quantitaRimanente  'memorizza la quantità mancante
-                                End If
+                                ' ??????????? nel caso di più silos, che peso mettiamo ????????? Sempre tutto quello che ci serve, perchè non siamo certi del peso reale nel silos.
 
-                                Dim newSilos As strSilosPerRicetta
-                                newSilos.silos = item.IdSilos
-                                newSilos.idComponente = item.id_codice_componente
-                                newSilos.kg = pesoDaPrelevareNelSilos
-                                newSilos.bilancia = item.bilancia
-                                newSilos.progressivoSilos = contatoreSilos
-                                newSilos.componenteRicetta = componente
-                                listaSilos.Add(newSilos)
+                                'per scegliere la bilancia, andiamo alla ricerca del silos piu vecchio, oppure già iniziato
+                                For Each item In data
+                                    If item.abilitatoAlloScarico = True Then      ' questo silos è abilitato allo scarico
+                                        If bilanciaScelta = 0 Then               'sceglie una bilancia che ha disponibilità di tutto il prodotto
+                                            Select Case item.bilancia
+                                                Case 1
+                                                    If bilance.selezioneB1 Then
+                                                        If disponibilita(0).disponibileB1 > componente.kgSet Then bilanciaScelta = item.bilancia
+                                                    End If
+                                                Case 2
+                                                    If bilance.selezioneB2 Then
+                                                        If disponibilita(0).disponibileB2 > componente.kgSet Then bilanciaScelta = item.bilancia
+                                                    End If
+                                                Case 3
+                                                    If bilance.selezioneB3 Then
+                                                        If disponibilita(0).disponibileB3 > componente.kgSet Then bilanciaScelta = item.bilancia
+                                                    End If
+                                                Case 4
+                                                    If bilance.selezioneB4 Then
+                                                        If disponibilita(0).disponibileB4 > componente.kgSet Then bilanciaScelta = item.bilancia
+                                                    End If
+                                                Case 5
+                                                    If bilance.selezioneB5 Then
+                                                        If disponibilita(0).disponibileB5 > componente.kgSet Then bilanciaScelta = item.bilancia
+                                                    End If
+                                            End Select
+                                        End If
 
-                            End If
+                                        If item.bilancia = bilanciaScelta Then   'e il silos è collegato alla stessa bilancia già scelta con il primo silos
+
+                                            Dim newBilancia As strBilancePerRicetta
+                                            newBilancia.idComponente = item.id_codice_componente
+                                            newBilancia.kg = componente.kgSet
+                                            newBilancia.bilancia = item.bilancia
+                                            newBilancia.componenteRicetta = componente
+                                            listaBilance.Add(newBilancia)
+                                            Exit For
+                                        End If
+                                    End If
+
+                                Next
+                            End Using
                         End If
                     End If
-                Next
+                End Using
+            End Using
+        End Using
+
+        If bilanciaScelta = 0 Then Throw New Exception
+        Return listaBilance
+    End Function
 
 
+    Public Shared Function trovaSilosPerComponente(ByVal bilance As BILANCE.strSelezioneBilance, ByVal nrRicetta As Int16, ByVal componente As strComponenteRicetta) As List(Of strSilosPerRicetta)
+
+        Dim contatoreSilos As Int16 = 0 'contatore dei silos necessari per il componente richiesto
+        Dim pesoResiduoDaPrelevare As Decimal = componente.kgSet ' inizializza peso da prelevare, nel caso un silos non sia sufficiente
+        Dim listaSilos As New List(Of strSilosPerRicetta) ' lista dei silos trovati con il componente
+        Using TTA_DOSAGGIO As DBTableAdapters.viewMagazzinoDosaggio_TotaleTableAdapter = New DBTableAdapters.viewMagazzinoDosaggio_TotaleTableAdapter
+            Using TTA_DISPONIBILITA As DBTableAdapters.view_RicettaComponenti_disponibilitaBilanceTableAdapter = New DBTableAdapters.view_RicettaComponenti_disponibilitaBilanceTableAdapter
+
+
+                Using disponibilta = TTA_DISPONIBILITA.GetDataByIdRicettaComponente(nrRicetta, componente.idComponente)
+                    If ReferenceEquals(disponibilta, Nothing) = False Then
+                        If disponibilta.Count > 0 Then
+                            'restituisce l'elenco dei silos con il componente indicato, ordinati per:
+                            'prima i silos da cui è stato scaricato di più
+                            'poi i silos caricati prima
+                            Using data = TTA_DOSAGGIO.sp_VIEW_MAGAZZINO_DOSAGGIO_TOTALE_GetDataByComponenteE5Bilance(componente.idComponente,
+                                                                                                     bilance.selezioneB1,
+                                                                                                     bilance.selezioneB2,
+                                                                                                     bilance.selezioneB3,
+                                                                                                     bilance.selezioneB4,
+                                                                                                     bilance.selezioneB5)
+
+                                ' ??????????? nel caso di più silos, che peso mettiamo ????????? Sempre tutto quello che ci serve, perchè non siamo certi del peso reale nel silos.
+                                Dim bilanciaUsata As Int16 = 0
+                                For Each item In data
+                                    If pesoResiduoDaPrelevare > 0 Then              'se ho ancora prodotto da prelevare
+                                        If item.abilitatoAlloScarico = True Then      ' e questo silos è abilitato allo scarico
+                                            If bilanciaUsata = 0 Then               'sceglie una bilancia che ha disponibilità di tutto il prodotto
+                                                Select Case item.bilancia
+                                                    Case 1
+                                                        If disponibilta(0).disponibileB1 > componente.kgSet Then bilanciaUsata = item.bilancia
+                                                    Case 2
+                                                        If disponibilta(0).disponibileB2 > componente.kgSet Then bilanciaUsata = item.bilancia
+                                                    Case 3
+                                                        If disponibilta(0).disponibileB3 > componente.kgSet Then bilanciaUsata = item.bilancia
+                                                    Case 4
+                                                        If disponibilta(0).disponibileB4 > componente.kgSet Then bilanciaUsata = item.bilancia
+                                                    Case 5
+                                                        If disponibilta(0).disponibileB5 > componente.kgSet Then bilanciaUsata = item.bilancia
+                                                End Select
+                                            End If
+
+                                            If item.bilancia = bilanciaUsata Then   'e il silos è collegato alla stessa bilancia già scelta con il primo silos
+                                                Dim pesoDaPrelevareNelSilos As Decimal
+                                                contatoreSilos = contatoreSilos + 1     'incrementa il contatore dei silos trovati
+                                                If item.quantitaRimanente >= pesoResiduoDaPrelevare Then   'quantità presente nel silos superiore alla quantità necessaria. OK
+                                                    pesoDaPrelevareNelSilos = pesoResiduoDaPrelevare        'prendo tutto quello che mi serve
+                                                    pesoResiduoDaPrelevare = 0
+                                                Else                                                'quantità non sufficiente. sarà necessario un altro silos
+                                                    pesoDaPrelevareNelSilos = item.quantitaRimanente    'preleva solo quello che c'è
+                                                    pesoResiduoDaPrelevare = pesoResiduoDaPrelevare - item.quantitaRimanente  'memorizza la quantità mancante
+                                                End If
+
+                                                Dim newSilos As strSilosPerRicetta
+                                                newSilos.silos = item.IdSilos
+                                                newSilos.idComponente = item.id_codice_componente
+                                                newSilos.kg = pesoDaPrelevareNelSilos
+                                                newSilos.bilancia = item.bilancia
+                                                newSilos.progressivoSilos = contatoreSilos
+                                                newSilos.componenteRicetta = componente
+                                                listaSilos.Add(newSilos)
+
+                                            End If
+                                        End If
+                                    End If
+                                Next
+                            End Using
+                        End If
+                    End If
+                End Using
             End Using
         End Using
 
@@ -711,6 +853,24 @@ Public Class DB_PLC
     'End Sub
 
     Private Shared Sub inserisciSetupTostatrice(ByVal setupTostatrice As strSetupTostatrice, ByVal silos As strSilosPerRicetta, ByVal contatore As UInt16)
+        'Using TTA As DBTableAdapters.tostatrici_Setup_ProgrammaTableAdapter = New DBTableAdapters.tostatrici_Setup_ProgrammaTableAdapter
+        '    TTA.InsertSilos(setupTostatrice.tostatrice,         'NR TOSTATRICE
+        '                    setupTostatrice.idRicetta,          'ID RICETTA
+        '                    contatore,                          'PROGRESSIVO COMPONENTE
+        '                    setupTostatrice.idRichiesta,        'ID RICHIESTA
+        '                    silos.idComponente,                 'ID COMPONENTE
+        '                    silos.componenteRicetta.kgSet,      'KG DA RICETTA
+        '                    silos.componenteRicetta.kgTol,      'TOLLERANZA DA RICETTA
+        '                    silos.componenteRicetta.fuoriLinea, 'SELEZIONE FUORI LINEA
+        '                    silos.progressivoSilos,             'PROGRESSIVO SILOS PER COMPONENTE
+        '                    silos.silos,                        'NR SILOS
+        '                    silos.kg,                           'PESO PREVISTO DA PRELEVARE NEL SILOS
+        '                    silos.bilancia,                     'SILOS APPARTENENTE A BILANCIA NR
+        '                    False, 0, 0)
+        'End Using
+    End Sub
+
+    Private Shared Sub inserisciSetupTostatrice(ByVal setupTostatrice As strSetupTostatrice, ByVal silos As strBilancePerRicetta, ByVal contatore As UInt16)
         Using TTA As DBTableAdapters.tostatrici_Setup_ProgrammaTableAdapter = New DBTableAdapters.tostatrici_Setup_ProgrammaTableAdapter
             TTA.InsertSilos(setupTostatrice.tostatrice,         'NR TOSTATRICE
                             setupTostatrice.idRicetta,          'ID RICETTA
@@ -720,11 +880,11 @@ Public Class DB_PLC
                             silos.componenteRicetta.kgSet,      'KG DA RICETTA
                             silos.componenteRicetta.kgTol,      'TOLLERANZA DA RICETTA
                             silos.componenteRicetta.fuoriLinea, 'SELEZIONE FUORI LINEA
-                            silos.progressivoSilos,             'PROGRESSIVO SILOS PER COMPONENTE
-                            silos.silos,                        'NR SILOS
+                            0,                                  'ULTIMO SILOS SCARICATO
                             silos.kg,                           'PESO PREVISTO DA PRELEVARE NEL SILOS
                             silos.bilancia,                     'SILOS APPARTENENTE A BILANCIA NR
-                            False)
+                            False,                              'ESEGUITO   
+                            0)                                  'PESO SCARICATO
         End Using
     End Sub
 
