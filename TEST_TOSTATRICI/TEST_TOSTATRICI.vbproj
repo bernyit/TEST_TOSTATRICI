@@ -122,6 +122,7 @@
       <DependentUpon>PLC.xsd</DependentUpon>
     </Compile>
     <Compile Include="RICETTE.vb" />
+    <Compile Include="SETUP_TOSTATRICI.vb" />
     <Compile Include="TOSTATRICI.vb" />
   </ItemGroup>
   <ItemGroup>

@@ -26,7 +26,7 @@
         End If
 
 
-        For i As Integer = 1 To 200
+        For i As Integer = min To max
             Dim recipe = DB_PLC.verificaFattibilita(i)
 
 

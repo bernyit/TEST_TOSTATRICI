@@ -23,6 +23,7 @@ Public Class DB_PLC
         Dim fattibileConB5 As Boolean
         Dim fattibileConXBilance As Int16
         Dim fattibilitaPerPlc As UInt16
+        Dim pioritaMassima As UInt16
     End Structure
 
     Structure strRicetta
@@ -361,7 +362,7 @@ Public Class DB_PLC
         Dim kgBilancia1, kgBilancia2, kgBilancia3, kgBilancia4, kgBilancia5 As Decimal
 
 
-        Using TTA As DBTableAdapters.view_RicettaComponenti_disponibilitaBilanceTableAdapter = New DBTableAdapters.view_RicettaComponenti_disponibilitaBilanceTableAdapter
+        Using TTA As DBTableAdapters.view_RicettaComponenti_disponibilitaBilanceConPrioritaTableAdapter = New DBTableAdapters.view_RicettaComponenti_disponibilitaBilanceConPrioritaTableAdapter
             Try
 
                 Using actData = TTA.GetDataByIdRicetta(idRicetta)
@@ -378,11 +379,15 @@ Public Class DB_PLC
                                 ricetta.componenti(progressivo).kgSet = componente.kg_set
                                 ricetta.componenti(progressivo).kgTol = componente.kg_tol
                                 ricetta.componenti(progressivo).fuoriLinea = componente.selezione_fl
+                                ricetta.componenti(progressivo).pioritaMassima = SETUP_TOSTATRICI.ritornaPriorita(componente)
+
                                 Try
                                     kgBilancia1 = componente.disponibileB1
                                     If kgBilancia1 > componente.kg_set Then
-                                        ricetta.componenti(progressivo).fattibileConB1 = True
-                                        ricetta.componenti(progressivo).fattibileConXBilance += 1
+                                        If ricetta.componenti(progressivo).pioritaMassima = componente.PRIORITA_B1 Then
+                                            ricetta.componenti(progressivo).fattibileConB1 = True
+                                            ricetta.componenti(progressivo).fattibileConXBilance += 1
+                                        End If
                                     End If
 
                                 Catch ex As Exception
@@ -391,8 +396,11 @@ Public Class DB_PLC
                                 Try
                                     kgBilancia2 = componente.disponibileB2
                                     If kgBilancia2 > componente.kg_set Then
-                                        ricetta.componenti(progressivo).fattibileConB2 = True
-                                        ricetta.componenti(progressivo).fattibileConXBilance += 1
+                                        If ricetta.componenti(progressivo).pioritaMassima = componente.PRIORITA_B2 Then
+                                            ricetta.componenti(progressivo).fattibileConB2 = True
+                                            ricetta.componenti(progressivo).fattibileConXBilance += 1
+                                        End If
+
                                     End If
                                 Catch ex As Exception
 
@@ -400,8 +408,10 @@ Public Class DB_PLC
                                 Try
                                     kgBilancia3 = componente.disponibileB3
                                     If kgBilancia3 > componente.kg_set Then
-                                        ricetta.componenti(progressivo).fattibileConB3 = True
-                                        ricetta.componenti(progressivo).fattibileConXBilance += 1
+                                        If ricetta.componenti(progressivo).pioritaMassima = componente.PRIORITA_B3 Then
+                                            ricetta.componenti(progressivo).fattibileConB3 = True
+                                            ricetta.componenti(progressivo).fattibileConXBilance += 1
+                                        End If
                                     End If
                                 Catch ex As Exception
 
@@ -409,8 +419,11 @@ Public Class DB_PLC
                                 Try
                                     kgBilancia4 = componente.disponibileB4
                                     If kgBilancia4 > componente.kg_set Then
-                                        ricetta.componenti(progressivo).fattibileConB4 = True
-                                        ricetta.componenti(progressivo).fattibileConXBilance += 1
+                                        If ricetta.componenti(progressivo).pioritaMassima = componente.PRIORITA_B4 Then
+                                            ricetta.componenti(progressivo).fattibileConB4 = True
+                                            ricetta.componenti(progressivo).fattibileConXBilance += 1
+                                        End If
+
                                     End If
 
                                 Catch ex As Exception
@@ -419,8 +432,11 @@ Public Class DB_PLC
                                 Try
                                     kgBilancia5 = componente.disponibileB5
                                     If kgBilancia5 > componente.kg_set Then
-                                        ricetta.componenti(progressivo).fattibileConB5 = True
-                                        ricetta.componenti(progressivo).fattibileConXBilance += 1
+                                        If ricetta.componenti(progressivo).pioritaMassima = componente.PRIORITA_B5 Then
+                                            ricetta.componenti(progressivo).fattibileConB5 = True
+                                            ricetta.componenti(progressivo).fattibileConXBilance += 1
+                                        End If
+
                                     End If
                                 Catch ex As Exception
 
@@ -757,6 +773,12 @@ Public Class DB_PLC
         If contatoreSilos = 0 Then Throw New Exception
         Return listaSilos
     End Function
+
+
+
+
+
+
 
     'Public Shared Function trovaSilosPerTostatrice(ByVal idRichiesta As UInt64, ByVal tostatrice As UInt16, ByVal idRicetta As Integer, ByVal combinazioneBilance As UInt16) As List(Of strOrdineProduzioneRicetta)
 
