@@ -27,11 +27,11 @@
 
 
         For i As Integer = min To max
-            Dim recipe = DB_PLC.verificaFattibilita(i)
-
+            'Dim recipe = DB_PLC.verificaFattibilita(i)
+            Dim recipe = SETUP_TOSTATRICI.verificaFattibilita(i)
 
             lblCombinazionePlc.Text = Convert.ToString(recipe.compinazionePerPlc, 2).PadLeft(16, "0"c)
-
+            mostraBilanceSelezionate(recipe.compinazionePerPlc)
             ListView1.Items.Add(New ListViewItem(New String() {i, lblCombinazionePlc.Text, recipe.compinazionePerPlc}))
 
         Next
@@ -45,6 +45,20 @@
         'z = 1
     End Sub
 
+
+    Private Sub mostraBilanceSelezionate(ByVal combinazioneBilance As UInt16)
+        lblB1_Necessaria.BackColor = BILANCE.combinazioneFattibileColor(BILANCE.enuBilance.B1_OBBLIGATORIA, combinazioneBilance)
+        lblB2_Necessaria.BackColor = BILANCE.combinazioneFattibileColor(BILANCE.enuBilance.B2_OBBLIGATORIA, combinazioneBilance)
+        lblB3_Necessaria.BackColor = BILANCE.combinazioneFattibileColor(BILANCE.enuBilance.B3_OBBLIGATORIA, combinazioneBilance)
+        lblB4_Necessaria.BackColor = BILANCE.combinazioneFattibileColor(BILANCE.enuBilance.B4_OBBLIGATORIA, combinazioneBilance)
+        lblB5_Necessaria.BackColor = BILANCE.combinazioneFattibileColor(BILANCE.enuBilance.B5_OBBLIGATORIA, combinazioneBilance)
+        lblFL_Necessaria.BackColor = BILANCE.combinazioneFattibileColor(BILANCE.enuBilance.FL_OBBLIGATORIA, combinazioneBilance)
+        lblB1_Opzionale.BackColor = BILANCE.combinazioneFattibileColor(BILANCE.enuBilance.B1_OPZIONALE, combinazioneBilance)
+        lblB2_Opzionale.BackColor = BILANCE.combinazioneFattibileColor(BILANCE.enuBilance.B2_OPZIONALE, combinazioneBilance)
+        lblB3_Opzionale.BackColor = BILANCE.combinazioneFattibileColor(BILANCE.enuBilance.B3_OPZIONALE, combinazioneBilance)
+        lblB4_Opzionale.BackColor = BILANCE.combinazioneFattibileColor(BILANCE.enuBilance.B4_OPZIONALE, combinazioneBilance)
+        lblB5_Opzionale.BackColor = BILANCE.combinazioneFattibileColor(BILANCE.enuBilance.B5_OPZIONALE, combinazioneBilance)
+    End Sub
 
 
     Private Sub test()
@@ -87,4 +101,6 @@
 
 
     End Sub
+
+
 End Class
