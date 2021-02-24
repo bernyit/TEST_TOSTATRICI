@@ -56,6 +56,10 @@ Partial Class Form2021
         Me.lblB2_Necessaria = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.lblB1_Necessaria = New System.Windows.Forms.Label()
+        Me.txtVerificaFattibilitaRicetta = New System.Windows.Forms.TextBox()
+        Me.txtVerificaFattibilitaCombinazione2 = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.lblVerificaFattibilitaCombinazione = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'Button1
@@ -98,7 +102,7 @@ Partial Class Form2021
         Me.ListView1.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3})
         Me.ListView1.HideSelection = False
         Me.ListView1.Items.AddRange(New System.Windows.Forms.ListViewItem() {ListViewItem1, ListViewItem2})
-        Me.ListView1.Location = New System.Drawing.Point(478, 12)
+        Me.ListView1.Location = New System.Drawing.Point(455, 12)
         Me.ListView1.Name = "ListView1"
         Me.ListView1.Size = New System.Drawing.Size(310, 426)
         Me.ListView1.TabIndex = 13
@@ -130,7 +134,7 @@ Partial Class Form2021
         'lblCombinazioneFattibile
         '
         Me.lblCombinazioneFattibile.AutoSize = True
-        Me.lblCombinazioneFattibile.Location = New System.Drawing.Point(273, 278)
+        Me.lblCombinazioneFattibile.Location = New System.Drawing.Point(273, 259)
         Me.lblCombinazioneFattibile.Name = "lblCombinazioneFattibile"
         Me.lblCombinazioneFattibile.Size = New System.Drawing.Size(41, 13)
         Me.lblCombinazioneFattibile.TabIndex = 16
@@ -337,11 +341,49 @@ Partial Class Form2021
         Me.lblB1_Necessaria.Text = "0"
         Me.lblB1_Necessaria.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'txtVerificaFattibilitaRicetta
+        '
+        Me.txtVerificaFattibilitaRicetta.Location = New System.Drawing.Point(255, 275)
+        Me.txtVerificaFattibilitaRicetta.Name = "txtVerificaFattibilitaRicetta"
+        Me.txtVerificaFattibilitaRicetta.Size = New System.Drawing.Size(70, 20)
+        Me.txtVerificaFattibilitaRicetta.TabIndex = 97
+        Me.txtVerificaFattibilitaRicetta.Text = "27"
+        '
+        'txtVerificaFattibilitaCombinazione2
+        '
+        Me.txtVerificaFattibilitaCombinazione2.Location = New System.Drawing.Point(344, 275)
+        Me.txtVerificaFattibilitaCombinazione2.Name = "txtVerificaFattibilitaCombinazione2"
+        Me.txtVerificaFattibilitaCombinazione2.Size = New System.Drawing.Size(70, 20)
+        Me.txtVerificaFattibilitaCombinazione2.TabIndex = 99
+        Me.txtVerificaFattibilitaCombinazione2.Text = "27"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(341, 259)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(73, 13)
+        Me.Label2.TabIndex = 98
+        Me.Label2.Text = "Combinazione"
+        '
+        'lblVerificaFattibilitaCombinazione
+        '
+        Me.lblVerificaFattibilitaCombinazione.AutoSize = True
+        Me.lblVerificaFattibilitaCombinazione.Location = New System.Drawing.Point(341, 298)
+        Me.lblVerificaFattibilitaCombinazione.Name = "lblVerificaFattibilitaCombinazione"
+        Me.lblVerificaFattibilitaCombinazione.Size = New System.Drawing.Size(73, 13)
+        Me.lblVerificaFattibilitaCombinazione.TabIndex = 100
+        Me.lblVerificaFattibilitaCombinazione.Text = "Combinazione"
+        '
         'Form2021
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1338, 450)
+        Me.Controls.Add(Me.lblVerificaFattibilitaCombinazione)
+        Me.Controls.Add(Me.txtVerificaFattibilitaCombinazione2)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.txtVerificaFattibilitaRicetta)
         Me.Controls.Add(Me.Label15)
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.Label27)
@@ -410,4 +452,8 @@ Partial Class Form2021
     Friend WithEvents lblB2_Necessaria As Label
     Friend WithEvents Label5 As Label
     Friend WithEvents lblB1_Necessaria As Label
+    Friend WithEvents txtVerificaFattibilitaRicetta As TextBox
+    Friend WithEvents txtVerificaFattibilitaCombinazione2 As TextBox
+    Friend WithEvents Label2 As Label
+    Friend WithEvents lblVerificaFattibilitaCombinazione As Label
 End Class

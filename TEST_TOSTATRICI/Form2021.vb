@@ -28,7 +28,7 @@
 
         For i As Integer = min To max
             'Dim recipe = DB_PLC.verificaFattibilita(i)
-            Dim recipe = SETUP_TOSTATRICI.verificaFattibilita(i)
+            Dim recipe = SETUP_TOSTATRICI.verificaFattibilita2(i, 65535)
 
             lblCombinazionePlc.Text = Convert.ToString(recipe.compinazionePerPlc, 2).PadLeft(16, "0"c)
             mostraBilanceSelezionate(recipe.compinazionePerPlc)
@@ -85,11 +85,21 @@
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        If DB_PLC.verificaFattibilita(32, 5) = True Then ' ricetta 32 e combinazione 5 = 101 = BILANCIA 1 E 3
-            lblCombinazioneFattibile.Text = "OK"
-        Else
-            lblCombinazioneFattibile.Text = "NOT OK"
-        End If
+        Dim idRicetta, combinazione As Int16
+        idRicetta = Integer.Parse(txtVerificaFattibilitaRicetta.Text)
+        combinazione = Integer.Parse(txtVerificaFattibilitaCombinazione2.Text)
+        'If DB_PLC.verificaFattibilita(32, 5) = True Then ' ricetta 32 e combinazione 5 = 101 = BILANCIA 1 E 3
+        '    lblCombinazioneFattibile.Text = "OK"
+        'Else
+        '    lblCombinazioneFattibile.Text = "NOT OK"
+        'End If
+        Dim result = SETUP_TOSTATRICI.verificaFattibilita2(idRicetta, combinazione)
+        lblVerificaFattibilitaCombinazione.Text = result.compinazionePerPlc
+        'If result.ricettaFattibile Then
+        '    lblCombinazioneFattibile.Text = "OK"
+        'Else
+        '    lblCombinazioneFattibile.Text = "NOT OK"
+        'End If
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click

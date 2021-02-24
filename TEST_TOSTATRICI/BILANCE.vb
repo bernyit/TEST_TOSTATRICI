@@ -6,7 +6,7 @@
         B3_OBBLIGATORIA = 2
         B4_OBBLIGATORIA = 3
         B5_OBBLIGATORIA = 4
-        FL_OBBLIGATORIA = 5
+        FL_OBBLIGATORIA = 7
         B1_OPZIONALE = 8
         B2_OPZIONALE = 9
         B3_OPZIONALE = 10
