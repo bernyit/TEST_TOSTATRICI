@@ -864,7 +864,7 @@ Public Class DB_PLC
 
     Private Shared Sub deleteSetupTostatrice(ByVal tostatrice As Int16)
         Using TTA As DBTableAdapters.tostatrici_Setup_ProgrammaTableAdapter = New DBTableAdapters.tostatrici_Setup_ProgrammaTableAdapter
-            TTA.DeleteTostatrice(tostatrice)
+            TTA.sp_TOSTATRICI_SETUP_PROGRAMMA_EliminaTostatrice(tostatrice)
         End Using
     End Sub
 
@@ -894,19 +894,19 @@ Public Class DB_PLC
 
     Private Shared Sub inserisciSetupTostatrice(ByVal setupTostatrice As strSetupTostatrice, ByVal silos As strBilancePerRicetta, ByVal contatore As UInt16)
         Using TTA As DBTableAdapters.tostatrici_Setup_ProgrammaTableAdapter = New DBTableAdapters.tostatrici_Setup_ProgrammaTableAdapter
-            TTA.InsertSilos(setupTostatrice.tostatrice,         'NR TOSTATRICE
-                            setupTostatrice.idRicetta,          'ID RICETTA
-                            contatore,                          'PROGRESSIVO COMPONENTE
-                            setupTostatrice.idRichiesta,        'ID RICHIESTA
-                            silos.idComponente,                 'ID COMPONENTE
-                            silos.componenteRicetta.kgSet,      'KG DA RICETTA
-                            silos.componenteRicetta.kgTol,      'TOLLERANZA DA RICETTA
-                            silos.componenteRicetta.fuoriLinea, 'SELEZIONE FUORI LINEA
-                            0,                                  'ULTIMO SILOS SCARICATO
-                            silos.kg,                           'PESO PREVISTO DA PRELEVARE NEL SILOS
-                            silos.bilancia,                     'SILOS APPARTENENTE A BILANCIA NR
-                            False,                              'ESEGUITO   
-                            0)                                  'PESO SCARICATO
+            TTA.sp_TOSTATRICI_SETUP_PROGRAMMA_InsertBilancia(setupTostatrice.tostatrice,         'NR TOSTATRICE
+                                                            setupTostatrice.idRicetta,          'ID RICETTA
+                                                            contatore,                          'PROGRESSIVO COMPONENTE
+                                                            setupTostatrice.idRichiesta,        'ID RICHIESTA
+                                                            silos.idComponente,                 'ID COMPONENTE
+                                                            silos.componenteRicetta.kgSet,      'KG DA RICETTA
+                                                            silos.componenteRicetta.kgTol,      'TOLLERANZA DA RICETTA
+                                                            silos.componenteRicetta.fuoriLinea, 'SELEZIONE FUORI LINEA
+                                                            0,                                  'ULTIMO SILOS SCARICATO
+                                                            silos.kg,                           'PESO PREVISTO DA PRELEVARE NEL SILOS
+                                                            silos.bilancia,                     'SILOS APPARTENENTE A BILANCIA NR
+                                                            False,                              'ESEGUITO   
+                                                            0)                                  'PESO SCARICATO
         End Using
     End Sub
 

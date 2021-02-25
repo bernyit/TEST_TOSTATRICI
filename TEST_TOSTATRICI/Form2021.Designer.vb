@@ -22,8 +22,8 @@ Partial Class Form2021
     'Non modificarla mediante l'editor del codice.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim ListViewItem1 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("")
-        Dim ListViewItem2 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("")
+        Dim ListViewItem3 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("")
+        Dim ListViewItem4 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("")
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtNrRicetta = New System.Windows.Forms.TextBox()
@@ -60,6 +60,7 @@ Partial Class Form2021
         Me.txtVerificaFattibilitaCombinazione2 = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.lblVerificaFattibilitaCombinazione = New System.Windows.Forms.Label()
+        Me.btnCalcolaProssimoSilos = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Button1
@@ -101,7 +102,7 @@ Partial Class Form2021
         '
         Me.ListView1.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3})
         Me.ListView1.HideSelection = False
-        Me.ListView1.Items.AddRange(New System.Windows.Forms.ListViewItem() {ListViewItem1, ListViewItem2})
+        Me.ListView1.Items.AddRange(New System.Windows.Forms.ListViewItem() {ListViewItem3, ListViewItem4})
         Me.ListView1.Location = New System.Drawing.Point(455, 12)
         Me.ListView1.Name = "ListView1"
         Me.ListView1.Size = New System.Drawing.Size(310, 426)
@@ -146,7 +147,7 @@ Partial Class Form2021
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(205, 79)
         Me.Button4.TabIndex = 17
-        Me.Button4.Text = "TROVA SILOS PER RICETTA E COMBINAZIONE"
+        Me.Button4.Text = "TROVA BILANCE PER RICETTA E COMBINAZIONE"
         Me.Button4.UseVisualStyleBackColor = True
         '
         'Label15
@@ -375,11 +376,21 @@ Partial Class Form2021
         Me.lblVerificaFattibilitaCombinazione.TabIndex = 100
         Me.lblVerificaFattibilitaCombinazione.Text = "Combinazione"
         '
+        'btnCalcolaProssimoSilos
+        '
+        Me.btnCalcolaProssimoSilos.Location = New System.Drawing.Point(39, 451)
+        Me.btnCalcolaProssimoSilos.Name = "btnCalcolaProssimoSilos"
+        Me.btnCalcolaProssimoSilos.Size = New System.Drawing.Size(205, 79)
+        Me.btnCalcolaProssimoSilos.TabIndex = 101
+        Me.btnCalcolaProssimoSilos.Text = "CALCOLA PROSSIMO SILOS PER BILANCIA"
+        Me.btnCalcolaProssimoSilos.UseVisualStyleBackColor = True
+        '
         'Form2021
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1338, 450)
+        Me.ClientSize = New System.Drawing.Size(816, 567)
+        Me.Controls.Add(Me.btnCalcolaProssimoSilos)
         Me.Controls.Add(Me.lblVerificaFattibilitaCombinazione)
         Me.Controls.Add(Me.txtVerificaFattibilitaCombinazione2)
         Me.Controls.Add(Me.Label2)
@@ -456,4 +467,5 @@ Partial Class Form2021
     Friend WithEvents txtVerificaFattibilitaCombinazione2 As TextBox
     Friend WithEvents Label2 As Label
     Friend WithEvents lblVerificaFattibilitaCombinazione As Label
+    Friend WithEvents btnCalcolaProssimoSilos As Button
 End Class

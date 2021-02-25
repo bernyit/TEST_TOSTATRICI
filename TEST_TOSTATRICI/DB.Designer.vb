@@ -33,11 +33,11 @@ Partial Public Class DB
     
     Private tableviewMagazzinoDosaggio_Totale As viewMagazzinoDosaggio_TotaleDataTable
     
-    Private tabletostatrici_Setup_Programma As tostatrici_Setup_ProgrammaDataTable
-    
     Private tabletostatrici_Setup_Richieste As tostatrici_Setup_RichiesteDataTable
     
     Private tableview_RicettaComponenti_disponibilitaBilanceConPriorita As view_RicettaComponenti_disponibilitaBilanceConPrioritaDataTable
+    
+    Private tabletostatrici_Setup_Programma As tostatrici_Setup_ProgrammaDataTable
     
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
     
@@ -80,14 +80,14 @@ Partial Public Class DB
             If (Not (ds.Tables("viewMagazzinoDosaggio_Totale")) Is Nothing) Then
                 MyBase.Tables.Add(New viewMagazzinoDosaggio_TotaleDataTable(ds.Tables("viewMagazzinoDosaggio_Totale")))
             End If
-            If (Not (ds.Tables("tostatrici_Setup_Programma")) Is Nothing) Then
-                MyBase.Tables.Add(New tostatrici_Setup_ProgrammaDataTable(ds.Tables("tostatrici_Setup_Programma")))
-            End If
             If (Not (ds.Tables("tostatrici_Setup_Richieste")) Is Nothing) Then
                 MyBase.Tables.Add(New tostatrici_Setup_RichiesteDataTable(ds.Tables("tostatrici_Setup_Richieste")))
             End If
             If (Not (ds.Tables("view_RicettaComponenti_disponibilitaBilanceConPriorita")) Is Nothing) Then
                 MyBase.Tables.Add(New view_RicettaComponenti_disponibilitaBilanceConPrioritaDataTable(ds.Tables("view_RicettaComponenti_disponibilitaBilanceConPriorita")))
+            End If
+            If (Not (ds.Tables("tostatrici_Setup_Programma")) Is Nothing) Then
+                MyBase.Tables.Add(New tostatrici_Setup_ProgrammaDataTable(ds.Tables("tostatrici_Setup_Programma")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -150,16 +150,6 @@ Partial Public Class DB
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
      Global.System.ComponentModel.Browsable(false),  _
      Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
-    Public ReadOnly Property tostatrici_Setup_Programma() As tostatrici_Setup_ProgrammaDataTable
-        Get
-            Return Me.tabletostatrici_Setup_Programma
-        End Get
-    End Property
-    
-    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
-     Global.System.ComponentModel.Browsable(false),  _
-     Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
     Public ReadOnly Property tostatrici_Setup_Richieste() As tostatrici_Setup_RichiesteDataTable
         Get
             Return Me.tabletostatrici_Setup_Richieste
@@ -173,6 +163,16 @@ Partial Public Class DB
     Public ReadOnly Property view_RicettaComponenti_disponibilitaBilanceConPriorita() As view_RicettaComponenti_disponibilitaBilanceConPrioritaDataTable
         Get
             Return Me.tableview_RicettaComponenti_disponibilitaBilanceConPriorita
+        End Get
+    End Property
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+     Global.System.ComponentModel.Browsable(false),  _
+     Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
+    Public ReadOnly Property tostatrici_Setup_Programma() As tostatrici_Setup_ProgrammaDataTable
+        Get
+            Return Me.tabletostatrici_Setup_Programma
         End Get
     End Property
     
@@ -255,14 +255,14 @@ Partial Public Class DB
             If (Not (ds.Tables("viewMagazzinoDosaggio_Totale")) Is Nothing) Then
                 MyBase.Tables.Add(New viewMagazzinoDosaggio_TotaleDataTable(ds.Tables("viewMagazzinoDosaggio_Totale")))
             End If
-            If (Not (ds.Tables("tostatrici_Setup_Programma")) Is Nothing) Then
-                MyBase.Tables.Add(New tostatrici_Setup_ProgrammaDataTable(ds.Tables("tostatrici_Setup_Programma")))
-            End If
             If (Not (ds.Tables("tostatrici_Setup_Richieste")) Is Nothing) Then
                 MyBase.Tables.Add(New tostatrici_Setup_RichiesteDataTable(ds.Tables("tostatrici_Setup_Richieste")))
             End If
             If (Not (ds.Tables("view_RicettaComponenti_disponibilitaBilanceConPriorita")) Is Nothing) Then
                 MyBase.Tables.Add(New view_RicettaComponenti_disponibilitaBilanceConPrioritaDataTable(ds.Tables("view_RicettaComponenti_disponibilitaBilanceConPriorita")))
+            End If
+            If (Not (ds.Tables("tostatrici_Setup_Programma")) Is Nothing) Then
+                MyBase.Tables.Add(New tostatrici_Setup_ProgrammaDataTable(ds.Tables("tostatrici_Setup_Programma")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -320,12 +320,6 @@ Partial Public Class DB
                 Me.tableviewMagazzinoDosaggio_Totale.InitVars
             End If
         End If
-        Me.tabletostatrici_Setup_Programma = CType(MyBase.Tables("tostatrici_Setup_Programma"),tostatrici_Setup_ProgrammaDataTable)
-        If (initTable = true) Then
-            If (Not (Me.tabletostatrici_Setup_Programma) Is Nothing) Then
-                Me.tabletostatrici_Setup_Programma.InitVars
-            End If
-        End If
         Me.tabletostatrici_Setup_Richieste = CType(MyBase.Tables("tostatrici_Setup_Richieste"),tostatrici_Setup_RichiesteDataTable)
         If (initTable = true) Then
             If (Not (Me.tabletostatrici_Setup_Richieste) Is Nothing) Then
@@ -336,6 +330,12 @@ Partial Public Class DB
         If (initTable = true) Then
             If (Not (Me.tableview_RicettaComponenti_disponibilitaBilanceConPriorita) Is Nothing) Then
                 Me.tableview_RicettaComponenti_disponibilitaBilanceConPriorita.InitVars
+            End If
+        End If
+        Me.tabletostatrici_Setup_Programma = CType(MyBase.Tables("tostatrici_Setup_Programma"),tostatrici_Setup_ProgrammaDataTable)
+        If (initTable = true) Then
+            If (Not (Me.tabletostatrici_Setup_Programma) Is Nothing) Then
+                Me.tabletostatrici_Setup_Programma.InitVars
             End If
         End If
     End Sub
@@ -356,12 +356,12 @@ Partial Public Class DB
         MyBase.Tables.Add(Me.tableview_RicettaComponenti_disponibilitaBilance)
         Me.tableviewMagazzinoDosaggio_Totale = New viewMagazzinoDosaggio_TotaleDataTable()
         MyBase.Tables.Add(Me.tableviewMagazzinoDosaggio_Totale)
-        Me.tabletostatrici_Setup_Programma = New tostatrici_Setup_ProgrammaDataTable()
-        MyBase.Tables.Add(Me.tabletostatrici_Setup_Programma)
         Me.tabletostatrici_Setup_Richieste = New tostatrici_Setup_RichiesteDataTable()
         MyBase.Tables.Add(Me.tabletostatrici_Setup_Richieste)
         Me.tableview_RicettaComponenti_disponibilitaBilanceConPriorita = New view_RicettaComponenti_disponibilitaBilanceConPrioritaDataTable()
         MyBase.Tables.Add(Me.tableview_RicettaComponenti_disponibilitaBilanceConPriorita)
+        Me.tabletostatrici_Setup_Programma = New tostatrici_Setup_ProgrammaDataTable()
+        MyBase.Tables.Add(Me.tabletostatrici_Setup_Programma)
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -390,12 +390,6 @@ Partial Public Class DB
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-    Private Function ShouldSerializetostatrici_Setup_Programma() As Boolean
-        Return false
-    End Function
-    
-    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
     Private Function ShouldSerializetostatrici_Setup_Richieste() As Boolean
         Return false
     End Function
@@ -403,6 +397,12 @@ Partial Public Class DB
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
     Private Function ShouldSerializeview_RicettaComponenti_disponibilitaBilanceConPriorita() As Boolean
+        Return false
+    End Function
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+    Private Function ShouldSerializetostatrici_Setup_Programma() As Boolean
         Return false
     End Function
     
@@ -477,13 +477,13 @@ Partial Public Class DB
     Public Delegate Sub viewMagazzinoDosaggio_TotaleRowChangeEventHandler(ByVal sender As Object, ByVal e As viewMagazzinoDosaggio_TotaleRowChangeEvent)
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-    Public Delegate Sub tostatrici_Setup_ProgrammaRowChangeEventHandler(ByVal sender As Object, ByVal e As tostatrici_Setup_ProgrammaRowChangeEvent)
-    
-    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
     Public Delegate Sub tostatrici_Setup_RichiesteRowChangeEventHandler(ByVal sender As Object, ByVal e As tostatrici_Setup_RichiesteRowChangeEvent)
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
     Public Delegate Sub view_RicettaComponenti_disponibilitaBilanceConPrioritaRowChangeEventHandler(ByVal sender As Object, ByVal e As view_RicettaComponenti_disponibilitaBilanceConPrioritaRowChangeEvent)
+    
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+    Public Delegate Sub tostatrici_Setup_ProgrammaRowChangeEventHandler(ByVal sender As Object, ByVal e As tostatrici_Setup_ProgrammaRowChangeEvent)
     
     '''<summary>
     '''Represents the strongly named DataTable class.
@@ -2078,437 +2078,6 @@ Partial Public Class DB
     '''</summary>
     <Global.System.Serializable(),  _
      Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
-    Partial Public Class tostatrici_Setup_ProgrammaDataTable
-        Inherits Global.System.Data.TypedTableBase(Of tostatrici_Setup_ProgrammaRow)
-        
-        Private columnTostatrice As Global.System.Data.DataColumn
-        
-        Private columnid_ricetta As Global.System.Data.DataColumn
-        
-        Private columnindice_componente As Global.System.Data.DataColumn
-        
-        Private columnid_richiesta As Global.System.Data.DataColumn
-        
-        Private columnid_componente As Global.System.Data.DataColumn
-        
-        Private columnkg_set As Global.System.Data.DataColumn
-        
-        Private columnkg_tol As Global.System.Data.DataColumn
-        
-        Private columnselezione_fl As Global.System.Data.DataColumn
-        
-        Private columnindiceSilosPerComponente As Global.System.Data.DataColumn
-        
-        Private columnpesoDaPrelevareNelSilos As Global.System.Data.DataColumn
-        
-        Private columnBilancia As Global.System.Data.DataColumn
-        
-        Private columneseguito As Global.System.Data.DataColumn
-        
-        Private columnultimoSilosScaricato As Global.System.Data.DataColumn
-        
-        Private columnpesoPrelevato As Global.System.Data.DataColumn
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub New()
-            MyBase.New
-            Me.TableName = "tostatrici_Setup_Programma"
-            Me.BeginInit
-            Me.InitClass
-            Me.EndInit
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Friend Sub New(ByVal table As Global.System.Data.DataTable)
-            MyBase.New
-            Me.TableName = table.TableName
-            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
-                Me.CaseSensitive = table.CaseSensitive
-            End If
-            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
-                Me.Locale = table.Locale
-            End If
-            If (table.Namespace <> table.DataSet.Namespace) Then
-                Me.Namespace = table.Namespace
-            End If
-            Me.Prefix = table.Prefix
-            Me.MinimumCapacity = table.MinimumCapacity
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
-            MyBase.New(info, context)
-            Me.InitVars
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property TostatriceColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnTostatrice
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property id_ricettaColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnid_ricetta
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property indice_componenteColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnindice_componente
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property id_richiestaColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnid_richiesta
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property id_componenteColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnid_componente
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property kg_setColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnkg_set
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property kg_tolColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnkg_tol
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property selezione_flColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnselezione_fl
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property indiceSilosPerComponenteColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnindiceSilosPerComponente
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property pesoDaPrelevareNelSilosColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnpesoDaPrelevareNelSilos
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property BilanciaColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnBilancia
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property eseguitoColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columneseguito
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property ultimoSilosScaricatoColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnultimoSilosScaricato
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property pesoPrelevatoColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnpesoPrelevato
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
-         Global.System.ComponentModel.Browsable(false)>  _
-        Public ReadOnly Property Count() As Integer
-            Get
-                Return Me.Rows.Count
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Default ReadOnly Property Item(ByVal index As Integer) As tostatrici_Setup_ProgrammaRow
-            Get
-                Return CType(Me.Rows(index),tostatrici_Setup_ProgrammaRow)
-            End Get
-        End Property
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Event tostatrici_Setup_ProgrammaRowChanging As tostatrici_Setup_ProgrammaRowChangeEventHandler
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Event tostatrici_Setup_ProgrammaRowChanged As tostatrici_Setup_ProgrammaRowChangeEventHandler
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Event tostatrici_Setup_ProgrammaRowDeleting As tostatrici_Setup_ProgrammaRowChangeEventHandler
-        
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Event tostatrici_Setup_ProgrammaRowDeleted As tostatrici_Setup_ProgrammaRowChangeEventHandler
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Sub Addtostatrici_Setup_ProgrammaRow(ByVal row As tostatrici_Setup_ProgrammaRow)
-            Me.Rows.Add(row)
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function Addtostatrici_Setup_ProgrammaRow(ByVal Tostatrice As Integer, ByVal id_ricetta As Integer, ByVal indice_componente As Integer, ByVal id_richiesta As Long, ByVal id_componente As Integer, ByVal kg_set As Decimal, ByVal kg_tol As Decimal, ByVal selezione_fl As Boolean, ByVal indiceSilosPerComponente As Integer, ByVal pesoDaPrelevareNelSilos As Decimal, ByVal Bilancia As Integer, ByVal eseguito As Boolean, ByVal ultimoSilosScaricato As Integer, ByVal pesoPrelevato As Decimal) As tostatrici_Setup_ProgrammaRow
-            Dim rowtostatrici_Setup_ProgrammaRow As tostatrici_Setup_ProgrammaRow = CType(Me.NewRow,tostatrici_Setup_ProgrammaRow)
-            Dim columnValuesArray() As Object = New Object() {Tostatrice, id_ricetta, indice_componente, id_richiesta, id_componente, kg_set, kg_tol, selezione_fl, indiceSilosPerComponente, pesoDaPrelevareNelSilos, Bilancia, eseguito, ultimoSilosScaricato, pesoPrelevato}
-            rowtostatrici_Setup_ProgrammaRow.ItemArray = columnValuesArray
-            Me.Rows.Add(rowtostatrici_Setup_ProgrammaRow)
-            Return rowtostatrici_Setup_ProgrammaRow
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function FindByTostatriceid_ricettaindice_componente(ByVal Tostatrice As Integer, ByVal id_ricetta As Integer, ByVal indice_componente As Integer) As tostatrici_Setup_ProgrammaRow
-            Return CType(Me.Rows.Find(New Object() {Tostatrice, id_ricetta, indice_componente}),tostatrici_Setup_ProgrammaRow)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overrides Function Clone() As Global.System.Data.DataTable
-            Dim cln As tostatrici_Setup_ProgrammaDataTable = CType(MyBase.Clone,tostatrici_Setup_ProgrammaDataTable)
-            cln.InitVars
-            Return cln
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
-            Return New tostatrici_Setup_ProgrammaDataTable()
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Friend Sub InitVars()
-            Me.columnTostatrice = MyBase.Columns("Tostatrice")
-            Me.columnid_ricetta = MyBase.Columns("id_ricetta")
-            Me.columnindice_componente = MyBase.Columns("indice_componente")
-            Me.columnid_richiesta = MyBase.Columns("id_richiesta")
-            Me.columnid_componente = MyBase.Columns("id_componente")
-            Me.columnkg_set = MyBase.Columns("kg_set")
-            Me.columnkg_tol = MyBase.Columns("kg_tol")
-            Me.columnselezione_fl = MyBase.Columns("selezione_fl")
-            Me.columnindiceSilosPerComponente = MyBase.Columns("indiceSilosPerComponente")
-            Me.columnpesoDaPrelevareNelSilos = MyBase.Columns("pesoDaPrelevareNelSilos")
-            Me.columnBilancia = MyBase.Columns("Bilancia")
-            Me.columneseguito = MyBase.Columns("eseguito")
-            Me.columnultimoSilosScaricato = MyBase.Columns("ultimoSilosScaricato")
-            Me.columnpesoPrelevato = MyBase.Columns("pesoPrelevato")
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Private Sub InitClass()
-            Me.columnTostatrice = New Global.System.Data.DataColumn("Tostatrice", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnTostatrice)
-            Me.columnid_ricetta = New Global.System.Data.DataColumn("id_ricetta", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnid_ricetta)
-            Me.columnindice_componente = New Global.System.Data.DataColumn("indice_componente", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnindice_componente)
-            Me.columnid_richiesta = New Global.System.Data.DataColumn("id_richiesta", GetType(Long), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnid_richiesta)
-            Me.columnid_componente = New Global.System.Data.DataColumn("id_componente", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnid_componente)
-            Me.columnkg_set = New Global.System.Data.DataColumn("kg_set", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnkg_set)
-            Me.columnkg_tol = New Global.System.Data.DataColumn("kg_tol", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnkg_tol)
-            Me.columnselezione_fl = New Global.System.Data.DataColumn("selezione_fl", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnselezione_fl)
-            Me.columnindiceSilosPerComponente = New Global.System.Data.DataColumn("indiceSilosPerComponente", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnindiceSilosPerComponente)
-            Me.columnpesoDaPrelevareNelSilos = New Global.System.Data.DataColumn("pesoDaPrelevareNelSilos", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnpesoDaPrelevareNelSilos)
-            Me.columnBilancia = New Global.System.Data.DataColumn("Bilancia", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnBilancia)
-            Me.columneseguito = New Global.System.Data.DataColumn("eseguito", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columneseguito)
-            Me.columnultimoSilosScaricato = New Global.System.Data.DataColumn("ultimoSilosScaricato", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnultimoSilosScaricato)
-            Me.columnpesoPrelevato = New Global.System.Data.DataColumn("pesoPrelevato", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnpesoPrelevato)
-            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnTostatrice, Me.columnid_ricetta, Me.columnindice_componente}, true))
-            Me.columnTostatrice.AllowDBNull = false
-            Me.columnid_ricetta.AllowDBNull = false
-            Me.columnindice_componente.AllowDBNull = false
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function Newtostatrici_Setup_ProgrammaRow() As tostatrici_Setup_ProgrammaRow
-            Return CType(Me.NewRow,tostatrici_Setup_ProgrammaRow)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
-            Return New tostatrici_Setup_ProgrammaRow(builder)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Protected Overrides Function GetRowType() As Global.System.Type
-            Return GetType(tostatrici_Setup_ProgrammaRow)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowChanged(e)
-            If (Not (Me.tostatrici_Setup_ProgrammaRowChangedEvent) Is Nothing) Then
-                RaiseEvent tostatrici_Setup_ProgrammaRowChanged(Me, New tostatrici_Setup_ProgrammaRowChangeEvent(CType(e.Row,tostatrici_Setup_ProgrammaRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowChanging(e)
-            If (Not (Me.tostatrici_Setup_ProgrammaRowChangingEvent) Is Nothing) Then
-                RaiseEvent tostatrici_Setup_ProgrammaRowChanging(Me, New tostatrici_Setup_ProgrammaRowChangeEvent(CType(e.Row,tostatrici_Setup_ProgrammaRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowDeleted(e)
-            If (Not (Me.tostatrici_Setup_ProgrammaRowDeletedEvent) Is Nothing) Then
-                RaiseEvent tostatrici_Setup_ProgrammaRowDeleted(Me, New tostatrici_Setup_ProgrammaRowChangeEvent(CType(e.Row,tostatrici_Setup_ProgrammaRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
-            MyBase.OnRowDeleting(e)
-            If (Not (Me.tostatrici_Setup_ProgrammaRowDeletingEvent) Is Nothing) Then
-                RaiseEvent tostatrici_Setup_ProgrammaRowDeleting(Me, New tostatrici_Setup_ProgrammaRowChangeEvent(CType(e.Row,tostatrici_Setup_ProgrammaRow), e.Action))
-            End If
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub Removetostatrici_Setup_ProgrammaRow(ByVal row As tostatrici_Setup_ProgrammaRow)
-            Me.Rows.Remove(row)
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
-            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
-            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As DB = New DB()
-            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
-            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
-            any1.MinOccurs = New Decimal(0)
-            any1.MaxOccurs = Decimal.MaxValue
-            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
-            sequence.Items.Add(any1)
-            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
-            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
-            any2.MinOccurs = New Decimal(1)
-            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
-            sequence.Items.Add(any2)
-            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
-            attribute1.Name = "namespace"
-            attribute1.FixedValue = ds.Namespace
-            type.Attributes.Add(attribute1)
-            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
-            attribute2.Name = "tableTypeName"
-            attribute2.FixedValue = "tostatrici_Setup_ProgrammaDataTable"
-            type.Attributes.Add(attribute2)
-            type.Particle = sequence
-            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
-            If xs.Contains(dsSchema.TargetNamespace) Then
-                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
-                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
-                Try 
-                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
-                    dsSchema.Write(s1)
-                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
-                    Do While schemas.MoveNext
-                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
-                        s2.SetLength(0)
-                        schema.Write(s2)
-                        If (s1.Length = s2.Length) Then
-                            s1.Position = 0
-                            s2.Position = 0
-                            
-                            Do While ((s1.Position <> s1.Length)  _
-                                        AndAlso (s1.ReadByte = s2.ReadByte))
-                                
-                                
-                            Loop
-                            If (s1.Position = s1.Length) Then
-                                Return type
-                            End If
-                        End If
-                        
-                    Loop
-                Finally
-                    If (Not (s1) Is Nothing) Then
-                        s1.Close
-                    End If
-                    If (Not (s2) Is Nothing) Then
-                        s2.Close
-                    End If
-                End Try
-            End If
-            xs.Add(dsSchema)
-            Return type
-        End Function
-    End Class
-    
-    '''<summary>
-    '''Represents the strongly named DataTable class.
-    '''</summary>
-    <Global.System.Serializable(),  _
-     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
     Partial Public Class tostatrici_Setup_RichiesteDataTable
         Inherits Global.System.Data.TypedTableBase(Of tostatrici_Setup_RichiesteRow)
         
@@ -3260,6 +2829,424 @@ Partial Public Class DB
             Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
             attribute2.Name = "tableTypeName"
             attribute2.FixedValue = "view_RicettaComponenti_disponibilitaBilanceConPrioritaDataTable"
+            type.Attributes.Add(attribute2)
+            type.Particle = sequence
+            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
+            If xs.Contains(dsSchema.TargetNamespace) Then
+                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Try 
+                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
+                    dsSchema.Write(s1)
+                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
+                    Do While schemas.MoveNext
+                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
+                        s2.SetLength(0)
+                        schema.Write(s2)
+                        If (s1.Length = s2.Length) Then
+                            s1.Position = 0
+                            s2.Position = 0
+                            
+                            Do While ((s1.Position <> s1.Length)  _
+                                        AndAlso (s1.ReadByte = s2.ReadByte))
+                                
+                                
+                            Loop
+                            If (s1.Position = s1.Length) Then
+                                Return type
+                            End If
+                        End If
+                        
+                    Loop
+                Finally
+                    If (Not (s1) Is Nothing) Then
+                        s1.Close
+                    End If
+                    If (Not (s2) Is Nothing) Then
+                        s2.Close
+                    End If
+                End Try
+            End If
+            xs.Add(dsSchema)
+            Return type
+        End Function
+    End Class
+    
+    '''<summary>
+    '''Represents the strongly named DataTable class.
+    '''</summary>
+    <Global.System.Serializable(),  _
+     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
+    Partial Public Class tostatrici_Setup_ProgrammaDataTable
+        Inherits Global.System.Data.TypedTableBase(Of tostatrici_Setup_ProgrammaRow)
+        
+        Private columnTostatrice As Global.System.Data.DataColumn
+        
+        Private columnid_ricetta As Global.System.Data.DataColumn
+        
+        Private columnindice_componente As Global.System.Data.DataColumn
+        
+        Private columnid_richiesta As Global.System.Data.DataColumn
+        
+        Private columnid_componente As Global.System.Data.DataColumn
+        
+        Private columnkg_set As Global.System.Data.DataColumn
+        
+        Private columnkg_tol As Global.System.Data.DataColumn
+        
+        Private columnselezione_fl As Global.System.Data.DataColumn
+        
+        Private columnultimoSilosScaricato As Global.System.Data.DataColumn
+        
+        Private columnpesoDaPrelevareNelSilos As Global.System.Data.DataColumn
+        
+        Private columnBilancia As Global.System.Data.DataColumn
+        
+        Private columneseguito As Global.System.Data.DataColumn
+        
+        Private columnpesoPrelevato As Global.System.Data.DataColumn
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.TableName = "tostatrici_Setup_Programma"
+            Me.BeginInit
+            Me.InitClass
+            Me.EndInit
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Friend Sub New(ByVal table As Global.System.Data.DataTable)
+            MyBase.New
+            Me.TableName = table.TableName
+            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
+                Me.CaseSensitive = table.CaseSensitive
+            End If
+            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
+                Me.Locale = table.Locale
+            End If
+            If (table.Namespace <> table.DataSet.Namespace) Then
+                Me.Namespace = table.Namespace
+            End If
+            Me.Prefix = table.Prefix
+            Me.MinimumCapacity = table.MinimumCapacity
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
+            MyBase.New(info, context)
+            Me.InitVars
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property TostatriceColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTostatrice
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property id_ricettaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnid_ricetta
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property indice_componenteColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnindice_componente
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property id_richiestaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnid_richiesta
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property id_componenteColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnid_componente
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property kg_setColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnkg_set
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property kg_tolColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnkg_tol
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property selezione_flColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnselezione_fl
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property ultimoSilosScaricatoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnultimoSilosScaricato
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property pesoDaPrelevareNelSilosColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnpesoDaPrelevareNelSilos
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property BilanciaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnBilancia
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property eseguitoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columneseguito
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property pesoPrelevatoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnpesoPrelevato
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Browsable(false)>  _
+        Public ReadOnly Property Count() As Integer
+            Get
+                Return Me.Rows.Count
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Default ReadOnly Property Item(ByVal index As Integer) As tostatrici_Setup_ProgrammaRow
+            Get
+                Return CType(Me.Rows(index),tostatrici_Setup_ProgrammaRow)
+            End Get
+        End Property
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Event tostatrici_Setup_ProgrammaRowChanging As tostatrici_Setup_ProgrammaRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Event tostatrici_Setup_ProgrammaRowChanged As tostatrici_Setup_ProgrammaRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Event tostatrici_Setup_ProgrammaRowDeleting As tostatrici_Setup_ProgrammaRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Event tostatrici_Setup_ProgrammaRowDeleted As tostatrici_Setup_ProgrammaRowChangeEventHandler
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Overloads Sub Addtostatrici_Setup_ProgrammaRow(ByVal row As tostatrici_Setup_ProgrammaRow)
+            Me.Rows.Add(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Overloads Function Addtostatrici_Setup_ProgrammaRow(ByVal Tostatrice As Integer, ByVal id_ricetta As Integer, ByVal indice_componente As Integer, ByVal id_richiesta As Long, ByVal id_componente As Integer, ByVal kg_set As Decimal, ByVal kg_tol As Decimal, ByVal selezione_fl As Boolean, ByVal ultimoSilosScaricato As Integer, ByVal pesoDaPrelevareNelSilos As Decimal, ByVal Bilancia As Integer, ByVal eseguito As Boolean, ByVal pesoPrelevato As Decimal) As tostatrici_Setup_ProgrammaRow
+            Dim rowtostatrici_Setup_ProgrammaRow As tostatrici_Setup_ProgrammaRow = CType(Me.NewRow,tostatrici_Setup_ProgrammaRow)
+            Dim columnValuesArray() As Object = New Object() {Tostatrice, id_ricetta, indice_componente, id_richiesta, id_componente, kg_set, kg_tol, selezione_fl, ultimoSilosScaricato, pesoDaPrelevareNelSilos, Bilancia, eseguito, pesoPrelevato}
+            rowtostatrici_Setup_ProgrammaRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowtostatrici_Setup_ProgrammaRow)
+            Return rowtostatrici_Setup_ProgrammaRow
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function FindByTostatriceid_ricettaindice_componente(ByVal Tostatrice As Integer, ByVal id_ricetta As Integer, ByVal indice_componente As Integer) As tostatrici_Setup_ProgrammaRow
+            Return CType(Me.Rows.Find(New Object() {Tostatrice, id_ricetta, indice_componente}),tostatrici_Setup_ProgrammaRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Overrides Function Clone() As Global.System.Data.DataTable
+            Dim cln As tostatrici_Setup_ProgrammaDataTable = CType(MyBase.Clone,tostatrici_Setup_ProgrammaDataTable)
+            cln.InitVars
+            Return cln
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
+            Return New tostatrici_Setup_ProgrammaDataTable()
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Friend Sub InitVars()
+            Me.columnTostatrice = MyBase.Columns("Tostatrice")
+            Me.columnid_ricetta = MyBase.Columns("id_ricetta")
+            Me.columnindice_componente = MyBase.Columns("indice_componente")
+            Me.columnid_richiesta = MyBase.Columns("id_richiesta")
+            Me.columnid_componente = MyBase.Columns("id_componente")
+            Me.columnkg_set = MyBase.Columns("kg_set")
+            Me.columnkg_tol = MyBase.Columns("kg_tol")
+            Me.columnselezione_fl = MyBase.Columns("selezione_fl")
+            Me.columnultimoSilosScaricato = MyBase.Columns("ultimoSilosScaricato")
+            Me.columnpesoDaPrelevareNelSilos = MyBase.Columns("pesoDaPrelevareNelSilos")
+            Me.columnBilancia = MyBase.Columns("Bilancia")
+            Me.columneseguito = MyBase.Columns("eseguito")
+            Me.columnpesoPrelevato = MyBase.Columns("pesoPrelevato")
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Private Sub InitClass()
+            Me.columnTostatrice = New Global.System.Data.DataColumn("Tostatrice", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTostatrice)
+            Me.columnid_ricetta = New Global.System.Data.DataColumn("id_ricetta", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnid_ricetta)
+            Me.columnindice_componente = New Global.System.Data.DataColumn("indice_componente", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnindice_componente)
+            Me.columnid_richiesta = New Global.System.Data.DataColumn("id_richiesta", GetType(Long), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnid_richiesta)
+            Me.columnid_componente = New Global.System.Data.DataColumn("id_componente", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnid_componente)
+            Me.columnkg_set = New Global.System.Data.DataColumn("kg_set", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnkg_set)
+            Me.columnkg_tol = New Global.System.Data.DataColumn("kg_tol", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnkg_tol)
+            Me.columnselezione_fl = New Global.System.Data.DataColumn("selezione_fl", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnselezione_fl)
+            Me.columnultimoSilosScaricato = New Global.System.Data.DataColumn("ultimoSilosScaricato", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnultimoSilosScaricato)
+            Me.columnpesoDaPrelevareNelSilos = New Global.System.Data.DataColumn("pesoDaPrelevareNelSilos", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnpesoDaPrelevareNelSilos)
+            Me.columnBilancia = New Global.System.Data.DataColumn("Bilancia", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnBilancia)
+            Me.columneseguito = New Global.System.Data.DataColumn("eseguito", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columneseguito)
+            Me.columnpesoPrelevato = New Global.System.Data.DataColumn("pesoPrelevato", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnpesoPrelevato)
+            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnTostatrice, Me.columnid_ricetta, Me.columnindice_componente}, true))
+            Me.columnTostatrice.AllowDBNull = false
+            Me.columnid_ricetta.AllowDBNull = false
+            Me.columnindice_componente.AllowDBNull = false
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Newtostatrici_Setup_ProgrammaRow() As tostatrici_Setup_ProgrammaRow
+            Return CType(Me.NewRow,tostatrici_Setup_ProgrammaRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
+            Return New tostatrici_Setup_ProgrammaRow(builder)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Function GetRowType() As Global.System.Type
+            Return GetType(tostatrici_Setup_ProgrammaRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanged(e)
+            If (Not (Me.tostatrici_Setup_ProgrammaRowChangedEvent) Is Nothing) Then
+                RaiseEvent tostatrici_Setup_ProgrammaRowChanged(Me, New tostatrici_Setup_ProgrammaRowChangeEvent(CType(e.Row,tostatrici_Setup_ProgrammaRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanging(e)
+            If (Not (Me.tostatrici_Setup_ProgrammaRowChangingEvent) Is Nothing) Then
+                RaiseEvent tostatrici_Setup_ProgrammaRowChanging(Me, New tostatrici_Setup_ProgrammaRowChangeEvent(CType(e.Row,tostatrici_Setup_ProgrammaRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleted(e)
+            If (Not (Me.tostatrici_Setup_ProgrammaRowDeletedEvent) Is Nothing) Then
+                RaiseEvent tostatrici_Setup_ProgrammaRowDeleted(Me, New tostatrici_Setup_ProgrammaRowChangeEvent(CType(e.Row,tostatrici_Setup_ProgrammaRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleting(e)
+            If (Not (Me.tostatrici_Setup_ProgrammaRowDeletingEvent) Is Nothing) Then
+                RaiseEvent tostatrici_Setup_ProgrammaRowDeleting(Me, New tostatrici_Setup_ProgrammaRowChangeEvent(CType(e.Row,tostatrici_Setup_ProgrammaRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Removetostatrici_Setup_ProgrammaRow(ByVal row As tostatrici_Setup_ProgrammaRow)
+            Me.Rows.Remove(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
+            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
+            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
+            Dim ds As DB = New DB()
+            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
+            any1.MinOccurs = New Decimal(0)
+            any1.MaxOccurs = Decimal.MaxValue
+            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any1)
+            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
+            any2.MinOccurs = New Decimal(1)
+            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any2)
+            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute1.Name = "namespace"
+            attribute1.FixedValue = ds.Namespace
+            type.Attributes.Add(attribute1)
+            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute2.Name = "tableTypeName"
+            attribute2.FixedValue = "tostatrici_Setup_ProgrammaDataTable"
             type.Attributes.Add(attribute2)
             type.Particle = sequence
             Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
@@ -4365,363 +4352,6 @@ Partial Public Class DB
     '''<summary>
     '''Represents strongly named DataRow class.
     '''</summary>
-    Partial Public Class tostatrici_Setup_ProgrammaRow
-        Inherits Global.System.Data.DataRow
-        
-        Private tabletostatrici_Setup_Programma As tostatrici_Setup_ProgrammaDataTable
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
-            MyBase.New(rb)
-            Me.tabletostatrici_Setup_Programma = CType(Me.Table,tostatrici_Setup_ProgrammaDataTable)
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property Tostatrice() As Integer
-            Get
-                Return CType(Me(Me.tabletostatrici_Setup_Programma.TostatriceColumn),Integer)
-            End Get
-            Set
-                Me(Me.tabletostatrici_Setup_Programma.TostatriceColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property id_ricetta() As Integer
-            Get
-                Return CType(Me(Me.tabletostatrici_Setup_Programma.id_ricettaColumn),Integer)
-            End Get
-            Set
-                Me(Me.tabletostatrici_Setup_Programma.id_ricettaColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property indice_componente() As Integer
-            Get
-                Return CType(Me(Me.tabletostatrici_Setup_Programma.indice_componenteColumn),Integer)
-            End Get
-            Set
-                Me(Me.tabletostatrici_Setup_Programma.indice_componenteColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property id_richiesta() As Long
-            Get
-                Try 
-                    Return CType(Me(Me.tabletostatrici_Setup_Programma.id_richiestaColumn),Long)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'id_richiesta' nella tabella 'tostatrici_Setup_Programma'"& _ 
-                            " è DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tabletostatrici_Setup_Programma.id_richiestaColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property id_componente() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tabletostatrici_Setup_Programma.id_componenteColumn),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'id_componente' nella tabella 'tostatrici_Setup_Programma"& _ 
-                            "' è DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tabletostatrici_Setup_Programma.id_componenteColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property kg_set() As Decimal
-            Get
-                Try 
-                    Return CType(Me(Me.tabletostatrici_Setup_Programma.kg_setColumn),Decimal)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'kg_set' nella tabella 'tostatrici_Setup_Programma' è DBN"& _ 
-                            "ull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tabletostatrici_Setup_Programma.kg_setColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property kg_tol() As Decimal
-            Get
-                Try 
-                    Return CType(Me(Me.tabletostatrici_Setup_Programma.kg_tolColumn),Decimal)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'kg_tol' nella tabella 'tostatrici_Setup_Programma' è DBN"& _ 
-                            "ull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tabletostatrici_Setup_Programma.kg_tolColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property selezione_fl() As Boolean
-            Get
-                Try 
-                    Return CType(Me(Me.tabletostatrici_Setup_Programma.selezione_flColumn),Boolean)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'selezione_fl' nella tabella 'tostatrici_Setup_Programma'"& _ 
-                            " è DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tabletostatrici_Setup_Programma.selezione_flColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property indiceSilosPerComponente() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tabletostatrici_Setup_Programma.indiceSilosPerComponenteColumn),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'indiceSilosPerComponente' nella tabella 'tostatrici_Setu"& _ 
-                            "p_Programma' è DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tabletostatrici_Setup_Programma.indiceSilosPerComponenteColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property pesoDaPrelevareNelSilos() As Decimal
-            Get
-                Try 
-                    Return CType(Me(Me.tabletostatrici_Setup_Programma.pesoDaPrelevareNelSilosColumn),Decimal)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'pesoDaPrelevareNelSilos' nella tabella 'tostatrici_Setup"& _ 
-                            "_Programma' è DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tabletostatrici_Setup_Programma.pesoDaPrelevareNelSilosColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property Bilancia() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tabletostatrici_Setup_Programma.BilanciaColumn),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'Bilancia' nella tabella 'tostatrici_Setup_Programma' è D"& _ 
-                            "BNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tabletostatrici_Setup_Programma.BilanciaColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property eseguito() As Boolean
-            Get
-                Try 
-                    Return CType(Me(Me.tabletostatrici_Setup_Programma.eseguitoColumn),Boolean)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'eseguito' nella tabella 'tostatrici_Setup_Programma' è D"& _ 
-                            "BNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tabletostatrici_Setup_Programma.eseguitoColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property ultimoSilosScaricato() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tabletostatrici_Setup_Programma.ultimoSilosScaricatoColumn),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'ultimoSilosScaricato' nella tabella 'tostatrici_Setup_Pr"& _ 
-                            "ogramma' è DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tabletostatrici_Setup_Programma.ultimoSilosScaricatoColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property pesoPrelevato() As Decimal
-            Get
-                Try 
-                    Return CType(Me(Me.tabletostatrici_Setup_Programma.pesoPrelevatoColumn),Decimal)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'pesoPrelevato' nella tabella 'tostatrici_Setup_Programma"& _ 
-                            "' è DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tabletostatrici_Setup_Programma.pesoPrelevatoColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function Isid_richiestaNull() As Boolean
-            Return Me.IsNull(Me.tabletostatrici_Setup_Programma.id_richiestaColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub Setid_richiestaNull()
-            Me(Me.tabletostatrici_Setup_Programma.id_richiestaColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function Isid_componenteNull() As Boolean
-            Return Me.IsNull(Me.tabletostatrici_Setup_Programma.id_componenteColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub Setid_componenteNull()
-            Me(Me.tabletostatrici_Setup_Programma.id_componenteColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function Iskg_setNull() As Boolean
-            Return Me.IsNull(Me.tabletostatrici_Setup_Programma.kg_setColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub Setkg_setNull()
-            Me(Me.tabletostatrici_Setup_Programma.kg_setColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function Iskg_tolNull() As Boolean
-            Return Me.IsNull(Me.tabletostatrici_Setup_Programma.kg_tolColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub Setkg_tolNull()
-            Me(Me.tabletostatrici_Setup_Programma.kg_tolColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function Isselezione_flNull() As Boolean
-            Return Me.IsNull(Me.tabletostatrici_Setup_Programma.selezione_flColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub Setselezione_flNull()
-            Me(Me.tabletostatrici_Setup_Programma.selezione_flColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IsindiceSilosPerComponenteNull() As Boolean
-            Return Me.IsNull(Me.tabletostatrici_Setup_Programma.indiceSilosPerComponenteColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetindiceSilosPerComponenteNull()
-            Me(Me.tabletostatrici_Setup_Programma.indiceSilosPerComponenteColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IspesoDaPrelevareNelSilosNull() As Boolean
-            Return Me.IsNull(Me.tabletostatrici_Setup_Programma.pesoDaPrelevareNelSilosColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetpesoDaPrelevareNelSilosNull()
-            Me(Me.tabletostatrici_Setup_Programma.pesoDaPrelevareNelSilosColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IsBilanciaNull() As Boolean
-            Return Me.IsNull(Me.tabletostatrici_Setup_Programma.BilanciaColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetBilanciaNull()
-            Me(Me.tabletostatrici_Setup_Programma.BilanciaColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IseseguitoNull() As Boolean
-            Return Me.IsNull(Me.tabletostatrici_Setup_Programma.eseguitoColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SeteseguitoNull()
-            Me(Me.tabletostatrici_Setup_Programma.eseguitoColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IsultimoSilosScaricatoNull() As Boolean
-            Return Me.IsNull(Me.tabletostatrici_Setup_Programma.ultimoSilosScaricatoColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetultimoSilosScaricatoNull()
-            Me(Me.tabletostatrici_Setup_Programma.ultimoSilosScaricatoColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IspesoPrelevatoNull() As Boolean
-            Return Me.IsNull(Me.tabletostatrici_Setup_Programma.pesoPrelevatoColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetpesoPrelevatoNull()
-            Me(Me.tabletostatrici_Setup_Programma.pesoPrelevatoColumn) = Global.System.Convert.DBNull
-        End Sub
-    End Class
-    
-    '''<summary>
-    '''Represents strongly named DataRow class.
-    '''</summary>
     Partial Public Class tostatrici_Setup_RichiesteRow
         Inherits Global.System.Data.DataRow
         
@@ -5351,6 +4981,335 @@ Partial Public Class DB
     End Class
     
     '''<summary>
+    '''Represents strongly named DataRow class.
+    '''</summary>
+    Partial Public Class tostatrici_Setup_ProgrammaRow
+        Inherits Global.System.Data.DataRow
+        
+        Private tabletostatrici_Setup_Programma As tostatrici_Setup_ProgrammaDataTable
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
+            MyBase.New(rb)
+            Me.tabletostatrici_Setup_Programma = CType(Me.Table,tostatrici_Setup_ProgrammaDataTable)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Tostatrice() As Integer
+            Get
+                Return CType(Me(Me.tabletostatrici_Setup_Programma.TostatriceColumn),Integer)
+            End Get
+            Set
+                Me(Me.tabletostatrici_Setup_Programma.TostatriceColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property id_ricetta() As Integer
+            Get
+                Return CType(Me(Me.tabletostatrici_Setup_Programma.id_ricettaColumn),Integer)
+            End Get
+            Set
+                Me(Me.tabletostatrici_Setup_Programma.id_ricettaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property indice_componente() As Integer
+            Get
+                Return CType(Me(Me.tabletostatrici_Setup_Programma.indice_componenteColumn),Integer)
+            End Get
+            Set
+                Me(Me.tabletostatrici_Setup_Programma.indice_componenteColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property id_richiesta() As Long
+            Get
+                Try 
+                    Return CType(Me(Me.tabletostatrici_Setup_Programma.id_richiestaColumn),Long)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'id_richiesta' nella tabella 'tostatrici_Setup_Programma'"& _ 
+                            " è DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tabletostatrici_Setup_Programma.id_richiestaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property id_componente() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tabletostatrici_Setup_Programma.id_componenteColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'id_componente' nella tabella 'tostatrici_Setup_Programma"& _ 
+                            "' è DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tabletostatrici_Setup_Programma.id_componenteColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property kg_set() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tabletostatrici_Setup_Programma.kg_setColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'kg_set' nella tabella 'tostatrici_Setup_Programma' è DBN"& _ 
+                            "ull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tabletostatrici_Setup_Programma.kg_setColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property kg_tol() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tabletostatrici_Setup_Programma.kg_tolColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'kg_tol' nella tabella 'tostatrici_Setup_Programma' è DBN"& _ 
+                            "ull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tabletostatrici_Setup_Programma.kg_tolColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property selezione_fl() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tabletostatrici_Setup_Programma.selezione_flColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'selezione_fl' nella tabella 'tostatrici_Setup_Programma'"& _ 
+                            " è DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tabletostatrici_Setup_Programma.selezione_flColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property ultimoSilosScaricato() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tabletostatrici_Setup_Programma.ultimoSilosScaricatoColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'ultimoSilosScaricato' nella tabella 'tostatrici_Setup_Pr"& _ 
+                            "ogramma' è DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tabletostatrici_Setup_Programma.ultimoSilosScaricatoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property pesoDaPrelevareNelSilos() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tabletostatrici_Setup_Programma.pesoDaPrelevareNelSilosColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'pesoDaPrelevareNelSilos' nella tabella 'tostatrici_Setup"& _ 
+                            "_Programma' è DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tabletostatrici_Setup_Programma.pesoDaPrelevareNelSilosColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Bilancia() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tabletostatrici_Setup_Programma.BilanciaColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'Bilancia' nella tabella 'tostatrici_Setup_Programma' è D"& _ 
+                            "BNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tabletostatrici_Setup_Programma.BilanciaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property eseguito() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tabletostatrici_Setup_Programma.eseguitoColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'eseguito' nella tabella 'tostatrici_Setup_Programma' è D"& _ 
+                            "BNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tabletostatrici_Setup_Programma.eseguitoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property pesoPrelevato() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tabletostatrici_Setup_Programma.pesoPrelevatoColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("Il valore della colonna 'pesoPrelevato' nella tabella 'tostatrici_Setup_Programma"& _ 
+                            "' è DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tabletostatrici_Setup_Programma.pesoPrelevatoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Isid_richiestaNull() As Boolean
+            Return Me.IsNull(Me.tabletostatrici_Setup_Programma.id_richiestaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Setid_richiestaNull()
+            Me(Me.tabletostatrici_Setup_Programma.id_richiestaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Isid_componenteNull() As Boolean
+            Return Me.IsNull(Me.tabletostatrici_Setup_Programma.id_componenteColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Setid_componenteNull()
+            Me(Me.tabletostatrici_Setup_Programma.id_componenteColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Iskg_setNull() As Boolean
+            Return Me.IsNull(Me.tabletostatrici_Setup_Programma.kg_setColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Setkg_setNull()
+            Me(Me.tabletostatrici_Setup_Programma.kg_setColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Iskg_tolNull() As Boolean
+            Return Me.IsNull(Me.tabletostatrici_Setup_Programma.kg_tolColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Setkg_tolNull()
+            Me(Me.tabletostatrici_Setup_Programma.kg_tolColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Isselezione_flNull() As Boolean
+            Return Me.IsNull(Me.tabletostatrici_Setup_Programma.selezione_flColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Setselezione_flNull()
+            Me(Me.tabletostatrici_Setup_Programma.selezione_flColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsultimoSilosScaricatoNull() As Boolean
+            Return Me.IsNull(Me.tabletostatrici_Setup_Programma.ultimoSilosScaricatoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetultimoSilosScaricatoNull()
+            Me(Me.tabletostatrici_Setup_Programma.ultimoSilosScaricatoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IspesoDaPrelevareNelSilosNull() As Boolean
+            Return Me.IsNull(Me.tabletostatrici_Setup_Programma.pesoDaPrelevareNelSilosColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetpesoDaPrelevareNelSilosNull()
+            Me(Me.tabletostatrici_Setup_Programma.pesoDaPrelevareNelSilosColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsBilanciaNull() As Boolean
+            Return Me.IsNull(Me.tabletostatrici_Setup_Programma.BilanciaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetBilanciaNull()
+            Me(Me.tabletostatrici_Setup_Programma.BilanciaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IseseguitoNull() As Boolean
+            Return Me.IsNull(Me.tabletostatrici_Setup_Programma.eseguitoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SeteseguitoNull()
+            Me(Me.tabletostatrici_Setup_Programma.eseguitoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IspesoPrelevatoNull() As Boolean
+            Return Me.IsNull(Me.tabletostatrici_Setup_Programma.pesoPrelevatoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetpesoPrelevatoNull()
+            Me(Me.tabletostatrici_Setup_Programma.pesoPrelevatoColumn) = Global.System.Convert.DBNull
+        End Sub
+    End Class
+    
+    '''<summary>
     '''Row event argument class
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
@@ -5498,42 +5457,6 @@ Partial Public Class DB
     '''Row event argument class
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-    Public Class tostatrici_Setup_ProgrammaRowChangeEvent
-        Inherits Global.System.EventArgs
-        
-        Private eventRow As tostatrici_Setup_ProgrammaRow
-        
-        Private eventAction As Global.System.Data.DataRowAction
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub New(ByVal row As tostatrici_Setup_ProgrammaRow, ByVal action As Global.System.Data.DataRowAction)
-            MyBase.New
-            Me.eventRow = row
-            Me.eventAction = action
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property Row() As tostatrici_Setup_ProgrammaRow
-            Get
-                Return Me.eventRow
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property Action() As Global.System.Data.DataRowAction
-            Get
-                Return Me.eventAction
-            End Get
-        End Property
-    End Class
-    
-    '''<summary>
-    '''Row event argument class
-    '''</summary>
-    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
     Public Class tostatrici_Setup_RichiesteRowChangeEvent
         Inherits Global.System.EventArgs
         
@@ -5588,6 +5511,42 @@ Partial Public Class DB
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public ReadOnly Property Row() As view_RicettaComponenti_disponibilitaBilanceConPrioritaRow
+            Get
+                Return Me.eventRow
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Action() As Global.System.Data.DataRowAction
+            Get
+                Return Me.eventAction
+            End Get
+        End Property
+    End Class
+    
+    '''<summary>
+    '''Row event argument class
+    '''</summary>
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+    Public Class tostatrici_Setup_ProgrammaRowChangeEvent
+        Inherits Global.System.EventArgs
+        
+        Private eventRow As tostatrici_Setup_ProgrammaRow
+        
+        Private eventAction As Global.System.Data.DataRowAction
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub New(ByVal row As tostatrici_Setup_ProgrammaRow, ByVal action As Global.System.Data.DataRowAction)
+            MyBase.New
+            Me.eventRow = row
+            Me.eventAction = action
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Row() As tostatrici_Setup_ProgrammaRow
             Get
                 Return Me.eventRow
             End Get
@@ -7003,7 +6962,7 @@ Namespace DBTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(1) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(2) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        viewMagazzinoDosaggio_Totale.*"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            viewMagazzinoDosagg"& _ 
@@ -7020,6 +6979,13 @@ Namespace DBTableAdapters
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bilancia3", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bilancia4", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bilancia5", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(2).Connection = Me.Connection
+            Me._commandCollection(2).CommandText = "dbo.sp_VIEW_MAGAZZINO_DOSAGGIO_TOTALE_GetSilosDaScaricare"
+            Me._commandCollection(2).CommandType = Global.System.Data.CommandType.StoredProcedure
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RETURN_VALUE", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.ReturnValue, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_codice_componente", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@bilancia1", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -7086,848 +7052,26 @@ Namespace DBTableAdapters
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
-    End Class
-    
-    '''<summary>
-    '''Represents the connection and commands used to retrieve and save data.
-    '''</summary>
-    <Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
-     Global.System.ComponentModel.ToolboxItem(true),  _
-     Global.System.ComponentModel.DataObjectAttribute(true),  _
-     Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
-     Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-    Partial Public Class tostatrici_Setup_ProgrammaTableAdapter
-        Inherits Global.System.ComponentModel.Component
-        
-        Private WithEvents _adapter As Global.System.Data.SqlClient.SqlDataAdapter
-        
-        Private _connection As Global.System.Data.SqlClient.SqlConnection
-        
-        Private _transaction As Global.System.Data.SqlClient.SqlTransaction
-        
-        Private _commandCollection() As Global.System.Data.SqlClient.SqlCommand
-        
-        Private _clearBeforeFill As Boolean
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub New()
-            MyBase.New
-            Me.ClearBeforeFill = true
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Protected Friend ReadOnly Property Adapter() As Global.System.Data.SqlClient.SqlDataAdapter
-            Get
-                If (Me._adapter Is Nothing) Then
-                    Me.InitAdapter
-                End If
-                Return Me._adapter
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Friend Property Connection() As Global.System.Data.SqlClient.SqlConnection
-            Get
-                If (Me._connection Is Nothing) Then
-                    Me.InitConnection
-                End If
-                Return Me._connection
-            End Get
-            Set
-                Me._connection = value
-                If (Not (Me.Adapter.InsertCommand) Is Nothing) Then
-                    Me.Adapter.InsertCommand.Connection = value
-                End If
-                If (Not (Me.Adapter.DeleteCommand) Is Nothing) Then
-                    Me.Adapter.DeleteCommand.Connection = value
-                End If
-                If (Not (Me.Adapter.UpdateCommand) Is Nothing) Then
-                    Me.Adapter.UpdateCommand.Connection = value
-                End If
-                Dim i As Integer = 0
-                Do While (i < Me.CommandCollection.Length)
-                    If (Not (Me.CommandCollection(i)) Is Nothing) Then
-                        CType(Me.CommandCollection(i),Global.System.Data.SqlClient.SqlCommand).Connection = value
-                    End If
-                    i = (i + 1)
-                Loop
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Friend Property Transaction() As Global.System.Data.SqlClient.SqlTransaction
-            Get
-                Return Me._transaction
-            End Get
-            Set
-                Me._transaction = value
-                Dim i As Integer = 0
-                Do While (i < Me.CommandCollection.Length)
-                    Me.CommandCollection(i).Transaction = Me._transaction
-                    i = (i + 1)
-                Loop
-                If ((Not (Me.Adapter) Is Nothing)  _
-                            AndAlso (Not (Me.Adapter.DeleteCommand) Is Nothing)) Then
-                    Me.Adapter.DeleteCommand.Transaction = Me._transaction
-                End If
-                If ((Not (Me.Adapter) Is Nothing)  _
-                            AndAlso (Not (Me.Adapter.InsertCommand) Is Nothing)) Then
-                    Me.Adapter.InsertCommand.Transaction = Me._transaction
-                End If
-                If ((Not (Me.Adapter) Is Nothing)  _
-                            AndAlso (Not (Me.Adapter.UpdateCommand) Is Nothing)) Then
-                    Me.Adapter.UpdateCommand.Transaction = Me._transaction
-                End If
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Protected ReadOnly Property CommandCollection() As Global.System.Data.SqlClient.SqlCommand()
-            Get
-                If (Me._commandCollection Is Nothing) Then
-                    Me.InitCommandCollection
-                End If
-                Return Me._commandCollection
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property ClearBeforeFill() As Boolean
-            Get
-                Return Me._clearBeforeFill
-            End Get
-            Set
-                Me._clearBeforeFill = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Private Sub InitAdapter()
-            Me._adapter = New Global.System.Data.SqlClient.SqlDataAdapter()
-            Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
-            tableMapping.SourceTable = "Table"
-            tableMapping.DataSetTable = "tostatrici_Setup_Programma"
-            tableMapping.ColumnMappings.Add("Tostatrice", "Tostatrice")
-            tableMapping.ColumnMappings.Add("id_ricetta", "id_ricetta")
-            tableMapping.ColumnMappings.Add("indice_componente", "indice_componente")
-            tableMapping.ColumnMappings.Add("id_richiesta", "id_richiesta")
-            tableMapping.ColumnMappings.Add("id_componente", "id_componente")
-            tableMapping.ColumnMappings.Add("kg_set", "kg_set")
-            tableMapping.ColumnMappings.Add("kg_tol", "kg_tol")
-            tableMapping.ColumnMappings.Add("selezione_fl", "selezione_fl")
-            tableMapping.ColumnMappings.Add("indiceSilosPerComponente", "indiceSilosPerComponente")
-            tableMapping.ColumnMappings.Add("pesoDaPrelevareNelSilos", "pesoDaPrelevareNelSilos")
-            tableMapping.ColumnMappings.Add("Bilancia", "Bilancia")
-            tableMapping.ColumnMappings.Add("eseguito", "eseguito")
-            tableMapping.ColumnMappings.Add("ultimoSilosScaricato", "ultimoSilosScaricato")
-            tableMapping.ColumnMappings.Add("pesoPrelevato", "pesoPrelevato")
-            Me._adapter.TableMappings.Add(tableMapping)
-            Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
-            Me._adapter.DeleteCommand.Connection = Me.Connection
-            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [tostatrici_Setup_Programma] WHERE (([Tostatrice] = @Original_Tostatr"& _ 
-                "ice) AND ([id_ricetta] = @Original_id_ricetta) AND ([indice_componente] = @Origi"& _ 
-                "nal_indice_componente) AND ((@IsNull_id_richiesta = 1 AND [id_richiesta] IS NULL"& _ 
-                ") OR ([id_richiesta] = @Original_id_richiesta)) AND ((@IsNull_id_componente = 1 "& _ 
-                "AND [id_componente] IS NULL) OR ([id_componente] = @Original_id_componente)) AND"& _ 
-                " ((@IsNull_kg_set = 1 AND [kg_set] IS NULL) OR ([kg_set] = @Original_kg_set)) AN"& _ 
-                "D ((@IsNull_kg_tol = 1 AND [kg_tol] IS NULL) OR ([kg_tol] = @Original_kg_tol)) A"& _ 
-                "ND ((@IsNull_selezione_fl = 1 AND [selezione_fl] IS NULL) OR ([selezione_fl] = @"& _ 
-                "Original_selezione_fl)) AND ((@IsNull_ultimoSilosScaricato = 1 AND [ultimoSilosS"& _ 
-                "caricato] IS NULL) OR ([ultimoSilosScaricato] = @Original_ultimoSilosScaricato))"& _ 
-                " AND ((@IsNull_pesoDaPrelevareNelSilos = 1 AND [pesoDaPrelevareNelSilos] IS NULL"& _ 
-                ") OR ([pesoDaPrelevareNelSilos] = @Original_pesoDaPrelevareNelSilos)) AND ((@IsN"& _ 
-                "ull_Bilancia = 1 AND [Bilancia] IS NULL) OR ([Bilancia] = @Original_Bilancia)) A"& _ 
-                "ND ((@IsNull_eseguito = 1 AND [eseguito] IS NULL) OR ([eseguito] = @Original_ese"& _ 
-                "guito)) AND ((@IsNull_pesoPrelevato = 1 AND [pesoPrelevato] IS NULL) OR ([pesoPr"& _ 
-                "elevato] = @Original_pesoPrelevato)))"
-            Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Tostatrice", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Tostatrice", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_id_ricetta", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "id_ricetta", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_indice_componente", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "indice_componente", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_id_richiesta", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "id_richiesta", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_id_richiesta", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "id_richiesta", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_id_componente", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "id_componente", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_id_componente", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "id_componente", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_kg_set", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "kg_set", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_kg_set", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 3, "kg_set", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_kg_tol", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "kg_tol", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_kg_tol", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 3, "kg_tol", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_selezione_fl", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "selezione_fl", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_selezione_fl", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "selezione_fl", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_ultimoSilosScaricato", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ultimoSilosScaricato", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ultimoSilosScaricato", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ultimoSilosScaricato", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_pesoDaPrelevareNelSilos", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "pesoDaPrelevareNelSilos", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_pesoDaPrelevareNelSilos", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 3, "pesoDaPrelevareNelSilos", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Bilancia", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Bilancia", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Bilancia", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Bilancia", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_eseguito", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "eseguito", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_eseguito", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "eseguito", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_pesoPrelevato", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "pesoPrelevato", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_pesoPrelevato", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 3, "pesoPrelevato", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
-            Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO [tostatrici_Setup_Programma] ([Tostatrice], [id_ricetta], [indice_com"& _ 
-                "ponente], [id_richiesta], [id_componente], [kg_set], [kg_tol], [selezione_fl], ["& _ 
-                "ultimoSilosScaricato], [pesoDaPrelevareNelSilos], [Bilancia], [eseguito], [pesoP"& _ 
-                "relevato]) VALUES (@Tostatrice, @id_ricetta, @indice_componente, @id_richiesta, "& _ 
-                "@id_componente, @kg_set, @kg_tol, @selezione_fl, @ultimoSilosScaricato, @pesoDaP"& _ 
-                "relevareNelSilos, @Bilancia, @eseguito, @pesoPrelevato);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Tostatrice, id_"& _ 
-                "ricetta, indice_componente, id_richiesta, id_componente, kg_set, kg_tol, selezio"& _ 
-                "ne_fl, ultimoSilosScaricato, pesoDaPrelevareNelSilos, Bilancia, eseguito, pesoPr"& _ 
-                "elevato FROM tostatrici_Setup_Programma WHERE (Tostatrice = @Tostatrice) AND (id"& _ 
-                "_ricetta = @id_ricetta) AND (indice_componente = @indice_componente)"
-            Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Tostatrice", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Tostatrice", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_ricetta", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "id_ricetta", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@indice_componente", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "indice_componente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_richiesta", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "id_richiesta", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_componente", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "id_componente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@kg_set", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 3, "kg_set", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@kg_tol", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 3, "kg_tol", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@selezione_fl", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "selezione_fl", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ultimoSilosScaricato", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ultimoSilosScaricato", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@pesoDaPrelevareNelSilos", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 3, "pesoDaPrelevareNelSilos", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Bilancia", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Bilancia", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@eseguito", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "eseguito", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@pesoPrelevato", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 3, "pesoPrelevato", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
-            Me._adapter.UpdateCommand.Connection = Me.Connection
-            Me._adapter.UpdateCommand.CommandText = "UPDATE [tostatrici_Setup_Programma] SET [Tostatrice] = @Tostatrice, [id_ricetta] "& _ 
-                "= @id_ricetta, [indice_componente] = @indice_componente, [id_richiesta] = @id_ri"& _ 
-                "chiesta, [id_componente] = @id_componente, [kg_set] = @kg_set, [kg_tol] = @kg_to"& _ 
-                "l, [selezione_fl] = @selezione_fl, [ultimoSilosScaricato] = @ultimoSilosScaricat"& _ 
-                "o, [pesoDaPrelevareNelSilos] = @pesoDaPrelevareNelSilos, [Bilancia] = @Bilancia,"& _ 
-                " [eseguito] = @eseguito, [pesoPrelevato] = @pesoPrelevato WHERE (([Tostatrice] ="& _ 
-                " @Original_Tostatrice) AND ([id_ricetta] = @Original_id_ricetta) AND ([indice_co"& _ 
-                "mponente] = @Original_indice_componente) AND ((@IsNull_id_richiesta = 1 AND [id_"& _ 
-                "richiesta] IS NULL) OR ([id_richiesta] = @Original_id_richiesta)) AND ((@IsNull_"& _ 
-                "id_componente = 1 AND [id_componente] IS NULL) OR ([id_componente] = @Original_i"& _ 
-                "d_componente)) AND ((@IsNull_kg_set = 1 AND [kg_set] IS NULL) OR ([kg_set] = @Or"& _ 
-                "iginal_kg_set)) AND ((@IsNull_kg_tol = 1 AND [kg_tol] IS NULL) OR ([kg_tol] = @O"& _ 
-                "riginal_kg_tol)) AND ((@IsNull_selezione_fl = 1 AND [selezione_fl] IS NULL) OR ("& _ 
-                "[selezione_fl] = @Original_selezione_fl)) AND ((@IsNull_ultimoSilosScaricato = 1"& _ 
-                " AND [ultimoSilosScaricato] IS NULL) OR ([ultimoSilosScaricato] = @Original_ulti"& _ 
-                "moSilosScaricato)) AND ((@IsNull_pesoDaPrelevareNelSilos = 1 AND [pesoDaPrelevar"& _ 
-                "eNelSilos] IS NULL) OR ([pesoDaPrelevareNelSilos] = @Original_pesoDaPrelevareNel"& _ 
-                "Silos)) AND ((@IsNull_Bilancia = 1 AND [Bilancia] IS NULL) OR ([Bilancia] = @Ori"& _ 
-                "ginal_Bilancia)) AND ((@IsNull_eseguito = 1 AND [eseguito] IS NULL) OR ([eseguit"& _ 
-                "o] = @Original_eseguito)) AND ((@IsNull_pesoPrelevato = 1 AND [pesoPrelevato] IS"& _ 
-                " NULL) OR ([pesoPrelevato] = @Original_pesoPrelevato)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Tostatrice, id_"& _ 
-                "ricetta, indice_componente, id_richiesta, id_componente, kg_set, kg_tol, selezio"& _ 
-                "ne_fl, ultimoSilosScaricato, pesoDaPrelevareNelSilos, Bilancia, eseguito, pesoPr"& _ 
-                "elevato FROM tostatrici_Setup_Programma WHERE (Tostatrice = @Tostatrice) AND (id"& _ 
-                "_ricetta = @id_ricetta) AND (indice_componente = @indice_componente)"
-            Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Tostatrice", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Tostatrice", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_ricetta", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "id_ricetta", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@indice_componente", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "indice_componente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_richiesta", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "id_richiesta", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_componente", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "id_componente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@kg_set", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 3, "kg_set", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@kg_tol", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 3, "kg_tol", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@selezione_fl", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "selezione_fl", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ultimoSilosScaricato", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ultimoSilosScaricato", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@pesoDaPrelevareNelSilos", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 3, "pesoDaPrelevareNelSilos", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Bilancia", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Bilancia", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@eseguito", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "eseguito", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@pesoPrelevato", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 3, "pesoPrelevato", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Tostatrice", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Tostatrice", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_id_ricetta", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "id_ricetta", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_indice_componente", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "indice_componente", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_id_richiesta", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "id_richiesta", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_id_richiesta", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "id_richiesta", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_id_componente", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "id_componente", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_id_componente", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "id_componente", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_kg_set", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "kg_set", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_kg_set", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 3, "kg_set", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_kg_tol", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "kg_tol", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_kg_tol", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 3, "kg_tol", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_selezione_fl", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "selezione_fl", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_selezione_fl", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "selezione_fl", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_ultimoSilosScaricato", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ultimoSilosScaricato", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ultimoSilosScaricato", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ultimoSilosScaricato", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_pesoDaPrelevareNelSilos", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "pesoDaPrelevareNelSilos", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_pesoDaPrelevareNelSilos", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 3, "pesoDaPrelevareNelSilos", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Bilancia", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Bilancia", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Bilancia", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Bilancia", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_eseguito", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "eseguito", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_eseguito", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "eseguito", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_pesoPrelevato", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "pesoPrelevato", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_pesoPrelevato", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 3, "pesoPrelevato", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Private Sub InitConnection()
-            Me._connection = New Global.System.Data.SqlClient.SqlConnection()
-            Me._connection.ConnectionString = Global.TEST_TOSTATRICI.My.MySettings.Default.LEVEL2_GMK_ConnectionString
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(2) {}
-            Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
-            Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT Tostatrice, id_ricetta, indice_componente, id_richiesta, id_componente, kg"& _ 
-                "_set, kg_tol, selezione_fl, ultimoSilosScaricato, pesoDaPrelevareNelSilos, Bilan"& _ 
-                "cia, eseguito, pesoPrelevato FROM tostatrici_Setup_Programma"
-            Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
-            Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "DELETE FROM [tostatrici_Setup_Programma] WHERE [Tostatrice] = @Original_Tostatric"& _ 
-                "e"
-            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Tostatrice", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "Tostatrice", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
-            Me._commandCollection(2).Connection = Me.Connection
-            Me._commandCollection(2).CommandText = "INSERT INTO [tostatrici_Setup_Programma] ([Tostatrice], [id_ricetta], [indice_com"& _ 
-                "ponente], [id_richiesta], [id_componente], [kg_set], [kg_tol], [selezione_fl], ["& _ 
-                "ultimoSilosScaricato], [pesoDaPrelevareNelSilos], [Bilancia], [eseguito], [pesoP"& _ 
-                "relevato]) VALUES (@Tostatrice, @id_ricetta, @indice_componente, @id_richiesta, "& _ 
-                "@id_componente, @kg_set, @kg_tol, @selezione_fl, @ultimoSilosScaricato, @pesoDaP"& _ 
-                "relevareNelSilos, @Bilancia, @eseguito, @pesoPrelevato)"
-            Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Tostatrice", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "Tostatrice", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_ricetta", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "id_ricetta", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@indice_componente", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "indice_componente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_richiesta", Global.System.Data.SqlDbType.BigInt, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "id_richiesta", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_componente", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "id_componente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@kg_set", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 10, 3, "kg_set", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@kg_tol", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 10, 3, "kg_tol", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@selezione_fl", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "selezione_fl", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ultimoSilosScaricato", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "ultimoSilosScaricato", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@pesoDaPrelevareNelSilos", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 10, 3, "pesoDaPrelevareNelSilos", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Bilancia", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "Bilancia", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@eseguito", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "eseguito", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@pesoPrelevato", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 10, 3, "pesoPrelevato", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-        End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As DB.tostatrici_Setup_ProgrammaDataTable) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            If (Me.ClearBeforeFill = true) Then
-                dataTable.Clear
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function sp_VIEW_MAGAZZINO_DOSAGGIO_TOTALE_GetSilosDaScaricare(ByVal id_codice_componente As Global.System.Nullable(Of Integer), ByVal bilancia1 As Global.System.Nullable(Of Integer)) As DB.viewMagazzinoDosaggio_TotaleDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(2)
+            If (id_codice_componente.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(id_codice_componente.Value,Integer)
+            Else
+                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
             End If
-            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
-            Return returnValue
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As DB.tostatrici_Setup_ProgrammaDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As DB.tostatrici_Setup_ProgrammaDataTable = New DB.tostatrici_Setup_ProgrammaDataTable()
+            If (bilancia1.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(2).Value = CType(bilancia1.Value,Integer)
+            Else
+                Me.Adapter.SelectCommand.Parameters(2).Value = Global.System.DBNull.Value
+            End If
+            Dim dataTable As DB.viewMagazzinoDosaggio_TotaleDataTable = New DB.viewMagazzinoDosaggio_TotaleDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As DB.tostatrici_Setup_ProgrammaDataTable) As Integer
-            Return Me.Adapter.Update(dataTable)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As DB) As Integer
-            Return Me.Adapter.Update(dataSet, "tostatrici_Setup_Programma")
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataRow As Global.System.Data.DataRow) As Integer
-            Return Me.Adapter.Update(New Global.System.Data.DataRow() {dataRow})
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataRows() As Global.System.Data.DataRow) As Integer
-            Return Me.Adapter.Update(dataRows)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal Original_Tostatrice As Integer, ByVal Original_id_ricetta As Integer, ByVal Original_indice_componente As Integer, ByVal Original_id_richiesta As Global.System.Nullable(Of Long), ByVal Original_id_componente As Global.System.Nullable(Of Integer), ByVal Original_kg_set As Global.System.Nullable(Of Decimal), ByVal Original_kg_tol As Global.System.Nullable(Of Decimal), ByVal Original_selezione_fl As Global.System.Nullable(Of Boolean), ByVal Original_ultimoSilosScaricato As Global.System.Nullable(Of Integer), ByVal Original_pesoDaPrelevareNelSilos As Global.System.Nullable(Of Decimal), ByVal Original_Bilancia As Global.System.Nullable(Of Integer), ByVal Original_eseguito As Global.System.Nullable(Of Boolean), ByVal Original_pesoPrelevato As Global.System.Nullable(Of Decimal)) As Integer
-            Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_Tostatrice,Integer)
-            Me.Adapter.DeleteCommand.Parameters(1).Value = CType(Original_id_ricetta,Integer)
-            Me.Adapter.DeleteCommand.Parameters(2).Value = CType(Original_indice_componente,Integer)
-            If (Original_id_richiesta.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(4).Value = CType(Original_id_richiesta.Value,Long)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(4).Value = Global.System.DBNull.Value
-            End If
-            If (Original_id_componente.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(6).Value = CType(Original_id_componente.Value,Integer)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(6).Value = Global.System.DBNull.Value
-            End If
-            If (Original_kg_set.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(8).Value = CType(Original_kg_set.Value,Decimal)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(8).Value = Global.System.DBNull.Value
-            End If
-            If (Original_kg_tol.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(10).Value = CType(Original_kg_tol.Value,Decimal)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(10).Value = Global.System.DBNull.Value
-            End If
-            If (Original_selezione_fl.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(11).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(12).Value = CType(Original_selezione_fl.Value,Boolean)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(11).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(12).Value = Global.System.DBNull.Value
-            End If
-            If (Original_ultimoSilosScaricato.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(13).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(14).Value = CType(Original_ultimoSilosScaricato.Value,Integer)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(13).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(14).Value = Global.System.DBNull.Value
-            End If
-            If (Original_pesoDaPrelevareNelSilos.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(15).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(16).Value = CType(Original_pesoDaPrelevareNelSilos.Value,Decimal)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(15).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(16).Value = Global.System.DBNull.Value
-            End If
-            If (Original_Bilancia.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(17).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(18).Value = CType(Original_Bilancia.Value,Integer)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(17).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(18).Value = Global.System.DBNull.Value
-            End If
-            If (Original_eseguito.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(19).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(20).Value = CType(Original_eseguito.Value,Boolean)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(19).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(20).Value = Global.System.DBNull.Value
-            End If
-            If (Original_pesoPrelevato.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(21).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(22).Value = CType(Original_pesoPrelevato.Value,Decimal)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(21).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(22).Value = Global.System.DBNull.Value
-            End If
-            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
-            If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                Me.Adapter.DeleteCommand.Connection.Open
-            End If
-            Try 
-                Dim returnValue As Integer = Me.Adapter.DeleteCommand.ExecuteNonQuery
-                Return returnValue
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    Me.Adapter.DeleteCommand.Connection.Close
-                End If
-            End Try
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal Tostatrice As Integer, ByVal id_ricetta As Integer, ByVal indice_componente As Integer, ByVal id_richiesta As Global.System.Nullable(Of Long), ByVal id_componente As Global.System.Nullable(Of Integer), ByVal kg_set As Global.System.Nullable(Of Decimal), ByVal kg_tol As Global.System.Nullable(Of Decimal), ByVal selezione_fl As Global.System.Nullable(Of Boolean), ByVal ultimoSilosScaricato As Global.System.Nullable(Of Integer), ByVal pesoDaPrelevareNelSilos As Global.System.Nullable(Of Decimal), ByVal Bilancia As Global.System.Nullable(Of Integer), ByVal eseguito As Global.System.Nullable(Of Boolean), ByVal pesoPrelevato As Global.System.Nullable(Of Decimal)) As Integer
-            Me.Adapter.InsertCommand.Parameters(0).Value = CType(Tostatrice,Integer)
-            Me.Adapter.InsertCommand.Parameters(1).Value = CType(id_ricetta,Integer)
-            Me.Adapter.InsertCommand.Parameters(2).Value = CType(indice_componente,Integer)
-            If (id_richiesta.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(3).Value = CType(id_richiesta.Value,Long)
-            Else
-                Me.Adapter.InsertCommand.Parameters(3).Value = Global.System.DBNull.Value
-            End If
-            If (id_componente.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(4).Value = CType(id_componente.Value,Integer)
-            Else
-                Me.Adapter.InsertCommand.Parameters(4).Value = Global.System.DBNull.Value
-            End If
-            If (kg_set.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(5).Value = CType(kg_set.Value,Decimal)
-            Else
-                Me.Adapter.InsertCommand.Parameters(5).Value = Global.System.DBNull.Value
-            End If
-            If (kg_tol.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(6).Value = CType(kg_tol.Value,Decimal)
-            Else
-                Me.Adapter.InsertCommand.Parameters(6).Value = Global.System.DBNull.Value
-            End If
-            If (selezione_fl.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(7).Value = CType(selezione_fl.Value,Boolean)
-            Else
-                Me.Adapter.InsertCommand.Parameters(7).Value = Global.System.DBNull.Value
-            End If
-            If (ultimoSilosScaricato.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(8).Value = CType(ultimoSilosScaricato.Value,Integer)
-            Else
-                Me.Adapter.InsertCommand.Parameters(8).Value = Global.System.DBNull.Value
-            End If
-            If (pesoDaPrelevareNelSilos.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(9).Value = CType(pesoDaPrelevareNelSilos.Value,Decimal)
-            Else
-                Me.Adapter.InsertCommand.Parameters(9).Value = Global.System.DBNull.Value
-            End If
-            If (Bilancia.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(10).Value = CType(Bilancia.Value,Integer)
-            Else
-                Me.Adapter.InsertCommand.Parameters(10).Value = Global.System.DBNull.Value
-            End If
-            If (eseguito.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(11).Value = CType(eseguito.Value,Boolean)
-            Else
-                Me.Adapter.InsertCommand.Parameters(11).Value = Global.System.DBNull.Value
-            End If
-            If (pesoPrelevato.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(12).Value = CType(pesoPrelevato.Value,Decimal)
-            Else
-                Me.Adapter.InsertCommand.Parameters(12).Value = Global.System.DBNull.Value
-            End If
-            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
-            If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                Me.Adapter.InsertCommand.Connection.Open
-            End If
-            Try 
-                Dim returnValue As Integer = Me.Adapter.InsertCommand.ExecuteNonQuery
-                Return returnValue
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    Me.Adapter.InsertCommand.Connection.Close
-                End If
-            End Try
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update( _
-                    ByVal Tostatrice As Integer,  _
-                    ByVal id_ricetta As Integer,  _
-                    ByVal indice_componente As Integer,  _
-                    ByVal id_richiesta As Global.System.Nullable(Of Long),  _
-                    ByVal id_componente As Global.System.Nullable(Of Integer),  _
-                    ByVal kg_set As Global.System.Nullable(Of Decimal),  _
-                    ByVal kg_tol As Global.System.Nullable(Of Decimal),  _
-                    ByVal selezione_fl As Global.System.Nullable(Of Boolean),  _
-                    ByVal ultimoSilosScaricato As Global.System.Nullable(Of Integer),  _
-                    ByVal pesoDaPrelevareNelSilos As Global.System.Nullable(Of Decimal),  _
-                    ByVal Bilancia As Global.System.Nullable(Of Integer),  _
-                    ByVal eseguito As Global.System.Nullable(Of Boolean),  _
-                    ByVal pesoPrelevato As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_Tostatrice As Integer,  _
-                    ByVal Original_id_ricetta As Integer,  _
-                    ByVal Original_indice_componente As Integer,  _
-                    ByVal Original_id_richiesta As Global.System.Nullable(Of Long),  _
-                    ByVal Original_id_componente As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_kg_set As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_kg_tol As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_selezione_fl As Global.System.Nullable(Of Boolean),  _
-                    ByVal Original_ultimoSilosScaricato As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_pesoDaPrelevareNelSilos As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_Bilancia As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_eseguito As Global.System.Nullable(Of Boolean),  _
-                    ByVal Original_pesoPrelevato As Global.System.Nullable(Of Decimal)) As Integer
-            Me.Adapter.UpdateCommand.Parameters(0).Value = CType(Tostatrice,Integer)
-            Me.Adapter.UpdateCommand.Parameters(1).Value = CType(id_ricetta,Integer)
-            Me.Adapter.UpdateCommand.Parameters(2).Value = CType(indice_componente,Integer)
-            If (id_richiesta.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(3).Value = CType(id_richiesta.Value,Long)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(3).Value = Global.System.DBNull.Value
-            End If
-            If (id_componente.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(id_componente.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(4).Value = Global.System.DBNull.Value
-            End If
-            If (kg_set.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(kg_set.Value,Decimal)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(5).Value = Global.System.DBNull.Value
-            End If
-            If (kg_tol.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(kg_tol.Value,Decimal)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(6).Value = Global.System.DBNull.Value
-            End If
-            If (selezione_fl.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(selezione_fl.Value,Boolean)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(7).Value = Global.System.DBNull.Value
-            End If
-            If (ultimoSilosScaricato.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(ultimoSilosScaricato.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(8).Value = Global.System.DBNull.Value
-            End If
-            If (pesoDaPrelevareNelSilos.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(pesoDaPrelevareNelSilos.Value,Decimal)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(9).Value = Global.System.DBNull.Value
-            End If
-            If (Bilancia.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Bilancia.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(10).Value = Global.System.DBNull.Value
-            End If
-            If (eseguito.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(eseguito.Value,Boolean)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(11).Value = Global.System.DBNull.Value
-            End If
-            If (pesoPrelevato.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(pesoPrelevato.Value,Decimal)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(12).Value = Global.System.DBNull.Value
-            End If
-            Me.Adapter.UpdateCommand.Parameters(13).Value = CType(Original_Tostatrice,Integer)
-            Me.Adapter.UpdateCommand.Parameters(14).Value = CType(Original_id_ricetta,Integer)
-            Me.Adapter.UpdateCommand.Parameters(15).Value = CType(Original_indice_componente,Integer)
-            If (Original_id_richiesta.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(Original_id_richiesta.Value,Long)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(17).Value = Global.System.DBNull.Value
-            End If
-            If (Original_id_componente.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(Original_id_componente.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(19).Value = Global.System.DBNull.Value
-            End If
-            If (Original_kg_set.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(Original_kg_set.Value,Decimal)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(21).Value = Global.System.DBNull.Value
-            End If
-            If (Original_kg_tol.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(Original_kg_tol.Value,Decimal)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(23).Value = Global.System.DBNull.Value
-            End If
-            If (Original_selezione_fl.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(Original_selezione_fl.Value,Boolean)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(25).Value = Global.System.DBNull.Value
-            End If
-            If (Original_ultimoSilosScaricato.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(Original_ultimoSilosScaricato.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(27).Value = Global.System.DBNull.Value
-            End If
-            If (Original_pesoDaPrelevareNelSilos.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(Original_pesoDaPrelevareNelSilos.Value,Decimal)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(29).Value = Global.System.DBNull.Value
-            End If
-            If (Original_Bilancia.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(Original_Bilancia.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(31).Value = Global.System.DBNull.Value
-            End If
-            If (Original_eseguito.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(Original_eseguito.Value,Boolean)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(33).Value = Global.System.DBNull.Value
-            End If
-            If (Original_pesoPrelevato.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(Original_pesoPrelevato.Value,Decimal)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(35).Value = Global.System.DBNull.Value
-            End If
-            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
-            If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                Me.Adapter.UpdateCommand.Connection.Open
-            End If
-            Try 
-                Dim returnValue As Integer = Me.Adapter.UpdateCommand.ExecuteNonQuery
-                Return returnValue
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    Me.Adapter.UpdateCommand.Connection.Close
-                End If
-            End Try
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update( _
-                    ByVal id_richiesta As Global.System.Nullable(Of Long),  _
-                    ByVal id_componente As Global.System.Nullable(Of Integer),  _
-                    ByVal kg_set As Global.System.Nullable(Of Decimal),  _
-                    ByVal kg_tol As Global.System.Nullable(Of Decimal),  _
-                    ByVal selezione_fl As Global.System.Nullable(Of Boolean),  _
-                    ByVal ultimoSilosScaricato As Global.System.Nullable(Of Integer),  _
-                    ByVal pesoDaPrelevareNelSilos As Global.System.Nullable(Of Decimal),  _
-                    ByVal Bilancia As Global.System.Nullable(Of Integer),  _
-                    ByVal eseguito As Global.System.Nullable(Of Boolean),  _
-                    ByVal pesoPrelevato As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_Tostatrice As Integer,  _
-                    ByVal Original_id_ricetta As Integer,  _
-                    ByVal Original_indice_componente As Integer,  _
-                    ByVal Original_id_richiesta As Global.System.Nullable(Of Long),  _
-                    ByVal Original_id_componente As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_kg_set As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_kg_tol As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_selezione_fl As Global.System.Nullable(Of Boolean),  _
-                    ByVal Original_ultimoSilosScaricato As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_pesoDaPrelevareNelSilos As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_Bilancia As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_eseguito As Global.System.Nullable(Of Boolean),  _
-                    ByVal Original_pesoPrelevato As Global.System.Nullable(Of Decimal)) As Integer
-            Return Me.Update(Original_Tostatrice, Original_id_ricetta, Original_indice_componente, id_richiesta, id_componente, kg_set, kg_tol, selezione_fl, ultimoSilosScaricato, pesoDaPrelevareNelSilos, Bilancia, eseguito, pesoPrelevato, Original_Tostatrice, Original_id_ricetta, Original_indice_componente, Original_id_richiesta, Original_id_componente, Original_kg_set, Original_kg_tol, Original_selezione_fl, Original_ultimoSilosScaricato, Original_pesoDaPrelevareNelSilos, Original_Bilancia, Original_eseguito, Original_pesoPrelevato)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, false)>  _
-        Public Overloads Overridable Function DeleteTostatrice(ByVal Original_Tostatrice As Integer) As Integer
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(1)
-            command.Parameters(0).Value = CType(Original_Tostatrice,Integer)
-            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
-            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                command.Connection.Open
-            End If
-            Dim returnValue As Integer
-            Try 
-                returnValue = command.ExecuteNonQuery
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    command.Connection.Close
-                End If
-            End Try
-            Return returnValue
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, false)>  _
-        Public Overloads Overridable Function InsertSilos(ByVal Tostatrice As Integer, ByVal id_ricetta As Integer, ByVal indice_componente As Integer, ByVal id_richiesta As Global.System.Nullable(Of Long), ByVal id_componente As Global.System.Nullable(Of Integer), ByVal kg_set As Global.System.Nullable(Of Decimal), ByVal kg_tol As Global.System.Nullable(Of Decimal), ByVal selezione_fl As Global.System.Nullable(Of Boolean), ByVal ultimoSilosScaricato As Global.System.Nullable(Of Integer), ByVal pesoDaPrelevareNelSilos As Global.System.Nullable(Of Decimal), ByVal Bilancia As Global.System.Nullable(Of Integer), ByVal eseguito As Global.System.Nullable(Of Boolean), ByVal pesoPrelevato As Global.System.Nullable(Of Decimal)) As Integer
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(2)
-            command.Parameters(0).Value = CType(Tostatrice,Integer)
-            command.Parameters(1).Value = CType(id_ricetta,Integer)
-            command.Parameters(2).Value = CType(indice_componente,Integer)
-            If (id_richiesta.HasValue = true) Then
-                command.Parameters(3).Value = CType(id_richiesta.Value,Long)
-            Else
-                command.Parameters(3).Value = Global.System.DBNull.Value
-            End If
-            If (id_componente.HasValue = true) Then
-                command.Parameters(4).Value = CType(id_componente.Value,Integer)
-            Else
-                command.Parameters(4).Value = Global.System.DBNull.Value
-            End If
-            If (kg_set.HasValue = true) Then
-                command.Parameters(5).Value = CType(kg_set.Value,Decimal)
-            Else
-                command.Parameters(5).Value = Global.System.DBNull.Value
-            End If
-            If (kg_tol.HasValue = true) Then
-                command.Parameters(6).Value = CType(kg_tol.Value,Decimal)
-            Else
-                command.Parameters(6).Value = Global.System.DBNull.Value
-            End If
-            If (selezione_fl.HasValue = true) Then
-                command.Parameters(7).Value = CType(selezione_fl.Value,Boolean)
-            Else
-                command.Parameters(7).Value = Global.System.DBNull.Value
-            End If
-            If (ultimoSilosScaricato.HasValue = true) Then
-                command.Parameters(8).Value = CType(ultimoSilosScaricato.Value,Integer)
-            Else
-                command.Parameters(8).Value = Global.System.DBNull.Value
-            End If
-            If (pesoDaPrelevareNelSilos.HasValue = true) Then
-                command.Parameters(9).Value = CType(pesoDaPrelevareNelSilos.Value,Decimal)
-            Else
-                command.Parameters(9).Value = Global.System.DBNull.Value
-            End If
-            If (Bilancia.HasValue = true) Then
-                command.Parameters(10).Value = CType(Bilancia.Value,Integer)
-            Else
-                command.Parameters(10).Value = Global.System.DBNull.Value
-            End If
-            If (eseguito.HasValue = true) Then
-                command.Parameters(11).Value = CType(eseguito.Value,Boolean)
-            Else
-                command.Parameters(11).Value = Global.System.DBNull.Value
-            End If
-            If (pesoPrelevato.HasValue = true) Then
-                command.Parameters(12).Value = CType(pesoPrelevato.Value,Decimal)
-            Else
-                command.Parameters(12).Value = Global.System.DBNull.Value
-            End If
-            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
-            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                command.Connection.Open
-            End If
-            Dim returnValue As Integer
-            Try 
-                returnValue = command.ExecuteNonQuery
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    command.Connection.Close
-                End If
-            End Try
-            Return returnValue
         End Function
     End Class
     
@@ -8728,6 +7872,935 @@ Namespace DBTableAdapters
     End Class
     
     '''<summary>
+    '''Represents the connection and commands used to retrieve and save data.
+    '''</summary>
+    <Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     Global.System.ComponentModel.ToolboxItem(true),  _
+     Global.System.ComponentModel.DataObjectAttribute(true),  _
+     Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
+     Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+    Partial Public Class tostatrici_Setup_ProgrammaTableAdapter
+        Inherits Global.System.ComponentModel.Component
+        
+        Private WithEvents _adapter As Global.System.Data.SqlClient.SqlDataAdapter
+        
+        Private _connection As Global.System.Data.SqlClient.SqlConnection
+        
+        Private _transaction As Global.System.Data.SqlClient.SqlTransaction
+        
+        Private _commandCollection() As Global.System.Data.SqlClient.SqlCommand
+        
+        Private _clearBeforeFill As Boolean
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.ClearBeforeFill = true
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected Friend ReadOnly Property Adapter() As Global.System.Data.SqlClient.SqlDataAdapter
+            Get
+                If (Me._adapter Is Nothing) Then
+                    Me.InitAdapter
+                End If
+                Return Me._adapter
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Friend Property Connection() As Global.System.Data.SqlClient.SqlConnection
+            Get
+                If (Me._connection Is Nothing) Then
+                    Me.InitConnection
+                End If
+                Return Me._connection
+            End Get
+            Set
+                Me._connection = value
+                If (Not (Me.Adapter.InsertCommand) Is Nothing) Then
+                    Me.Adapter.InsertCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.DeleteCommand) Is Nothing) Then
+                    Me.Adapter.DeleteCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.UpdateCommand) Is Nothing) Then
+                    Me.Adapter.UpdateCommand.Connection = value
+                End If
+                Dim i As Integer = 0
+                Do While (i < Me.CommandCollection.Length)
+                    If (Not (Me.CommandCollection(i)) Is Nothing) Then
+                        CType(Me.CommandCollection(i),Global.System.Data.SqlClient.SqlCommand).Connection = value
+                    End If
+                    i = (i + 1)
+                Loop
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Friend Property Transaction() As Global.System.Data.SqlClient.SqlTransaction
+            Get
+                Return Me._transaction
+            End Get
+            Set
+                Me._transaction = value
+                Dim i As Integer = 0
+                Do While (i < Me.CommandCollection.Length)
+                    Me.CommandCollection(i).Transaction = Me._transaction
+                    i = (i + 1)
+                Loop
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.DeleteCommand) Is Nothing)) Then
+                    Me.Adapter.DeleteCommand.Transaction = Me._transaction
+                End If
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.InsertCommand) Is Nothing)) Then
+                    Me.Adapter.InsertCommand.Transaction = Me._transaction
+                End If
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.UpdateCommand) Is Nothing)) Then
+                    Me.Adapter.UpdateCommand.Transaction = Me._transaction
+                End If
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Protected ReadOnly Property CommandCollection() As Global.System.Data.SqlClient.SqlCommand()
+            Get
+                If (Me._commandCollection Is Nothing) Then
+                    Me.InitCommandCollection
+                End If
+                Return Me._commandCollection
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property ClearBeforeFill() As Boolean
+            Get
+                Return Me._clearBeforeFill
+            End Get
+            Set
+                Me._clearBeforeFill = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Private Sub InitAdapter()
+            Me._adapter = New Global.System.Data.SqlClient.SqlDataAdapter()
+            Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
+            tableMapping.SourceTable = "Table"
+            tableMapping.DataSetTable = "tostatrici_Setup_Programma"
+            tableMapping.ColumnMappings.Add("Tostatrice", "Tostatrice")
+            tableMapping.ColumnMappings.Add("id_ricetta", "id_ricetta")
+            tableMapping.ColumnMappings.Add("indice_componente", "indice_componente")
+            tableMapping.ColumnMappings.Add("id_richiesta", "id_richiesta")
+            tableMapping.ColumnMappings.Add("id_componente", "id_componente")
+            tableMapping.ColumnMappings.Add("kg_set", "kg_set")
+            tableMapping.ColumnMappings.Add("kg_tol", "kg_tol")
+            tableMapping.ColumnMappings.Add("selezione_fl", "selezione_fl")
+            tableMapping.ColumnMappings.Add("ultimoSilosScaricato", "ultimoSilosScaricato")
+            tableMapping.ColumnMappings.Add("pesoDaPrelevareNelSilos", "pesoDaPrelevareNelSilos")
+            tableMapping.ColumnMappings.Add("Bilancia", "Bilancia")
+            tableMapping.ColumnMappings.Add("eseguito", "eseguito")
+            tableMapping.ColumnMappings.Add("pesoPrelevato", "pesoPrelevato")
+            Me._adapter.TableMappings.Add(tableMapping)
+            Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
+            Me._adapter.DeleteCommand.Connection = Me.Connection
+            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [tostatrici_Setup_Programma] WHERE (([Tostatrice] = @Original_Tostatr"& _ 
+                "ice) AND ([id_ricetta] = @Original_id_ricetta) AND ([indice_componente] = @Origi"& _ 
+                "nal_indice_componente) AND ((@IsNull_id_richiesta = 1 AND [id_richiesta] IS NULL"& _ 
+                ") OR ([id_richiesta] = @Original_id_richiesta)) AND ((@IsNull_id_componente = 1 "& _ 
+                "AND [id_componente] IS NULL) OR ([id_componente] = @Original_id_componente)) AND"& _ 
+                " ((@IsNull_kg_set = 1 AND [kg_set] IS NULL) OR ([kg_set] = @Original_kg_set)) AN"& _ 
+                "D ((@IsNull_kg_tol = 1 AND [kg_tol] IS NULL) OR ([kg_tol] = @Original_kg_tol)) A"& _ 
+                "ND ((@IsNull_selezione_fl = 1 AND [selezione_fl] IS NULL) OR ([selezione_fl] = @"& _ 
+                "Original_selezione_fl)) AND ((@IsNull_ultimoSilosScaricato = 1 AND [ultimoSilosS"& _ 
+                "caricato] IS NULL) OR ([ultimoSilosScaricato] = @Original_ultimoSilosScaricato))"& _ 
+                " AND ((@IsNull_pesoDaPrelevareNelSilos = 1 AND [pesoDaPrelevareNelSilos] IS NULL"& _ 
+                ") OR ([pesoDaPrelevareNelSilos] = @Original_pesoDaPrelevareNelSilos)) AND ((@IsN"& _ 
+                "ull_Bilancia = 1 AND [Bilancia] IS NULL) OR ([Bilancia] = @Original_Bilancia)) A"& _ 
+                "ND ((@IsNull_eseguito = 1 AND [eseguito] IS NULL) OR ([eseguito] = @Original_ese"& _ 
+                "guito)) AND ((@IsNull_pesoPrelevato = 1 AND [pesoPrelevato] IS NULL) OR ([pesoPr"& _ 
+                "elevato] = @Original_pesoPrelevato)))"
+            Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Tostatrice", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Tostatrice", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_id_ricetta", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "id_ricetta", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_indice_componente", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "indice_componente", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_id_richiesta", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "id_richiesta", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_id_richiesta", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "id_richiesta", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_id_componente", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "id_componente", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_id_componente", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "id_componente", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_kg_set", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "kg_set", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_kg_set", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 3, "kg_set", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_kg_tol", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "kg_tol", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_kg_tol", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 3, "kg_tol", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_selezione_fl", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "selezione_fl", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_selezione_fl", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "selezione_fl", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_ultimoSilosScaricato", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ultimoSilosScaricato", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ultimoSilosScaricato", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ultimoSilosScaricato", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_pesoDaPrelevareNelSilos", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "pesoDaPrelevareNelSilos", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_pesoDaPrelevareNelSilos", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 3, "pesoDaPrelevareNelSilos", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Bilancia", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Bilancia", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Bilancia", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Bilancia", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_eseguito", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "eseguito", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_eseguito", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "eseguito", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_pesoPrelevato", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "pesoPrelevato", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_pesoPrelevato", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 3, "pesoPrelevato", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
+            Me._adapter.InsertCommand.Connection = Me.Connection
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [tostatrici_Setup_Programma] ([Tostatrice], [id_ricetta], [indice_com"& _ 
+                "ponente], [id_richiesta], [id_componente], [kg_set], [kg_tol], [selezione_fl], ["& _ 
+                "ultimoSilosScaricato], [pesoDaPrelevareNelSilos], [Bilancia], [eseguito], [pesoP"& _ 
+                "relevato]) VALUES (@Tostatrice, @id_ricetta, @indice_componente, @id_richiesta, "& _ 
+                "@id_componente, @kg_set, @kg_tol, @selezione_fl, @ultimoSilosScaricato, @pesoDaP"& _ 
+                "relevareNelSilos, @Bilancia, @eseguito, @pesoPrelevato);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Tostatrice, id_"& _ 
+                "ricetta, indice_componente, id_richiesta, id_componente, kg_set, kg_tol, selezio"& _ 
+                "ne_fl, ultimoSilosScaricato, pesoDaPrelevareNelSilos, Bilancia, eseguito, pesoPr"& _ 
+                "elevato FROM tostatrici_Setup_Programma WHERE (Tostatrice = @Tostatrice) AND (id"& _ 
+                "_ricetta = @id_ricetta) AND (indice_componente = @indice_componente)"
+            Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Tostatrice", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Tostatrice", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_ricetta", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "id_ricetta", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@indice_componente", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "indice_componente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_richiesta", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "id_richiesta", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_componente", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "id_componente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@kg_set", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 3, "kg_set", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@kg_tol", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 3, "kg_tol", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@selezione_fl", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "selezione_fl", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ultimoSilosScaricato", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ultimoSilosScaricato", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@pesoDaPrelevareNelSilos", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 3, "pesoDaPrelevareNelSilos", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Bilancia", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Bilancia", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@eseguito", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "eseguito", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@pesoPrelevato", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 3, "pesoPrelevato", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
+            Me._adapter.UpdateCommand.Connection = Me.Connection
+            Me._adapter.UpdateCommand.CommandText = "UPDATE [tostatrici_Setup_Programma] SET [Tostatrice] = @Tostatrice, [id_ricetta] "& _ 
+                "= @id_ricetta, [indice_componente] = @indice_componente, [id_richiesta] = @id_ri"& _ 
+                "chiesta, [id_componente] = @id_componente, [kg_set] = @kg_set, [kg_tol] = @kg_to"& _ 
+                "l, [selezione_fl] = @selezione_fl, [ultimoSilosScaricato] = @ultimoSilosScaricat"& _ 
+                "o, [pesoDaPrelevareNelSilos] = @pesoDaPrelevareNelSilos, [Bilancia] = @Bilancia,"& _ 
+                " [eseguito] = @eseguito, [pesoPrelevato] = @pesoPrelevato WHERE (([Tostatrice] ="& _ 
+                " @Original_Tostatrice) AND ([id_ricetta] = @Original_id_ricetta) AND ([indice_co"& _ 
+                "mponente] = @Original_indice_componente) AND ((@IsNull_id_richiesta = 1 AND [id_"& _ 
+                "richiesta] IS NULL) OR ([id_richiesta] = @Original_id_richiesta)) AND ((@IsNull_"& _ 
+                "id_componente = 1 AND [id_componente] IS NULL) OR ([id_componente] = @Original_i"& _ 
+                "d_componente)) AND ((@IsNull_kg_set = 1 AND [kg_set] IS NULL) OR ([kg_set] = @Or"& _ 
+                "iginal_kg_set)) AND ((@IsNull_kg_tol = 1 AND [kg_tol] IS NULL) OR ([kg_tol] = @O"& _ 
+                "riginal_kg_tol)) AND ((@IsNull_selezione_fl = 1 AND [selezione_fl] IS NULL) OR ("& _ 
+                "[selezione_fl] = @Original_selezione_fl)) AND ((@IsNull_ultimoSilosScaricato = 1"& _ 
+                " AND [ultimoSilosScaricato] IS NULL) OR ([ultimoSilosScaricato] = @Original_ulti"& _ 
+                "moSilosScaricato)) AND ((@IsNull_pesoDaPrelevareNelSilos = 1 AND [pesoDaPrelevar"& _ 
+                "eNelSilos] IS NULL) OR ([pesoDaPrelevareNelSilos] = @Original_pesoDaPrelevareNel"& _ 
+                "Silos)) AND ((@IsNull_Bilancia = 1 AND [Bilancia] IS NULL) OR ([Bilancia] = @Ori"& _ 
+                "ginal_Bilancia)) AND ((@IsNull_eseguito = 1 AND [eseguito] IS NULL) OR ([eseguit"& _ 
+                "o] = @Original_eseguito)) AND ((@IsNull_pesoPrelevato = 1 AND [pesoPrelevato] IS"& _ 
+                " NULL) OR ([pesoPrelevato] = @Original_pesoPrelevato)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Tostatrice, id_"& _ 
+                "ricetta, indice_componente, id_richiesta, id_componente, kg_set, kg_tol, selezio"& _ 
+                "ne_fl, ultimoSilosScaricato, pesoDaPrelevareNelSilos, Bilancia, eseguito, pesoPr"& _ 
+                "elevato FROM tostatrici_Setup_Programma WHERE (Tostatrice = @Tostatrice) AND (id"& _ 
+                "_ricetta = @id_ricetta) AND (indice_componente = @indice_componente)"
+            Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Tostatrice", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Tostatrice", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_ricetta", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "id_ricetta", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@indice_componente", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "indice_componente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_richiesta", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "id_richiesta", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_componente", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "id_componente", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@kg_set", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 3, "kg_set", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@kg_tol", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 3, "kg_tol", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@selezione_fl", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "selezione_fl", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ultimoSilosScaricato", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ultimoSilosScaricato", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@pesoDaPrelevareNelSilos", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 3, "pesoDaPrelevareNelSilos", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Bilancia", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Bilancia", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@eseguito", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "eseguito", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@pesoPrelevato", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 3, "pesoPrelevato", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Tostatrice", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Tostatrice", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_id_ricetta", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "id_ricetta", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_indice_componente", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "indice_componente", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_id_richiesta", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "id_richiesta", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_id_richiesta", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "id_richiesta", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_id_componente", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "id_componente", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_id_componente", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "id_componente", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_kg_set", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "kg_set", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_kg_set", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 3, "kg_set", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_kg_tol", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "kg_tol", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_kg_tol", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 3, "kg_tol", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_selezione_fl", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "selezione_fl", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_selezione_fl", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "selezione_fl", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_ultimoSilosScaricato", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ultimoSilosScaricato", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ultimoSilosScaricato", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ultimoSilosScaricato", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_pesoDaPrelevareNelSilos", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "pesoDaPrelevareNelSilos", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_pesoDaPrelevareNelSilos", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 3, "pesoDaPrelevareNelSilos", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Bilancia", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Bilancia", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Bilancia", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Bilancia", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_eseguito", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "eseguito", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_eseguito", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "eseguito", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_pesoPrelevato", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "pesoPrelevato", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_pesoPrelevato", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 10, 3, "pesoPrelevato", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Private Sub InitConnection()
+            Me._connection = New Global.System.Data.SqlClient.SqlConnection()
+            Me._connection.ConnectionString = Global.TEST_TOSTATRICI.My.MySettings.Default.LEVEL2_GMK_ConnectionString
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Private Sub InitCommandCollection()
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(4) {}
+            Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(0).Connection = Me.Connection
+            Me._commandCollection(0).CommandText = "SELECT        tostatrici_Setup_Programma.*"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            tostatrici_Setup_Prog"& _ 
+                "ramma"
+            Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(1).Connection = Me.Connection
+            Me._commandCollection(1).CommandText = "dbo.sp_TOSTATRICI_SETUP_PROGRAMMA_EliminaTostatrice"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.StoredProcedure
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RETURN_VALUE", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.ReturnValue, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@tostatrice", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(2).Connection = Me.Connection
+            Me._commandCollection(2).CommandText = "dbo.sp_TOSTATRICI_SETUP_PROGRAMMA_ImpostaComponenteEseguito"
+            Me._commandCollection(2).CommandType = Global.System.Data.CommandType.StoredProcedure
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RETURN_VALUE", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.ReturnValue, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@tostatrice", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@indice_componente", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(3).Connection = Me.Connection
+            Me._commandCollection(3).CommandText = "dbo.sp_TOSTATRICI_SETUP_PROGRAMMA_InsertBilancia"
+            Me._commandCollection(3).CommandType = Global.System.Data.CommandType.StoredProcedure
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RETURN_VALUE", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.ReturnValue, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Tostatrice", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_ricetta", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@indice_componente", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_richiesta", Global.System.Data.SqlDbType.BigInt, 8, Global.System.Data.ParameterDirection.Input, 19, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_componente", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@kg_set", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 10, 3, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@kg_tol", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 10, 3, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@selezione_fl", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 1, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ultimoSilosScaricato", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@pesoDaPrelevareNelSilos", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 10, 3, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Bilancia", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@eseguito", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 1, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@pesoPrelevato", Global.System.Data.SqlDbType.[Decimal], 9, Global.System.Data.ParameterDirection.Input, 10, 3, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(4) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(4).Connection = Me.Connection
+            Me._commandCollection(4).CommandText = "dbo.sp_TOSTATRICI_SETUP_PROGRAMMA_SelectByBilancia"
+            Me._commandCollection(4).CommandType = Global.System.Data.CommandType.StoredProcedure
+            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RETURN_VALUE", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.ReturnValue, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Tostatrice", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_ricetta", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id_richiesta", Global.System.Data.SqlDbType.BigInt, 8, Global.System.Data.ParameterDirection.Input, 19, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Bilancia", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
+        Public Overloads Overridable Function Fill(ByVal dataTable As DB.tostatrici_Setup_ProgrammaDataTable) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
+        Public Overloads Overridable Function GetData() As DB.tostatrici_Setup_ProgrammaDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            Dim dataTable As DB.tostatrici_Setup_ProgrammaDataTable = New DB.tostatrici_Setup_ProgrammaDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function sp_TOSTATRICI_SETUP_PROGRAMMA_SelectByBilancia(ByVal Tostatrice As Global.System.Nullable(Of Integer), ByVal id_ricetta As Global.System.Nullable(Of Integer), ByVal id_richiesta As Global.System.Nullable(Of Long), ByVal Bilancia As Global.System.Nullable(Of Integer)) As DB.tostatrici_Setup_ProgrammaDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(4)
+            If (Tostatrice.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(Tostatrice.Value,Integer)
+            Else
+                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
+            End If
+            If (id_ricetta.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(2).Value = CType(id_ricetta.Value,Integer)
+            Else
+                Me.Adapter.SelectCommand.Parameters(2).Value = Global.System.DBNull.Value
+            End If
+            If (id_richiesta.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(3).Value = CType(id_richiesta.Value,Long)
+            Else
+                Me.Adapter.SelectCommand.Parameters(3).Value = Global.System.DBNull.Value
+            End If
+            If (Bilancia.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(4).Value = CType(Bilancia.Value,Integer)
+            Else
+                Me.Adapter.SelectCommand.Parameters(4).Value = Global.System.DBNull.Value
+            End If
+            Dim dataTable As DB.tostatrici_Setup_ProgrammaDataTable = New DB.tostatrici_Setup_ProgrammaDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataTable As DB.tostatrici_Setup_ProgrammaDataTable) As Integer
+            Return Me.Adapter.Update(dataTable)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataSet As DB) As Integer
+            Return Me.Adapter.Update(dataSet, "tostatrici_Setup_Programma")
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataRow As Global.System.Data.DataRow) As Integer
+            Return Me.Adapter.Update(New Global.System.Data.DataRow() {dataRow})
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataRows() As Global.System.Data.DataRow) As Integer
+            Return Me.Adapter.Update(dataRows)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
+        Public Overloads Overridable Function Delete(ByVal Original_Tostatrice As Integer, ByVal Original_id_ricetta As Integer, ByVal Original_indice_componente As Integer, ByVal Original_id_richiesta As Global.System.Nullable(Of Long), ByVal Original_id_componente As Global.System.Nullable(Of Integer), ByVal Original_kg_set As Global.System.Nullable(Of Decimal), ByVal Original_kg_tol As Global.System.Nullable(Of Decimal), ByVal Original_selezione_fl As Global.System.Nullable(Of Boolean), ByVal Original_ultimoSilosScaricato As Global.System.Nullable(Of Integer), ByVal Original_pesoDaPrelevareNelSilos As Global.System.Nullable(Of Decimal), ByVal Original_Bilancia As Global.System.Nullable(Of Integer), ByVal Original_eseguito As Global.System.Nullable(Of Boolean), ByVal Original_pesoPrelevato As Global.System.Nullable(Of Decimal)) As Integer
+            Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_Tostatrice,Integer)
+            Me.Adapter.DeleteCommand.Parameters(1).Value = CType(Original_id_ricetta,Integer)
+            Me.Adapter.DeleteCommand.Parameters(2).Value = CType(Original_indice_componente,Integer)
+            If (Original_id_richiesta.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(4).Value = CType(Original_id_richiesta.Value,Long)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(4).Value = Global.System.DBNull.Value
+            End If
+            If (Original_id_componente.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(6).Value = CType(Original_id_componente.Value,Integer)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(6).Value = Global.System.DBNull.Value
+            End If
+            If (Original_kg_set.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(8).Value = CType(Original_kg_set.Value,Decimal)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(8).Value = Global.System.DBNull.Value
+            End If
+            If (Original_kg_tol.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(10).Value = CType(Original_kg_tol.Value,Decimal)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(10).Value = Global.System.DBNull.Value
+            End If
+            If (Original_selezione_fl.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(11).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(12).Value = CType(Original_selezione_fl.Value,Boolean)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(11).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(12).Value = Global.System.DBNull.Value
+            End If
+            If (Original_ultimoSilosScaricato.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(13).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(14).Value = CType(Original_ultimoSilosScaricato.Value,Integer)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(13).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(14).Value = Global.System.DBNull.Value
+            End If
+            If (Original_pesoDaPrelevareNelSilos.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(15).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(16).Value = CType(Original_pesoDaPrelevareNelSilos.Value,Decimal)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(15).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(16).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Bilancia.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(17).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(18).Value = CType(Original_Bilancia.Value,Integer)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(17).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(18).Value = Global.System.DBNull.Value
+            End If
+            If (Original_eseguito.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(19).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(20).Value = CType(Original_eseguito.Value,Boolean)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(19).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(20).Value = Global.System.DBNull.Value
+            End If
+            If (Original_pesoPrelevato.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(21).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(22).Value = CType(Original_pesoPrelevato.Value,Decimal)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(21).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(22).Value = Global.System.DBNull.Value
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
+            If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.DeleteCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.DeleteCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.DeleteCommand.Connection.Close
+                End If
+            End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
+        Public Overloads Overridable Function Insert(ByVal Tostatrice As Integer, ByVal id_ricetta As Integer, ByVal indice_componente As Integer, ByVal id_richiesta As Global.System.Nullable(Of Long), ByVal id_componente As Global.System.Nullable(Of Integer), ByVal kg_set As Global.System.Nullable(Of Decimal), ByVal kg_tol As Global.System.Nullable(Of Decimal), ByVal selezione_fl As Global.System.Nullable(Of Boolean), ByVal ultimoSilosScaricato As Global.System.Nullable(Of Integer), ByVal pesoDaPrelevareNelSilos As Global.System.Nullable(Of Decimal), ByVal Bilancia As Global.System.Nullable(Of Integer), ByVal eseguito As Global.System.Nullable(Of Boolean), ByVal pesoPrelevato As Global.System.Nullable(Of Decimal)) As Integer
+            Me.Adapter.InsertCommand.Parameters(0).Value = CType(Tostatrice,Integer)
+            Me.Adapter.InsertCommand.Parameters(1).Value = CType(id_ricetta,Integer)
+            Me.Adapter.InsertCommand.Parameters(2).Value = CType(indice_componente,Integer)
+            If (id_richiesta.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(3).Value = CType(id_richiesta.Value,Long)
+            Else
+                Me.Adapter.InsertCommand.Parameters(3).Value = Global.System.DBNull.Value
+            End If
+            If (id_componente.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(4).Value = CType(id_componente.Value,Integer)
+            Else
+                Me.Adapter.InsertCommand.Parameters(4).Value = Global.System.DBNull.Value
+            End If
+            If (kg_set.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(5).Value = CType(kg_set.Value,Decimal)
+            Else
+                Me.Adapter.InsertCommand.Parameters(5).Value = Global.System.DBNull.Value
+            End If
+            If (kg_tol.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(6).Value = CType(kg_tol.Value,Decimal)
+            Else
+                Me.Adapter.InsertCommand.Parameters(6).Value = Global.System.DBNull.Value
+            End If
+            If (selezione_fl.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(7).Value = CType(selezione_fl.Value,Boolean)
+            Else
+                Me.Adapter.InsertCommand.Parameters(7).Value = Global.System.DBNull.Value
+            End If
+            If (ultimoSilosScaricato.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(8).Value = CType(ultimoSilosScaricato.Value,Integer)
+            Else
+                Me.Adapter.InsertCommand.Parameters(8).Value = Global.System.DBNull.Value
+            End If
+            If (pesoDaPrelevareNelSilos.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(9).Value = CType(pesoDaPrelevareNelSilos.Value,Decimal)
+            Else
+                Me.Adapter.InsertCommand.Parameters(9).Value = Global.System.DBNull.Value
+            End If
+            If (Bilancia.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(10).Value = CType(Bilancia.Value,Integer)
+            Else
+                Me.Adapter.InsertCommand.Parameters(10).Value = Global.System.DBNull.Value
+            End If
+            If (eseguito.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(11).Value = CType(eseguito.Value,Boolean)
+            Else
+                Me.Adapter.InsertCommand.Parameters(11).Value = Global.System.DBNull.Value
+            End If
+            If (pesoPrelevato.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(12).Value = CType(pesoPrelevato.Value,Decimal)
+            Else
+                Me.Adapter.InsertCommand.Parameters(12).Value = Global.System.DBNull.Value
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
+            If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.InsertCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.InsertCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.InsertCommand.Connection.Close
+                End If
+            End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
+        Public Overloads Overridable Function Update( _
+                    ByVal Tostatrice As Integer,  _
+                    ByVal id_ricetta As Integer,  _
+                    ByVal indice_componente As Integer,  _
+                    ByVal id_richiesta As Global.System.Nullable(Of Long),  _
+                    ByVal id_componente As Global.System.Nullable(Of Integer),  _
+                    ByVal kg_set As Global.System.Nullable(Of Decimal),  _
+                    ByVal kg_tol As Global.System.Nullable(Of Decimal),  _
+                    ByVal selezione_fl As Global.System.Nullable(Of Boolean),  _
+                    ByVal ultimoSilosScaricato As Global.System.Nullable(Of Integer),  _
+                    ByVal pesoDaPrelevareNelSilos As Global.System.Nullable(Of Decimal),  _
+                    ByVal Bilancia As Global.System.Nullable(Of Integer),  _
+                    ByVal eseguito As Global.System.Nullable(Of Boolean),  _
+                    ByVal pesoPrelevato As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_Tostatrice As Integer,  _
+                    ByVal Original_id_ricetta As Integer,  _
+                    ByVal Original_indice_componente As Integer,  _
+                    ByVal Original_id_richiesta As Global.System.Nullable(Of Long),  _
+                    ByVal Original_id_componente As Global.System.Nullable(Of Integer),  _
+                    ByVal Original_kg_set As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_kg_tol As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_selezione_fl As Global.System.Nullable(Of Boolean),  _
+                    ByVal Original_ultimoSilosScaricato As Global.System.Nullable(Of Integer),  _
+                    ByVal Original_pesoDaPrelevareNelSilos As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_Bilancia As Global.System.Nullable(Of Integer),  _
+                    ByVal Original_eseguito As Global.System.Nullable(Of Boolean),  _
+                    ByVal Original_pesoPrelevato As Global.System.Nullable(Of Decimal)) As Integer
+            Me.Adapter.UpdateCommand.Parameters(0).Value = CType(Tostatrice,Integer)
+            Me.Adapter.UpdateCommand.Parameters(1).Value = CType(id_ricetta,Integer)
+            Me.Adapter.UpdateCommand.Parameters(2).Value = CType(indice_componente,Integer)
+            If (id_richiesta.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(3).Value = CType(id_richiesta.Value,Long)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(3).Value = Global.System.DBNull.Value
+            End If
+            If (id_componente.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(id_componente.Value,Integer)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(4).Value = Global.System.DBNull.Value
+            End If
+            If (kg_set.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(kg_set.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(5).Value = Global.System.DBNull.Value
+            End If
+            If (kg_tol.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(kg_tol.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(6).Value = Global.System.DBNull.Value
+            End If
+            If (selezione_fl.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(selezione_fl.Value,Boolean)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(7).Value = Global.System.DBNull.Value
+            End If
+            If (ultimoSilosScaricato.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(ultimoSilosScaricato.Value,Integer)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(8).Value = Global.System.DBNull.Value
+            End If
+            If (pesoDaPrelevareNelSilos.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(pesoDaPrelevareNelSilos.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(9).Value = Global.System.DBNull.Value
+            End If
+            If (Bilancia.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Bilancia.Value,Integer)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(10).Value = Global.System.DBNull.Value
+            End If
+            If (eseguito.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(eseguito.Value,Boolean)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(11).Value = Global.System.DBNull.Value
+            End If
+            If (pesoPrelevato.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(pesoPrelevato.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(12).Value = Global.System.DBNull.Value
+            End If
+            Me.Adapter.UpdateCommand.Parameters(13).Value = CType(Original_Tostatrice,Integer)
+            Me.Adapter.UpdateCommand.Parameters(14).Value = CType(Original_id_ricetta,Integer)
+            Me.Adapter.UpdateCommand.Parameters(15).Value = CType(Original_indice_componente,Integer)
+            If (Original_id_richiesta.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(Original_id_richiesta.Value,Long)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(17).Value = Global.System.DBNull.Value
+            End If
+            If (Original_id_componente.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(Original_id_componente.Value,Integer)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(19).Value = Global.System.DBNull.Value
+            End If
+            If (Original_kg_set.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(Original_kg_set.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(21).Value = Global.System.DBNull.Value
+            End If
+            If (Original_kg_tol.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(Original_kg_tol.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(23).Value = Global.System.DBNull.Value
+            End If
+            If (Original_selezione_fl.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(Original_selezione_fl.Value,Boolean)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(25).Value = Global.System.DBNull.Value
+            End If
+            If (Original_ultimoSilosScaricato.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(Original_ultimoSilosScaricato.Value,Integer)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(27).Value = Global.System.DBNull.Value
+            End If
+            If (Original_pesoDaPrelevareNelSilos.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(Original_pesoDaPrelevareNelSilos.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(29).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Bilancia.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(Original_Bilancia.Value,Integer)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(31).Value = Global.System.DBNull.Value
+            End If
+            If (Original_eseguito.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(Original_eseguito.Value,Boolean)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(33).Value = Global.System.DBNull.Value
+            End If
+            If (Original_pesoPrelevato.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(Original_pesoPrelevato.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(35).Value = Global.System.DBNull.Value
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
+            If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.UpdateCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.UpdateCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.UpdateCommand.Connection.Close
+                End If
+            End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
+        Public Overloads Overridable Function Update( _
+                    ByVal id_richiesta As Global.System.Nullable(Of Long),  _
+                    ByVal id_componente As Global.System.Nullable(Of Integer),  _
+                    ByVal kg_set As Global.System.Nullable(Of Decimal),  _
+                    ByVal kg_tol As Global.System.Nullable(Of Decimal),  _
+                    ByVal selezione_fl As Global.System.Nullable(Of Boolean),  _
+                    ByVal ultimoSilosScaricato As Global.System.Nullable(Of Integer),  _
+                    ByVal pesoDaPrelevareNelSilos As Global.System.Nullable(Of Decimal),  _
+                    ByVal Bilancia As Global.System.Nullable(Of Integer),  _
+                    ByVal eseguito As Global.System.Nullable(Of Boolean),  _
+                    ByVal pesoPrelevato As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_Tostatrice As Integer,  _
+                    ByVal Original_id_ricetta As Integer,  _
+                    ByVal Original_indice_componente As Integer,  _
+                    ByVal Original_id_richiesta As Global.System.Nullable(Of Long),  _
+                    ByVal Original_id_componente As Global.System.Nullable(Of Integer),  _
+                    ByVal Original_kg_set As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_kg_tol As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_selezione_fl As Global.System.Nullable(Of Boolean),  _
+                    ByVal Original_ultimoSilosScaricato As Global.System.Nullable(Of Integer),  _
+                    ByVal Original_pesoDaPrelevareNelSilos As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_Bilancia As Global.System.Nullable(Of Integer),  _
+                    ByVal Original_eseguito As Global.System.Nullable(Of Boolean),  _
+                    ByVal Original_pesoPrelevato As Global.System.Nullable(Of Decimal)) As Integer
+            Return Me.Update(Original_Tostatrice, Original_id_ricetta, Original_indice_componente, id_richiesta, id_componente, kg_set, kg_tol, selezione_fl, ultimoSilosScaricato, pesoDaPrelevareNelSilos, Bilancia, eseguito, pesoPrelevato, Original_Tostatrice, Original_id_ricetta, Original_indice_componente, Original_id_richiesta, Original_id_componente, Original_kg_set, Original_kg_tol, Original_selezione_fl, Original_ultimoSilosScaricato, Original_pesoDaPrelevareNelSilos, Original_Bilancia, Original_eseguito, Original_pesoPrelevato)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function sp_TOSTATRICI_SETUP_PROGRAMMA_EliminaTostatrice(ByVal tostatrice As Global.System.Nullable(Of Integer)) As Integer
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(1)
+            If (tostatrice.HasValue = true) Then
+                command.Parameters(1).Value = CType(tostatrice.Value,Integer)
+            Else
+                command.Parameters(1).Value = Global.System.DBNull.Value
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function sp_TOSTATRICI_SETUP_PROGRAMMA_ImpostaComponenteEseguito(ByVal tostatrice As Global.System.Nullable(Of Integer), ByVal indice_componente As Global.System.Nullable(Of Integer)) As Integer
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(2)
+            If (tostatrice.HasValue = true) Then
+                command.Parameters(1).Value = CType(tostatrice.Value,Integer)
+            Else
+                command.Parameters(1).Value = Global.System.DBNull.Value
+            End If
+            If (indice_componente.HasValue = true) Then
+                command.Parameters(2).Value = CType(indice_componente.Value,Integer)
+            Else
+                command.Parameters(2).Value = Global.System.DBNull.Value
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function sp_TOSTATRICI_SETUP_PROGRAMMA_InsertBilancia(ByVal Tostatrice As Global.System.Nullable(Of Integer), ByVal id_ricetta As Global.System.Nullable(Of Integer), ByVal indice_componente As Global.System.Nullable(Of Integer), ByVal id_richiesta As Global.System.Nullable(Of Long), ByVal id_componente As Global.System.Nullable(Of Integer), ByVal kg_set As Global.System.Nullable(Of Decimal), ByVal kg_tol As Global.System.Nullable(Of Decimal), ByVal selezione_fl As Global.System.Nullable(Of Boolean), ByVal ultimoSilosScaricato As Global.System.Nullable(Of Integer), ByVal pesoDaPrelevareNelSilos As Global.System.Nullable(Of Decimal), ByVal Bilancia As Global.System.Nullable(Of Integer), ByVal eseguito As Global.System.Nullable(Of Boolean), ByVal pesoPrelevato As Global.System.Nullable(Of Decimal)) As Integer
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(3)
+            If (Tostatrice.HasValue = true) Then
+                command.Parameters(1).Value = CType(Tostatrice.Value,Integer)
+            Else
+                command.Parameters(1).Value = Global.System.DBNull.Value
+            End If
+            If (id_ricetta.HasValue = true) Then
+                command.Parameters(2).Value = CType(id_ricetta.Value,Integer)
+            Else
+                command.Parameters(2).Value = Global.System.DBNull.Value
+            End If
+            If (indice_componente.HasValue = true) Then
+                command.Parameters(3).Value = CType(indice_componente.Value,Integer)
+            Else
+                command.Parameters(3).Value = Global.System.DBNull.Value
+            End If
+            If (id_richiesta.HasValue = true) Then
+                command.Parameters(4).Value = CType(id_richiesta.Value,Long)
+            Else
+                command.Parameters(4).Value = Global.System.DBNull.Value
+            End If
+            If (id_componente.HasValue = true) Then
+                command.Parameters(5).Value = CType(id_componente.Value,Integer)
+            Else
+                command.Parameters(5).Value = Global.System.DBNull.Value
+            End If
+            If (kg_set.HasValue = true) Then
+                command.Parameters(6).Value = CType(kg_set.Value,Decimal)
+            Else
+                command.Parameters(6).Value = Global.System.DBNull.Value
+            End If
+            If (kg_tol.HasValue = true) Then
+                command.Parameters(7).Value = CType(kg_tol.Value,Decimal)
+            Else
+                command.Parameters(7).Value = Global.System.DBNull.Value
+            End If
+            If (selezione_fl.HasValue = true) Then
+                command.Parameters(8).Value = CType(selezione_fl.Value,Boolean)
+            Else
+                command.Parameters(8).Value = Global.System.DBNull.Value
+            End If
+            If (ultimoSilosScaricato.HasValue = true) Then
+                command.Parameters(9).Value = CType(ultimoSilosScaricato.Value,Integer)
+            Else
+                command.Parameters(9).Value = Global.System.DBNull.Value
+            End If
+            If (pesoDaPrelevareNelSilos.HasValue = true) Then
+                command.Parameters(10).Value = CType(pesoDaPrelevareNelSilos.Value,Decimal)
+            Else
+                command.Parameters(10).Value = Global.System.DBNull.Value
+            End If
+            If (Bilancia.HasValue = true) Then
+                command.Parameters(11).Value = CType(Bilancia.Value,Integer)
+            Else
+                command.Parameters(11).Value = Global.System.DBNull.Value
+            End If
+            If (eseguito.HasValue = true) Then
+                command.Parameters(12).Value = CType(eseguito.Value,Boolean)
+            Else
+                command.Parameters(12).Value = Global.System.DBNull.Value
+            End If
+            If (pesoPrelevato.HasValue = true) Then
+                command.Parameters(13).Value = CType(pesoPrelevato.Value,Decimal)
+            Else
+                command.Parameters(13).Value = Global.System.DBNull.Value
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
+        End Function
+    End Class
+    
+    '''<summary>
     '''TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
     '''</summary>
     <Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -8744,9 +8817,9 @@ Namespace DBTableAdapters
         
         Private _ricetta_componentiTableAdapter As ricetta_componentiTableAdapter
         
-        Private _tostatrici_Setup_ProgrammaTableAdapter As tostatrici_Setup_ProgrammaTableAdapter
-        
         Private _tostatrici_Setup_RichiesteTableAdapter As tostatrici_Setup_RichiesteTableAdapter
+        
+        Private _tostatrici_Setup_ProgrammaTableAdapter As tostatrici_Setup_ProgrammaTableAdapter
         
         Private _backupDataSetBeforeUpdate As Boolean
         
@@ -8796,12 +8869,12 @@ Namespace DBTableAdapters
          Global.System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso"& _ 
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3"& _ 
             "a", "System.Drawing.Design.UITypeEditor")>  _
-        Public Property tostatrici_Setup_ProgrammaTableAdapter() As tostatrici_Setup_ProgrammaTableAdapter
+        Public Property tostatrici_Setup_RichiesteTableAdapter() As tostatrici_Setup_RichiesteTableAdapter
             Get
-                Return Me._tostatrici_Setup_ProgrammaTableAdapter
+                Return Me._tostatrici_Setup_RichiesteTableAdapter
             End Get
             Set
-                Me._tostatrici_Setup_ProgrammaTableAdapter = value
+                Me._tostatrici_Setup_RichiesteTableAdapter = value
             End Set
         End Property
         
@@ -8810,12 +8883,12 @@ Namespace DBTableAdapters
          Global.System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso"& _ 
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3"& _ 
             "a", "System.Drawing.Design.UITypeEditor")>  _
-        Public Property tostatrici_Setup_RichiesteTableAdapter() As tostatrici_Setup_RichiesteTableAdapter
+        Public Property tostatrici_Setup_ProgrammaTableAdapter() As tostatrici_Setup_ProgrammaTableAdapter
             Get
-                Return Me._tostatrici_Setup_RichiesteTableAdapter
+                Return Me._tostatrici_Setup_ProgrammaTableAdapter
             End Get
             Set
-                Me._tostatrici_Setup_RichiesteTableAdapter = value
+                Me._tostatrici_Setup_ProgrammaTableAdapter = value
             End Set
         End Property
         
@@ -8846,13 +8919,13 @@ Namespace DBTableAdapters
                             AndAlso (Not (Me._ricetta_componentiTableAdapter.Connection) Is Nothing)) Then
                     Return Me._ricetta_componentiTableAdapter.Connection
                 End If
-                If ((Not (Me._tostatrici_Setup_ProgrammaTableAdapter) Is Nothing)  _
-                            AndAlso (Not (Me._tostatrici_Setup_ProgrammaTableAdapter.Connection) Is Nothing)) Then
-                    Return Me._tostatrici_Setup_ProgrammaTableAdapter.Connection
-                End If
                 If ((Not (Me._tostatrici_Setup_RichiesteTableAdapter) Is Nothing)  _
                             AndAlso (Not (Me._tostatrici_Setup_RichiesteTableAdapter.Connection) Is Nothing)) Then
                     Return Me._tostatrici_Setup_RichiesteTableAdapter.Connection
+                End If
+                If ((Not (Me._tostatrici_Setup_ProgrammaTableAdapter) Is Nothing)  _
+                            AndAlso (Not (Me._tostatrici_Setup_ProgrammaTableAdapter.Connection) Is Nothing)) Then
+                    Return Me._tostatrici_Setup_ProgrammaTableAdapter.Connection
                 End If
                 Return Nothing
             End Get
@@ -8873,10 +8946,10 @@ Namespace DBTableAdapters
                 If (Not (Me._ricetta_componentiTableAdapter) Is Nothing) Then
                     count = (count + 1)
                 End If
-                If (Not (Me._tostatrici_Setup_ProgrammaTableAdapter) Is Nothing) Then
+                If (Not (Me._tostatrici_Setup_RichiesteTableAdapter) Is Nothing) Then
                     count = (count + 1)
                 End If
-                If (Not (Me._tostatrici_Setup_RichiesteTableAdapter) Is Nothing) Then
+                If (Not (Me._tostatrici_Setup_ProgrammaTableAdapter) Is Nothing) Then
                     count = (count + 1)
                 End If
                 Return count
@@ -8908,21 +8981,21 @@ Namespace DBTableAdapters
                     allChangedRows.AddRange(updatedRows)
                 End If
             End If
-            If (Not (Me._tostatrici_Setup_ProgrammaTableAdapter) Is Nothing) Then
-                Dim updatedRows() As Global.System.Data.DataRow = dataSet.tostatrici_Setup_Programma.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
-                updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
-                If ((Not (updatedRows) Is Nothing)  _
-                            AndAlso (0 < updatedRows.Length)) Then
-                    result = (result + Me._tostatrici_Setup_ProgrammaTableAdapter.Update(updatedRows))
-                    allChangedRows.AddRange(updatedRows)
-                End If
-            End If
             If (Not (Me._tostatrici_Setup_RichiesteTableAdapter) Is Nothing) Then
                 Dim updatedRows() As Global.System.Data.DataRow = dataSet.tostatrici_Setup_Richieste.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
                 updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
                 If ((Not (updatedRows) Is Nothing)  _
                             AndAlso (0 < updatedRows.Length)) Then
                     result = (result + Me._tostatrici_Setup_RichiesteTableAdapter.Update(updatedRows))
+                    allChangedRows.AddRange(updatedRows)
+                End If
+            End If
+            If (Not (Me._tostatrici_Setup_ProgrammaTableAdapter) Is Nothing) Then
+                Dim updatedRows() As Global.System.Data.DataRow = dataSet.tostatrici_Setup_Programma.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
+                updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
+                If ((Not (updatedRows) Is Nothing)  _
+                            AndAlso (0 < updatedRows.Length)) Then
+                    result = (result + Me._tostatrici_Setup_ProgrammaTableAdapter.Update(updatedRows))
                     allChangedRows.AddRange(updatedRows)
                 End If
             End If
@@ -8952,19 +9025,19 @@ Namespace DBTableAdapters
                     allAddedRows.AddRange(addedRows)
                 End If
             End If
-            If (Not (Me._tostatrici_Setup_ProgrammaTableAdapter) Is Nothing) Then
-                Dim addedRows() As Global.System.Data.DataRow = dataSet.tostatrici_Setup_Programma.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
-                If ((Not (addedRows) Is Nothing)  _
-                            AndAlso (0 < addedRows.Length)) Then
-                    result = (result + Me._tostatrici_Setup_ProgrammaTableAdapter.Update(addedRows))
-                    allAddedRows.AddRange(addedRows)
-                End If
-            End If
             If (Not (Me._tostatrici_Setup_RichiesteTableAdapter) Is Nothing) Then
                 Dim addedRows() As Global.System.Data.DataRow = dataSet.tostatrici_Setup_Richieste.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
                 If ((Not (addedRows) Is Nothing)  _
                             AndAlso (0 < addedRows.Length)) Then
                     result = (result + Me._tostatrici_Setup_RichiesteTableAdapter.Update(addedRows))
+                    allAddedRows.AddRange(addedRows)
+                End If
+            End If
+            If (Not (Me._tostatrici_Setup_ProgrammaTableAdapter) Is Nothing) Then
+                Dim addedRows() As Global.System.Data.DataRow = dataSet.tostatrici_Setup_Programma.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
+                If ((Not (addedRows) Is Nothing)  _
+                            AndAlso (0 < addedRows.Length)) Then
+                    result = (result + Me._tostatrici_Setup_ProgrammaTableAdapter.Update(addedRows))
                     allAddedRows.AddRange(addedRows)
                 End If
             End If
@@ -8978,19 +9051,19 @@ Namespace DBTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Private Function UpdateDeletedRows(ByVal dataSet As DB, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
             Dim result As Integer = 0
-            If (Not (Me._tostatrici_Setup_RichiesteTableAdapter) Is Nothing) Then
-                Dim deletedRows() As Global.System.Data.DataRow = dataSet.tostatrici_Setup_Richieste.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
-                If ((Not (deletedRows) Is Nothing)  _
-                            AndAlso (0 < deletedRows.Length)) Then
-                    result = (result + Me._tostatrici_Setup_RichiesteTableAdapter.Update(deletedRows))
-                    allChangedRows.AddRange(deletedRows)
-                End If
-            End If
             If (Not (Me._tostatrici_Setup_ProgrammaTableAdapter) Is Nothing) Then
                 Dim deletedRows() As Global.System.Data.DataRow = dataSet.tostatrici_Setup_Programma.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
                 If ((Not (deletedRows) Is Nothing)  _
                             AndAlso (0 < deletedRows.Length)) Then
                     result = (result + Me._tostatrici_Setup_ProgrammaTableAdapter.Update(deletedRows))
+                    allChangedRows.AddRange(deletedRows)
+                End If
+            End If
+            If (Not (Me._tostatrici_Setup_RichiesteTableAdapter) Is Nothing) Then
+                Dim deletedRows() As Global.System.Data.DataRow = dataSet.tostatrici_Setup_Richieste.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
+                If ((Not (deletedRows) Is Nothing)  _
+                            AndAlso (0 < deletedRows.Length)) Then
+                    result = (result + Me._tostatrici_Setup_RichiesteTableAdapter.Update(deletedRows))
                     allChangedRows.AddRange(deletedRows)
                 End If
             End If
@@ -9061,13 +9134,13 @@ Namespace DBTableAdapters
                 Throw New Global.System.ArgumentException("Tutti gli oggetti TableAdapter gestiti da TableAdapterManager devono utilizzare l"& _ 
                         "a stessa stringa di connessione.")
             End If
-            If ((Not (Me._tostatrici_Setup_ProgrammaTableAdapter) Is Nothing)  _
-                        AndAlso (Me.MatchTableAdapterConnection(Me._tostatrici_Setup_ProgrammaTableAdapter.Connection) = false)) Then
+            If ((Not (Me._tostatrici_Setup_RichiesteTableAdapter) Is Nothing)  _
+                        AndAlso (Me.MatchTableAdapterConnection(Me._tostatrici_Setup_RichiesteTableAdapter.Connection) = false)) Then
                 Throw New Global.System.ArgumentException("Tutti gli oggetti TableAdapter gestiti da TableAdapterManager devono utilizzare l"& _ 
                         "a stessa stringa di connessione.")
             End If
-            If ((Not (Me._tostatrici_Setup_RichiesteTableAdapter) Is Nothing)  _
-                        AndAlso (Me.MatchTableAdapterConnection(Me._tostatrici_Setup_RichiesteTableAdapter.Connection) = false)) Then
+            If ((Not (Me._tostatrici_Setup_ProgrammaTableAdapter) Is Nothing)  _
+                        AndAlso (Me.MatchTableAdapterConnection(Me._tostatrici_Setup_ProgrammaTableAdapter.Connection) = false)) Then
                 Throw New Global.System.ArgumentException("Tutti gli oggetti TableAdapter gestiti da TableAdapterManager devono utilizzare l"& _ 
                         "a stessa stringa di connessione.")
             End If
@@ -9122,15 +9195,6 @@ Namespace DBTableAdapters
                         adaptersWithAcceptChangesDuringUpdate.Add(Me._ricetta_componentiTableAdapter.Adapter)
                     End If
                 End If
-                If (Not (Me._tostatrici_Setup_ProgrammaTableAdapter) Is Nothing) Then
-                    revertConnections.Add(Me._tostatrici_Setup_ProgrammaTableAdapter, Me._tostatrici_Setup_ProgrammaTableAdapter.Connection)
-                    Me._tostatrici_Setup_ProgrammaTableAdapter.Connection = CType(workConnection,Global.System.Data.SqlClient.SqlConnection)
-                    Me._tostatrici_Setup_ProgrammaTableAdapter.Transaction = CType(workTransaction,Global.System.Data.SqlClient.SqlTransaction)
-                    If Me._tostatrici_Setup_ProgrammaTableAdapter.Adapter.AcceptChangesDuringUpdate Then
-                        Me._tostatrici_Setup_ProgrammaTableAdapter.Adapter.AcceptChangesDuringUpdate = false
-                        adaptersWithAcceptChangesDuringUpdate.Add(Me._tostatrici_Setup_ProgrammaTableAdapter.Adapter)
-                    End If
-                End If
                 If (Not (Me._tostatrici_Setup_RichiesteTableAdapter) Is Nothing) Then
                     revertConnections.Add(Me._tostatrici_Setup_RichiesteTableAdapter, Me._tostatrici_Setup_RichiesteTableAdapter.Connection)
                     Me._tostatrici_Setup_RichiesteTableAdapter.Connection = CType(workConnection,Global.System.Data.SqlClient.SqlConnection)
@@ -9138,6 +9202,15 @@ Namespace DBTableAdapters
                     If Me._tostatrici_Setup_RichiesteTableAdapter.Adapter.AcceptChangesDuringUpdate Then
                         Me._tostatrici_Setup_RichiesteTableAdapter.Adapter.AcceptChangesDuringUpdate = false
                         adaptersWithAcceptChangesDuringUpdate.Add(Me._tostatrici_Setup_RichiesteTableAdapter.Adapter)
+                    End If
+                End If
+                If (Not (Me._tostatrici_Setup_ProgrammaTableAdapter) Is Nothing) Then
+                    revertConnections.Add(Me._tostatrici_Setup_ProgrammaTableAdapter, Me._tostatrici_Setup_ProgrammaTableAdapter.Connection)
+                    Me._tostatrici_Setup_ProgrammaTableAdapter.Connection = CType(workConnection,Global.System.Data.SqlClient.SqlConnection)
+                    Me._tostatrici_Setup_ProgrammaTableAdapter.Transaction = CType(workTransaction,Global.System.Data.SqlClient.SqlTransaction)
+                    If Me._tostatrici_Setup_ProgrammaTableAdapter.Adapter.AcceptChangesDuringUpdate Then
+                        Me._tostatrici_Setup_ProgrammaTableAdapter.Adapter.AcceptChangesDuringUpdate = false
+                        adaptersWithAcceptChangesDuringUpdate.Add(Me._tostatrici_Setup_ProgrammaTableAdapter.Adapter)
                     End If
                 End If
                 '
@@ -9208,13 +9281,13 @@ Namespace DBTableAdapters
                     Me._ricetta_componentiTableAdapter.Connection = CType(revertConnections(Me._ricetta_componentiTableAdapter),Global.System.Data.SqlClient.SqlConnection)
                     Me._ricetta_componentiTableAdapter.Transaction = Nothing
                 End If
-                If (Not (Me._tostatrici_Setup_ProgrammaTableAdapter) Is Nothing) Then
-                    Me._tostatrici_Setup_ProgrammaTableAdapter.Connection = CType(revertConnections(Me._tostatrici_Setup_ProgrammaTableAdapter),Global.System.Data.SqlClient.SqlConnection)
-                    Me._tostatrici_Setup_ProgrammaTableAdapter.Transaction = Nothing
-                End If
                 If (Not (Me._tostatrici_Setup_RichiesteTableAdapter) Is Nothing) Then
                     Me._tostatrici_Setup_RichiesteTableAdapter.Connection = CType(revertConnections(Me._tostatrici_Setup_RichiesteTableAdapter),Global.System.Data.SqlClient.SqlConnection)
                     Me._tostatrici_Setup_RichiesteTableAdapter.Transaction = Nothing
+                End If
+                If (Not (Me._tostatrici_Setup_ProgrammaTableAdapter) Is Nothing) Then
+                    Me._tostatrici_Setup_ProgrammaTableAdapter.Connection = CType(revertConnections(Me._tostatrici_Setup_ProgrammaTableAdapter),Global.System.Data.SqlClient.SqlConnection)
+                    Me._tostatrici_Setup_ProgrammaTableAdapter.Transaction = Nothing
                 End If
                 If (0 < adaptersWithAcceptChangesDuringUpdate.Count) Then
                     Dim adapters((adaptersWithAcceptChangesDuringUpdate.Count) - 1) As Global.System.Data.Common.DataAdapter

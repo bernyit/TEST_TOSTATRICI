@@ -112,5 +112,17 @@
 
     End Sub
 
+    Private Sub btnCalcolaProssimoSilos_Click(sender As Object, e As EventArgs) Handles btnCalcolaProssimoSilos.Click
 
+        Dim msgDaPlc As New GMK_LEVEL2_TOSTATRICI.strTelFromPlc_1X_RichiestaSilosPerBilanciaX
+        msgDaPlc.tostatriceNr = 3
+        msgDaPlc.idRichiesta = 1613989848
+
+        msgDaPlc.indice_componente = 1
+        msgDaPlc.ricettaNr = 89
+        msgDaPlc.sequenzaRichiesta = BILANCE.enuPesateSequenza.START_PRODUZIONE
+
+        BILANCE.CalcolaProssimoSilos(msgDaPlc, 1)
+
+    End Sub
 End Class

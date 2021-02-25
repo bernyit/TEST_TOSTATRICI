@@ -551,4 +551,37 @@
 
     End Sub
 
+    Public Shared Function leggiUltimaRichiesta(ByVal tostatrice As Int16) As Int16
+
+        Dim ultimaCombinazioneRichiesta As Int16 = 0
+        Using TTA As DBTableAdapters.tostatrici_Setup_RichiesteTableAdapter = New DBTableAdapters.tostatrici_Setup_RichiesteTableAdapter
+            Using data = TTA.sp_TOSTATRICI_SETUP_RICHIESTE_LeggiUltimaRichiesta(tostatrice)
+                If ReferenceEquals(data, Nothing) = False Then
+                    If data.Count > 0 Then
+                        ultimaCombinazioneRichiesta = data(0).combinazione
+                    End If
+                End If
+            End Using
+        End Using
+        Return ultimaCombinazioneRichiesta
+    End Function
+
+    Public Shared Function ricettaAncoraFattibile(ByVal tostatrice As Int16, ByVal idRicetta As Integer, ByVal combinazioneSelezionata As UInt16) As Boolean
+        Dim ultimaRichiesta As Int16
+        Dim result As Boolean
+        Dim calcolo = verificaFattibilita2(idRicetta, combinazioneSelezionata)
+
+        If combinazioneSelezionata > 0 Then
+            If calcolo.compinazionePerPlc = combinazioneSelezionata Then 'quello scelto e quello che farebbe il livello 2 sono uguali
+                ultimaRichiesta = leggiUltimaRichiesta(tostatrice)  'ultima richiesta confermata da PLC
+                If ultimaRichiesta = calcolo.compinazionePerPlc Then
+                    result = True
+                End If
+            End If
+        End If
+
+
+        Return result
+    End Function
+
 End Class
