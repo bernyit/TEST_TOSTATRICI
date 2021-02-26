@@ -118,9 +118,9 @@
         msgDaPlc.tostatriceNr = 3
         msgDaPlc.idRichiesta = 1613989848
 
-        msgDaPlc.indice_componente = 1
+        msgDaPlc.indice_componente = 4
         msgDaPlc.ricettaNr = 89
-        msgDaPlc.sequenzaRichiesta = BILANCE.enuPesateSequenza.START_PRODUZIONE
+        msgDaPlc.sequenzaRichiesta = BILANCE.enuPesateSequenza.PRODOTTO_SUCCESSIVO
 
         BILANCE.CalcolaProssimoSilos(msgDaPlc, 1)
 

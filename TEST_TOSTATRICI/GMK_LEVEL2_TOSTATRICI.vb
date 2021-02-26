@@ -17,6 +17,7 @@
         Dim tolleranzaPeso As Single
         Dim lotto As String
         Dim indice_componente As Int16
+        Dim pesoTotalePerBilancia As Single
     End Structure
     Structure strTelFromPlc_1X_RichiestaSilosPerBilanciaX
         Dim dataOraRicezione As DateTime

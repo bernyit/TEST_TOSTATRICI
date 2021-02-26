@@ -97,77 +97,99 @@
 
         End Select
 
+        If prossimoSilos.quantitaSilos = 0 Then
+            'eccezione: nessun silos trovato!
+        End If
 
         msgPerplc.idRichiesta = msgDaPlc.idRichiesta
         msgPerplc.tostatriceNr = msgDaPlc.tostatriceNr
         msgPerplc.ricettaNr = msgDaPlc.ricettaNr
-        msgPerplc.combinazioneBilance = 0
-        msgPerplc.SingoloSilos = 0  ' C'è un solo silos sopra questa bilancia con lo stesso componente, abilitato allo scarico
-        msgPerplc.SilosMultipli = 0 ' Ci sono più silos sopra questa bilancia con lo stesso componente, abilitati allo scarico
-        msgPerplc.FineRicetta = 0   ' Non ci sono altri componenti da scaricare su questa bilancia
+        msgPerplc.combinazioneBilance = prossimoSilos.combinazioneBilance
+        msgPerplc.indice_componente = prossimoSilos.indiceComponente
+        msgPerplc.SingoloSilos = IIf(prossimoSilos.quantitaSilos = 1, 1, 0)   ' C'è un solo silos sopra questa bilancia con lo stesso componente, abilitato allo scarico
+        msgPerplc.SilosMultipli = IIf(prossimoSilos.quantitaSilos > 1, 1, 0) ' Ci sono più silos sopra questa bilancia con lo stesso componente, abilitati allo scarico
+        msgPerplc.FineRicetta = IIf(prossimoSilos.componentiDaEseguire = 0, 1, 0)  ' Non ci sono altri componenti da scaricare su questa bilancia
         msgPerplc.silosPrelievo = prossimoSilos.prossimoSilosDaScaricare
         msgPerplc.codiceProdotto = prossimoSilos.idComponente
-        msgPerplc.pesoDaPrelevare = prossimoSilos.totaleKgPerBilancia   'è il peso totale da scaricare, quello della ricetta.
-        msgPerplc.tolleranzaPeso = 0
-        msgPerplc.lotto = 0
-
+        msgPerplc.pesoDaPrelevare = prossimoSilos.componente_kg   'è il peso totale da scaricare, quello della ricetta.
+        msgPerplc.tolleranzaPeso = prossimoSilos.componente_tol
+        msgPerplc.lotto = 0 'prossimoSilos.totaleKgPerBilancia 
+        msgPerplc.pesoTotalePerBilancia = prossimoSilos.totaleKgPerBilancia
 
     End Sub
 
 
     Structure strProgrammaBilancia
+        Dim combinazioneBilance As Int16
         Dim idComponente As Int16
+        Dim indiceComponente As Int16
         Dim prossimoSilosDaScaricare As Int16
         Dim quantitaSilos As Int16
         Dim componentiEseguiti As Int16
         Dim componentiDaEseguire As Int16
         Dim totaleComponentiPerBilancia As Int16
-        Dim totaleKgPerBilancia As Int16
+        Dim totaleKgPerBilancia As Decimal
+        Dim componente_kg As Decimal
+        Dim componente_tol As Decimal
     End Structure
 
     Private Shared Function trovaSilosDaScaricare(ByVal tostatrice As Int16, ByVal ricetta As Int16, ByVal idRichiesta As Int32, ByVal bilancia As Int16) As strProgrammaBilancia
 
         Dim programmaBilancia As strProgrammaBilancia
 
-        Using TTA As New DBTableAdapters.tostatrici_Setup_ProgrammaTableAdapter
-            Using programma = TTA.sp_TOSTATRICI_SETUP_PROGRAMMA_SelectByBilancia(tostatrice, ricetta, idRichiesta, bilancia)
-                If ReferenceEquals(programma, Nothing) = False Then
-                    programmaBilancia.totaleComponentiPerBilancia = programma.Count
-                    programmaBilancia.componentiDaEseguire = programmaBilancia.totaleComponentiPerBilancia
-                    If programmaBilancia.totaleComponentiPerBilancia > 0 Then
-                        For Each componente In programma
-                            programmaBilancia.totaleKgPerBilancia += componente.kg_set
-
-                            If componente.eseguito = True Then
-                                programmaBilancia.componentiEseguiti += 1
-                                programmaBilancia.componentiDaEseguire -= 1
-                            Else
-                                If programmaBilancia.prossimoSilosDaScaricare = 0 Then
-                                    programmaBilancia.idComponente = componente.id_componente
-                                    Using TTA_SILOS As New DBTableAdapters.viewMagazzinoDosaggio_TotaleTableAdapter
-                                        Using elencoSilos = TTA_SILOS.sp_VIEW_MAGAZZINO_DOSAGGIO_TOTALE_GetSilosDaScaricare(programmaBilancia.idComponente, bilancia)
-                                            If ReferenceEquals(elencoSilos, Nothing) = False Then
-                                                If elencoSilos.Count > 0 Then
-                                                    programmaBilancia.prossimoSilosDaScaricare = elencoSilos(0).IdSilos
-                                                End If
-                                            End If
-                                        End Using
-                                    End Using
-                                End If
-
-                            End If
-                        Next
+        Using TTA_PROGRAMMA As New DBTableAdapters.tostatrici_Setup_ProgrammaTableAdapter
+            Using TTA_RICHIESTE As New DBTableAdapters.tostatrici_Setup_RichiesteTableAdapter
+                Using richieste = TTA_RICHIESTE.sp_TOSTATRICI_SETUP_RICHIESTE_LeggiRichiesta(tostatrice, idRichiesta)
+                    If ReferenceEquals(richieste, Nothing) = False Then
+                        If richieste.Count > 0 Then
+                            programmaBilancia.combinazioneBilance = richieste(0).combinazione
+                        End If
                     End If
-                End If
-            End Using
-        End Using
+                End Using
+                Using programma = TTA_PROGRAMMA.sp_TOSTATRICI_SETUP_PROGRAMMA_SelectByBilancia(tostatrice, ricetta, idRichiesta, bilancia)
+                    If ReferenceEquals(programma, Nothing) = False Then
+                        programmaBilancia.totaleComponentiPerBilancia = programma.Count
+                        programmaBilancia.componentiDaEseguire = programmaBilancia.totaleComponentiPerBilancia
 
+                        If programmaBilancia.totaleComponentiPerBilancia > 0 Then
+                            For Each componente In programma
+                                programmaBilancia.totaleKgPerBilancia += componente.kg_set
+
+                                If componente.eseguito = True Then
+                                    programmaBilancia.componentiEseguiti += 1
+                                    programmaBilancia.componentiDaEseguire -= 1
+                                Else
+                                    If programmaBilancia.prossimoSilosDaScaricare = 0 Then
+                                        programmaBilancia.idComponente = componente.id_componente
+                                        programmaBilancia.indiceComponente = componente.indice_componente
+                                        programmaBilancia.componente_kg = componente.kg_set
+                                        programmaBilancia.componente_tol = componente.kg_tol
+                                        Using TTA_SILOS As New DBTableAdapters.viewMagazzinoDosaggio_TotaleTableAdapter
+                                            Using elencoSilos = TTA_SILOS.sp_VIEW_MAGAZZINO_DOSAGGIO_TOTALE_GetSilosDaScaricare(programmaBilancia.idComponente, bilancia)
+                                                If ReferenceEquals(elencoSilos, Nothing) = False Then
+                                                    programmaBilancia.quantitaSilos = elencoSilos.Count
+                                                    If elencoSilos.Count > 0 Then
+                                                        programmaBilancia.prossimoSilosDaScaricare = elencoSilos(0).IdSilos
+                                                    End If
+                                                End If
+                                            End Using
+                                        End Using
+                                    End If
+
+                                End If
+                            Next
+                        End If
+                    End If
+                End Using
+            End Using
+
+        End Using
         Return programmaBilancia
     End Function
 
     Private Shared Sub ricettaImpostaComponenteCompletato(ByVal tostatrice As Int16, ByVal bilancia As Int16, ByVal indiceComponente As Int16)
         Using TTA As New DBTableAdapters.tostatrici_Setup_ProgrammaTableAdapter
-            TTA.sp_TOSTATRICI_SETUP_PROGRAMMA_ImpostaComponenteEseguito(tostatrice, indiceComponente)
+            TTA.sp_TOSTATRICI_SETUP_PROGRAMMA_ImpostaComponenteEseguito(tostatrice, bilancia, indiceComponente)
         End Using
     End Sub
 End Class
