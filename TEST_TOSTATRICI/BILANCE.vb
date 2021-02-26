@@ -192,4 +192,9 @@
             TTA.sp_TOSTATRICI_SETUP_PROGRAMMA_ImpostaComponenteEseguito(tostatrice, bilancia, indiceComponente)
         End Using
     End Sub
+    Public Shared Sub aggiungiPesata(ByVal tostatrice As Int16, ByVal bilancia As Int16, ByVal indiceComponente As Int16, ByVal silos As Int16, ByVal peso As Decimal)
+        Using TTA_PROGRAMMA As New DBTableAdapters.tostatrici_Setup_ProgrammaTableAdapter
+            TTA_PROGRAMMA.sp_TOSTATRICI_SETUP_PROGRAMMA_AggiungiPeso(tostatrice, bilancia, indiceComponente, silos, peso)
+        End Using
+    End Sub
 End Class

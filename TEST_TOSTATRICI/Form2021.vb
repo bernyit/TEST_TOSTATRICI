@@ -6,14 +6,15 @@
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim idRicetta As Int16
         idRicetta = Integer.Parse(txtNrRicetta.Text)
-        calcolaFattibilita(idRicetta)
+        Dim tostatriceNr As Int16 = 1
+        calcolaFattibilita(idRicetta, tostatriceNr)
     End Sub
 
 
 
 
 
-    Private Sub calcolaFattibilita(ByVal idRicetta As Int16)
+    Private Sub calcolaFattibilita(ByVal idRicetta As Int16, ByVal tostatriceNr As Int16)
 
         Dim min, max As Int16
 
@@ -27,8 +28,18 @@
 
 
         For i As Integer = min To max
-            'Dim recipe = DB_PLC.verificaFattibilita(i)
-            Dim recipe = SETUP_TOSTATRICI.verificaFattibilita2(i, 65535)
+            Dim filtroBilance As UInt16 = 0
+            Select Case tostatriceNr
+                Case 1
+                    filtroBilance = &B1110_0111_1110_0111 ' esclude bilance 4,5
+                Case 2
+                    filtroBilance = &B1110_0111_1110_0111 ' esclude bilance 4,5
+                Case 3
+                    filtroBilance = &B1111_1111_1111_1111
+                Case 4
+                    filtroBilance = &B1111_1111_1111_1111
+            End Select
+            Dim recipe = SETUP_TOSTATRICI.verificaFattibilita2(i, filtroBilance)
 
             lblCombinazionePlc.Text = Convert.ToString(recipe.compinazionePerPlc, 2).PadLeft(16, "0"c)
             mostraBilanceSelezionate(recipe.compinazionePerPlc)
@@ -123,6 +134,20 @@
         msgDaPlc.sequenzaRichiesta = BILANCE.enuPesateSequenza.PRODOTTO_SUCCESSIVO
 
         BILANCE.CalcolaProssimoSilos(msgDaPlc, 1)
+
+    End Sub
+
+    Private Sub btnAggiungiPesata_Click(sender As Object, e As EventArgs) Handles btnAggiungiPesata.Click
+
+        Dim msg As New GMK_LEVEL2_TOSTATRICI.strTelFromPlc_1X_RichiestaSilosPerBilanciaX
+        msg.tostatriceNr = 3
+        msg.idRichiesta = 1613989848
+
+        msg.indice_componente = 4
+        msg.ricettaNr = 89
+        msg.sequenzaRichiesta = BILANCE.enuPesateSequenza.PRODOTTO_SUCCESSIVO
+        msg.ultimoSilosScaricato = (Now.Second Mod 20) + 1
+        BILANCE.aggiungiPesata(msg.tostatriceNr, 1, msg.indice_componente, msg.ultimoSilosScaricato, 1)
 
     End Sub
 End Class
